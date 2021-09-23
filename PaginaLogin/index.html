@@ -15,6 +15,18 @@
                 padding: 0;
                 width: 100%;
                 height: 100vh;
+                /*background: #6161cc; define fundo da pag*/
+                background-size: cover;
+                display: table;
+                background: linear-gradient(72deg, #c8c8f0 1%, #6161cc 100%);
+                overflow: hidden;
+            }
+          
+            .principalLogin{
+                width: 320px;
+                height: 300px;
+                border: 2px solid rgba(0, 0, 0, 0.801);
+                box-shadow: 10px 10px 0px 0px whitesmoke;
                 background: #51dfdf;/* define fundo da pag*/
                 background-size: cover;
                 display: table;
@@ -28,6 +40,7 @@
                 top: 50%;
                 left: 50%;
                 transform: translateX(-50%) translateY(-50%);
+                background-color: rgb(245, 245, 245);
                 background-color: #48c7c8;
             }
 
@@ -36,6 +49,10 @@
                 margin-top: 0px;
                 font-family: Source Sans Pro;
                 font-weight: lighter;
+                color: #000000;
+                font-size: 50px;
+                text-align: center;
+                transform: translateX(25%) translateY(-608%);
                 color: #fff;
                 font-size: 50px;
                 text-align: center;
@@ -48,6 +65,12 @@
             }
 
             img{
+                width: 390px;
+                height: 390px;
+                border-radius: 50%;
+                top: -50px;
+                left: 5000px;
+                transform: translateX(-30%) translateY(-30%);
                 width: 180px;
                 height: 180px;
                 border-radius: 50%;
@@ -63,6 +86,10 @@
                 display: block;
                 width: 320px;
                 height: 50px;
+                background: whitesmoke;
+                outline: none;
+                border: 1px solid rgba(0, 0, 0, 0.5);
+                font-family: "Rajdhani Bold";
                 background: rgba(90, 90, 90, 0.3);
                 outline: none;
                 border: 1px solid rgba(0, 0, 0, 0.5);
@@ -92,9 +119,14 @@
             }
 
             .inputArea{
-                transform: translateX(-0%) translateY(-55%);
+                transform: translateX(-2%) translateY(-180%);
             }
 
+
+
+
+                transform: translateX(-0%) translateY(-55%);
+            }
 
         </style>
 
@@ -104,6 +136,8 @@
         <div class="principalLogin"> 
             <form action="action.php" method="POST">
                 <div class="principalBox">
+                    <img src="../imagem/AesteticLogo.png"alt="">
+
                     <img src="../imagem/Creme e Preto Frequência Cardíaca Superminimalista Medicina e Saúde Logo.png"alt="">
                     <h2>Login</h2>
                 </div>
