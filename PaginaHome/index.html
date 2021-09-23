@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    
+    <head>
+        <meta charset = "utf-8">
+        <title>Clínica Médica E2V</title>
+    
+        <style>
+            *{/* Diz que todos os elementos seram afetados por esse bloco de codigo*/
+                margin: 0;     /*Define a margem como 0*/
+                padding: 0;   /*Define o padding como 0*/
+            }
+
+            body{
+                text-align: center; /*Alinha no centro todo o texto que contem no body */
+            }
+
+            .principalHeader{
+                width: 1170px;  /*Define o tamanho em px da minha logo*/
+                margin: 0 auto; /*Define a margem como 0*/
+            }
+
+            header{
+                height: 70px;   /*Define a altura do header*/
+                background: #029191; /*Define a cor do header*/
+                width: 100%;    /*Define a largura do header */
+                z-index: 12;     /*Define a profundidade de algum elemento(Mais proximo ou mais afastado da tela)*/
+                position: fixed;  /*Define como elemento pode ser posicionado no documento */
+            }
+
+            .logo{
+                width: 30%; /*Define o tamanho da logo na tela*/
+                float: left; /*Define o lado que o elemento deve ser colocado fora do seu fluxo normal */
+                line-height: 65px;  /*Define a altura de uma caixa de linha*/
+            }
+
+            .logo a{
+                text-decoration: none; /*Define a formatação do elemento*/
+                font-size: 30px; /*Define o tamanho da fonte */
+                font-family: poppins;   /*Define a fonte */
+                color: #fff; /*Define a cor da fonte */
+                letter-spacing: 0.5px; /*Define o espaçamento das letras*/
+            }
+
+            nav{
+                float: right;   /*Define o posicionamento do elemento na tela*/
+                line-height: 65px; /*Define a altura de uma caixa de linha*/
+            }
+            nav a{
+                text-decoration: none;  /*Define a formatação do elemento*/
+                font-family: bignoodletitling;  /*Define a fonte */
+                font-size: 20px;    /*Define o tamanho da fonte */
+                letter-spacing: 0.5px;  /*Define o espaçamento das letras*/
+                margin: 0 10px; /*Define a margem top/bot como 0 e left/rigth como 10*/
+                color: #fff; /*Define a cor das letras*/
+            }
+
+            .banner{
+                width: 100%;    /*Define o tamanho da area do banner */
+                height: 600px; /*Define o tamanho da altura do banner*/
+                position: fixed; /*Define como elemento pode ser posicionado no documento */
+                top: 70px;
+                background-image: url(../imagem/bn3.jpg);
+                background-size: cover;
+                background-position: center center;
+            }
+
+            .banner h2{
+                padding-top:8%; /*Define o padding de cima com 8% de seu preenchimento*/
+                font-size: 70px;    /*Define o tamanho da fonte */
+                font-family: poppins;   /*Define a fonte */
+                text-transform: uppercase;  /*Define o formato da letra Uppercase, lowercase ...*/
+                color: #033d3d; /*Define a cor das letras*/
+
+            }
+
+            .info{
+                width: 100%;/*Define a largura do elemento*/
+                position: relative; /*Define como elemento pode ser posicionado no documento */
+                top: 450px; /*Define o*/
+                background: #ffffff; /*Define a cor de fundo*/
+                height: 1500px; /*Define a altura em px*/
+            }
+
+            .info h2{
+                font-family: bignoodletitling;  /*Define a fonte */
+                letter-spacing: 4px;    /*Define o espaçamento das letras*/
+                padding-top: 30px; /*Define o padding de cima com 30px*/
+                font-size: 40px;    /*Define o tamanho da fonte */
+                margin: 0;  /*Define a margem como 0*/
+            }
+
+            .info p{
+                padding: 2% 0;   /*Define o padding de cima com 2% e os laterais com 0*/
+                font-family: merienda;  /*Define a fonte */
+                line-height: 30px;  /*Define a altura de uma caixa de linha*/
+            }
+
+            .description{
+                width: 1170px;  /*Define o tamanho em px da minha logo*/
+                margin: 0 auto; /*Define a margem como 0*/
+            }
+
+            .valores{
+                width: 1170px;  /*Define o tamanho em px da minha logo*/
+                margin: 0 auto; /*Define a margem como 0*/
+            }
+
+        </style>
+
+    </head>
+    
+    <body>
+        <header>
+            <div class="principalHeader">
+                <div class="logo">
+                    <a href="index.html">E2V Clínica Médica</a>
+                </div>
+                <nav>
+                    <a href="index.html">Home</a>
+                    <a href="#">Login</a>
+                </nav>            
+            </div>
+        </header>
+        <main>
+            <div class="boxPrincipal">
+                <div class="banner">
+                    <h2>This is a banner</h2>
+                </div>
+                <div class="info">
+                    <div class="description">
+                        <h2>Descrição</h2>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore aut quisquam accusantium fuga, nobis nihil cumque. Mollitia, earum ea aliquid impedit recusandae ipsa a, commodi dolore nostrum harum repellat officia odio perferendis est hic culpa sed ratione quasi laboriosam consectetur sequi iure! Rerum, ea consequuntur temporibus repudiandae incidunt ab dolorem fuga illo quia eligendi odio quisquam soluta enim perferendis debitis, reiciendis eius excepturi sint, tempore iste aut suscipit ducimus mollitia! Odit voluptatem reprehenderit ipsum est fugit magnam repellendus deleniti esse incidunt asperiores, perspiciatis beatae numquam, praesentium quas fugiat inventore aperiam doloribus odio mollitia? Repellendus nihil, magni beatae adipisci sed dolore?</p>
+                    </div>
+                    <div class="valores">
+                        <h2>Valores</h2>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore aut quisquam accusantium fuga, nobis nihil cumque. Mollitia, earum ea aliquid impedit recusandae ipsa a, commodi dolore nostrum harum repellat officia odio perferendis est hic culpa sed ratione quasi laboriosam consectetur sequi iure! Rerum, ea consequuntur temporibus repudiandae incidunt ab dolorem fuga illo quia eligendi odio quisquam soluta enim perferendis debitis, reiciendis eius excepturi sint, tempore iste aut suscipit ducimus mollitia! Odit voluptatem reprehenderit ipsum est fugit magnam repellendus deleniti esse incidunt asperiores, perspiciatis beatae numquam, praesentium quas fugiat inventore aperiam doloribus odio mollitia? Repellendus nihil, magni beatae adipisci sed dolore?</p>
+                    </div>
+                </div>
+            </div> 
+        </main>
+        <footer>
+            <p><i></i></p>
+        </footer>
+    </body>
+</html>
