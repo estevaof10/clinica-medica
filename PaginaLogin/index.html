@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    
+    <head>
+        <meta charset = "utf-8">
+        <title>Clínica Médica E2V</title>
+        <style>
+            html{
+                margin: 0;
+                padding: 0;
+            }
+
+            body{
+                margin: 0;
+                padding: 0;
+                width: 100%;
+                height: 100vh;
+                /*background: #6161cc; define fundo da pag*/
+                background-size: cover;
+                display: table;
+                background: linear-gradient(72deg, #c8c8f0 1%, #6161cc 100%);
+                overflow: hidden;
+            }
+
+            .principalLogin{
+                width: 320px;
+                height: 300px;
+                border: 2px solid rgba(0, 0, 0, 0.801);
+                box-shadow: 10px 10px 0px 0px whitesmoke;
+                border-radius: 10px;
+                padding:50px;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translateX(-50%) translateY(-50%);
+                background-color: rgb(245, 245, 245);
+            }
+
+
+            h2{
+                margin-top: 0px;
+                font-family: Source Sans Pro;
+                font-weight: lighter;
+                color: #000000;
+                font-size: 50px;
+                text-align: center;
+                transform: translateX(25%) translateY(-608%);
+                margin-bottom: 0;
+                padding-bottom: 0;
+                border-bottom: 0;
+                padding-right: 5px;
+
+            }
+
+            img{
+                width: 390px;
+                height: 390px;
+                border-radius: 50%;
+                top: -50px;
+                left: 5000px;
+                transform: translateX(-30%) translateY(-30%);
+                margin-bottom: 0;
+                padding-bottom: 0;
+                border-bottom: 0;
+            }
+
+            input{
+                display: block;
+                width: 320px;
+                height: 50px;
+                background: whitesmoke;
+                outline: none;
+                border: 1px solid rgba(0, 0, 0, 0.5);
+                font-family: "Rajdhani Bold";
+                font-weight: lighter;
+                font-size: 14px;
+                margin-bottom: 10px;
+                padding-left: 10px;
+                border-radius: 5px;
+            }
+
+            .inp1{
+                margin-top:0;
+                padding-top:0;
+            }
+
+            button{
+                width: 332px;
+                height: 50px;
+                font-size: 16px;
+                background: #000;
+                font-weight: lighter;
+                color: #fff;
+                border: 0px;
+                border-radius: 5px;
+
+            }
+
+            .inputArea{
+                transform: translateX(-2%) translateY(-180%);
+            }
+
+
+
+        </style>
+
+    </head>
+    
+    <body>
+        <div class="principalLogin"> 
+            <form action="action.php" method="POST">
+                <div class="principalBox">
+                    <img src="../imagem/AesteticLogo.png"alt="">
+                    <h2>Login</h2>
+                </div>
+                <div class="inputArea">
+                    <input type="email" placeholder="Entre com seu Email" class="inp1">
+                    <input type="password" placeholder="Entre com sua Senha">
+                    <button class="btn">Entrar</button>
+                </div>
+            </form>
+
+        </div>
+    </body>
+</html>
