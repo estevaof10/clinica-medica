@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=devide-width, initial-scale=1, shrink-to-fit=no" />
+
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    
+    <title>Galeria</title>
+
+    <style>
+      *{
+        margin: 0; /* define a margem de todo o codigo em 0 */
+        padding: 0; /* define o padding de todo o codigo em 0 */
+        outline: 0; /* define o outline de todo o codigo em 0 */
+        box-sizing: border-box; /* define o tamanho do elemento ate a borda,o width sera a soma do conteudo com a borda e o padding */
+      }
+      html{ /* estilização do html */
+        font-size: 62.5%; /* define o tamanho da fonte do codigo para que a cada 1rem seja considerado 10px */
+      }
+      body{ /* estilização do body */
+        font-size: 1.6rem; /* define o tamanho da fonte do body em rem para responsividade */
+        width: 100%; /* define a largura do body em 100% */
+        height: 100%; /* define a altura do body em 100% */
+      }
+      body, html{ /* estilização do body e html */
+        height: 100%; /* define a altura do body e html em 100% */
+        background: linear-gradient(90deg,#d7fffa 20%,#1d858c 80%); /*Define as cores e o estilo do degradê */
+      }
+      .logo h1{ /* estilização da logo */
+        font-family: Arial, Helvetica, sans-serif; /* define a fonte da logo */
+        color: whitesmoke; /* define a cor do texto da logo */
+      }
+      header{ /* estilização do header */
+        background-color: #7AC2C3; /* define a cor e efeito do background com degradê */
+      }
+      header .container{ /* estilização do container contido no header */
+        height: 80px; /* define a altura da header */
+        display: flex; /* alinha o items do header na horizontal/em linha */
+        justify-content: space-between; /* posiciona os elementos nas extremidades direita e esquerda */
+        align-items: center; /* alinha os items no centro */
+        width: 90%; /* define o tamanho do header em 90% */
+        max-width: 1100px; /* define o tamanho maximo da largura do header */
+        margin: auto; /* define a margem do header como automatica pra redimencionamento automatico*/
+      }
+      nav ul{ /* estilização da lista de itens do nav */
+        display: flex; /* alinhao a lista de itens na horizontal */
+      }
+      li{ /* estilização da lista de itens */
+        list-style: none; /* oculta os icones/pontos padroes dos itens de lista */
+      }
+      nav ul li a{ /* estilização da tag a*/
+        text-decoration: none; /* retira a decoração de link */
+        color: #f8f9f7; /* define a cor do texto */
+        font-size: 2rem; /* define o tamanho da fonte em rem para responsividade */
+        margin-left: 30px; /* define a margem esquerda entre os itens */
+        padding: 6px 10px; /* define o padding de 6px top e botton e 10px left e right */
+        font-family: Arial, Helvetica, sans-serif ; /* define a fonte dos links */
+      }
+      nav ul li a:hover{ /* estilização da animação de hover  */
+        background-color: rgba(255, 255, 255, 0.356); /* define a cor do efeito ao passar o mouse sobre os links  */
+        transition: 0.3s; /* define o tmepo do efeito de cor do hover */
+        border-radius: 5px; /* define a curvatura da borda do efeito hover */
+      }
+      @media(max-width: 990px){ /* define estilização do header quando a tela tiver 990px */
+        html{ /* estilização do html quando a tela tiver 990px */
+          font-size: 50%; /* define o tamanho da fonte do header em 50% quando a tela tiver 990px */
+        }
+      }
+      @media(max-width: 850px){ /*  define estilização do header quando a tela tiver850px */ 
+        html{ /* estilização do html quando a tela tiver 850px */
+          font-size: 45%; /* define o tamanho da fonte do header em 45% quando a tela tiver 850px */
+        }
+      }
+      @media(max-width: 790px){ /*  define estilização do header quando a tela tiver 790px */  
+        nav{ /* /* estilização do nav quando a tela chegar em 790px */ 
+          display: none; /* oculta os itens da barra de navegação do header quando a tela chegar 790px*/
+        }
+        .one,
+        .two,
+        .three{ /* estilização das barras usadas no menu expansivo'modelo de haburguer' */
+          background-color: white; /* define a cor das barras do menu expansivo */
+          height: 5px;  /* define a altura das barras do menu expansivo  */
+          width: 100%; /* define a largura das barras do menu expansivo*/
+          margin: 6px auto; /*  */
+          transition-duration: 0.3s; /* define o tempo da animação das barras do menu expansivo depois do click */
+        }
+        .menu-burguer{ /* estilização do menu expansivo modelo de hamburguer */
+          width: 40px; /* define a largura do menu expansivo */
+          height: 30px; /* define a altura do menu exoansivo */
+        } 
+        .menu-section.on{ /* estilização do menu que mostrara os itens que estavam ocultos */
+          position: absolute; /* define a posição do elemento em qualquer lugar da tela */
+          top: 0; /* define o recuo superior em 0 */
+          left: 0; /* define o recuo esquerdo em 0 */
+          width: 100vw; /* define a largura em 100vw, toda a largura da tela */
+          height: 100vh; /* define a altura em 100vh, todaa altura da tela */
+          background-color: #7AC2C3;
+          display: flex; /* alinha os item em linha */
+          justify-content: center; /* posiciona os item ao centro do eixo x*/
+          align-items: center; /* posiciona os item ao centro do eixo y */
+          z-index: 12; /* define a profundidade do menu */
+        }
+        .menu-section.on nav{ /* estilização da nav om o menu expansivo ativo */
+          display: block; /* faz com que o conteudo dos itens ocultos voltem a aparecer */
+        }
+        .menu-section.on .menu-burguer{ /* estilização do icone do menu depois de ativo */
+          position: absolute; /* define a posição do menu depois de ativo */
+          right: 20px; /* define o recuo direito em 20px */ 
+          top: 20px; /* define o recuo superior em 20px */
+        }
+        .menu-section.on .menu-burguer .one{ /* estilização da primeira barra do menu depois de ativo */
+          transform: rotate(45deg) translate(7px, 7px); /* move a barra do icone do menu para a diagonal depois de ativo */
+        }
+        .menu-section.on .menu-burguer .two{ /* estilização da segunda barra do menu depois de ativo */
+          opacity: 0; /* oculta a segunda barra do icone do menu depois de ativo */
+        }
+        .menu-section.on .menu-burguer .three{ /* estilização da terceira barra do menu depois de ativo */
+          transform: rotate(-45deg) translate(9px, -9px); /* move a barra do icone do menu para a diagonal depois de ativo */
+        }
+        .menu-section.on nav ul{ /* estilização da lista depois do menu depois de ativo */
+          display: block; /* faz com que os item da lista fiquem alinhadosna vertical, um abaixo do outro */
+          text-align: center; /* alinha os itens da lista no centro */
+        }
+        .menu-section.on nav ul li a{ /* estilização dos links dos itens no menu depois de ativo */
+          transition-duration: 0.3s; /* define o tempo do efeito hover */
+          font-size: 3rem; /* define o tamanho da fonte em rem para responsividade */
+          line-height: 10rem; /* define o tamanho da linha */
+          margin-left: 0; /* define a margem esquerda em 0 */
+        }
+      }
+      .content { /* estilização da div content*/
+        height: 440px; /*define a altura da div content */
+        width: 860px; /* define a largura da div contene*/
+        border-radius: 20px; /* define a curvatura da borda da div content */
+        overflow: hidden; /* oculta as imagens/slides que nao estao selecionados */
+        position: relative; /* defnine a posição do elemento em relação a ele mesmo*/
+        margin: 0 auto 0 auto; /* define as margens dir/esq em auto para centralizar a div content*/
+      }
+      .navigation { /* estilização da div navigation*/
+        position: absolute; /* defnine a posição do elemento em qualquer lugar da tela*/
+        bottom: 20px; /* define a distancia com relação a parte de baixo do elemento pai*/
+        left: 50%; /* define a margem esquerda em 50%*/
+        transform: translate(-50%); /* corrige e dentraliza o navigation de acordo com o left */
+        display: flex; /* alinha os elementos na horizontal, um ao lado do outro*/
+      }
+      .bar { /* estilização da classe bar/botõs */
+        width: 70px; /* tamanho da barra onde os botões ficam*/
+        height: 17px; /*  define o tamanho de cada input radio*/
+        border: 2px solid #fff; /* define a borda do input radio */
+        margin: 6px; /* define a margem esquerda para espaçamento entre os input radios*/
+        border-radius: 5px; /* define a curvatura dos input radios*/
+        cursor: pointer; /* define o efeito ao passar o mouse sobre os inputs radios */
+        transition: 0.5s; /* define o tempo da animação de hover */
+      }
+      .bar:hover { /* estilização do fundo do bar/input radio */
+        background-color: #fff; /* define a cor da animação ao passar o mouse sobre o bar/input radios*/
+      }
+      input { /* estilização do input */
+        display: none; /* oculta os inputs padrões para aparecer somente os estilizados */
+      }
+      .slides { /* estilização da div slides*/
+        display: flex; /* defina as imagens na horizontal, uma ao lado da outra*/
+        width: 500%; /* define o tamanho da div slides em 500% para comportar as 5 imagens*/
+      }
+      .slide { /* estilização da div slide */
+        width: 20%; /* define o tamnho do slide checked em 20% */
+        transition: 0.6s; /* define o tempo da animação de transição entre os slides*/
+      }
+      .slide img { /* define o tamanho das imagenscontidas na div slide */
+        width: 100%;  /* define a largura das imagens */
+        height: 100%; /* define a altura das imagens */
+      }
+      #slide1:checked ~ .s1 { 
+        margin-left: 0; /* define a margem esquerda do slide 1 em 0% em relação ao slide checked*/
+      }
+      #slide2:checked ~ .s1 {
+        margin-left: -20%; /* define a margem esquerda do slide 1 em -20% em relação ao slide checked*/
+      }
+      #slide3:checked ~ .s1 {
+        margin-left: -40%; /* define a margem esquerda do slide 1 em -405 em relação ao slide checked*/
+      }
+      #slide4:checked ~ .s1 {
+        margin-left: -60%; /* define a margem esquerda do slide 1 em -60% em relação ao slide checked*/
+      }
+      #slide5:checked ~ .s1 {
+        margin-left: -80%; /* define a margem esquerda do slide 1 em -80% em relação ao slide checked*/
+      }
+      h2{ /* estilização do titulo */
+        margin-top: 30px; /* define a margem top/recuo superior */
+        color: white; /* define a cor do titulo */
+        text-shadow: 0px 0px 5px #004e53; /* define a cor do estlo de sombra das letras */
+        text-align: center; /* define a posição do titulo no centro */
+      }
+      p{ /* estilizção do paragrafo */
+        text-align: center; /* define a posição do texto no centro */
+        color: black; /* define a cor da fonte */
+        font-size: 20px; /* defiune o tamanho da fonte */
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* define a fonte do texto */
+      }
+      @media(max-width: 990px){ /* define estilização do content quando a tela tiver 990px */
+        .content{
+          width: 80%; /* define a largura do content em 80% quando a tela tiver 990px */
+          height: 60%; /* define a altura do content em 60% quando a tela tiver 990px */
+        }
+      }
+      @media(max-width: 850px){ /* define estilização do content quando a tela tiver 850px */
+        .content{
+          width: 85%;  /* define a largura do content em 85% quando a tela tiver 850px */
+          height: 60%; /* define a altura do content em 60% quando a tela tiver 850px */
+        }
+      }
+      @media(max-width: 990px){ /* define estilização do navigation quando a tela tiver 990px */
+        .navigation{
+          max-width: 90%; /* define a largura maxima do navigation em 90% quando a tela tiver 990px */
+          max-height: 90%; /* define a altura maxima do navigation em 90% quando a tela tiver 990px */
+        }
+      }
+      @media(max-width: 850px){ /* define estilização do navigation quando a tela tiver 850px */
+        .navigation{
+          max-width: 70%; /* define a largura maxima do navigation 5m 70% quando a tela tiver 850px */
+          max-height: 70%; /* define a altura maxima do navigation em 70% quando a tela tiver 850px */
+        }
+      }
+    </style>
+</head>
+<body>
+
+  <header>
+
+      <div class="container"> <!-- div principal -->
+
+        <div class="logo"> <!-- div com a classe logo -->
+            <h1>E2V Clinica Medica</h1>
+            <!--<img src="images/AesteticLogoCorte.png" alt="logo"> -->
+          
+        </div>
+
+        <div class="menu-section"> <!-- classe que é responsavel pela barra de navegação -->
+
+            <div class="menu-burguer"> <!-- define a classe menu-burguer para o formato do menu expansivo -->
+                <div class="one"></div> <!-- div que representa a primeira barra do menu expansivo -->
+                <div class="two"></div> <!-- div que representa a segunda barra do menu expansivo -->
+                <div class="three"></div> <!-- div que representa a terceira barra do menu expansivo-->
+           </div>
+
+            <nav> <!-- barra de navegação -->
+                <ul> <!-- lista com opçoes da barra de navegação -->
+                    <li><a href="#">Home</a></li> <!-- link pra voltar a home da clinica-->
+                    <li><a href="#">Novo Endereço</a></li> <!-- link para ir a pagina de novo endereço da clinica -->
+                    <li><a href="#">Agendamento</a></li> <!-- link para ir a pagina de agendamentos da clinica -->
+                    <li><a href="#">Login</a></li> <!-- link para ir a pagina de login da clinica -->
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+  </header>
+
+    <main >
+      
+      <h2>Galeria</h2>
+      <p>Imagens da estrutura da clinica.</p>
+
+      <div class="content"> <!-- div principal do carousel  -->
+        <div class="slides"> <!--  div que armazena os slidesdo carousel -->
+          <input type="radio" name="slide" id="slide1" checked /> <!-- define o primeiro input radio como checked sempre ao entrar na pagina -->
+          <input type="radio" name="slide" id="slide2" /> <!-- define o id do segundo input radio como slide2 -->
+          <input type="radio" name="slide" id="slide3" /> <!-- define o id do terceiro input radio como slide3 -->
+          <input type="radio" name="slide" id="slide4" /> <!-- define o id do quarto input radio como slide4 -->
+          <input type="radio" name="slide" id="slide5" /> <!-- define o id do quinto input radio como slide5 -->
+
+          <div class="slide s1"> <!-- classe que identifica a imagem primaria-->
+            <img src="images/recepcao.jpg" alt="recepção da clinica" />
+          </div>
+          <div class="slide"> <!-- classe que define os slides -->
+            <img src="images/sala.jpeg" alt="consultorio da clinic"/>
+          </div>
+          <div class="slide"> <!-- classe que define os slides -->
+            <img src="images/atendimento.jpg" alt="sala de atendimento ao paciente"/>
+          </div>
+          <div class="slide"> <!-- classe que define os slides -->
+            <img src="images/examesBebes.jpg" alt="sala de exames para bebes"/>
+          </div>
+          <div class="slide"> <!-- classe que define os slides -->
+            <img src="images/leitos.jpg" alt="leitos da clinica"/>
+          </div>
+        </div>
+
+        <div class="navigation"> <!-- classe para definir os botoes de navegação entre as imagens/slides -->
+          <label class="bar" for="slide1"></label> <!-- define o botao radio para a primeira imagem -->
+          <label class="bar" for="slide2"></label> <!-- define o botao radio para a segunda imagem -->
+          <label class="bar" for="slide3"></label> <!-- define o botao radio para a terceira imagem -->
+          <label class="bar" for="slide4"></label> <!-- define o botao radio para a quarta imagem -->
+          <label class="bar" for="slide5"></label> <!-- define o botao radio para a quinta imagem -->
+        </div>
+    </div>
+
+  </main>
+
+  <script> 
+    let show = true //inicializa o show como true
+    const menuSection = document.querySelector(".menu-section") // busca na div menu-section e armazena na variavel menuSection
+    const menuBurguer = menuSection.querySelector(".menu-burguer") // busca na menuSection e armazena na variavel menuBurguer
+
+    menuBurguer.addEventListener("click", () =>{ //crição do evento de click no menuBurguer e dispara a função
+        menuSection.classList.toggle("on", show) //menuSection adciona uma lista de classe "on" atraves da função toggle(função de adicionar e retirar do js)
+        show = !show //atualiza o show apos o click, fazendo o valor dele se alterar
+    })
+  </script>
+  <footer>
+    <p>© Copyright 2021. Todos os direitos reservados. Vinícius Alves, Vinícius Adriano e Estevão Filipe.</p>
+</footer>
+</body>
+</html>
