@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" 
+            rel="stylesheet" 
+            integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" 
+            crossorigin="anonymous">
+        <title>Cadastro Funcionário - E2V Clínica Médica</title> 
+        <link rel="icon" href="../imagem/E2V title.png">
+
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+                outline: 0;
+                box-sizing: border-box;
+            }
+
+            body, html{
+                width: 100vw;
+                height: 100vh;
+                background: linear-gradient(90deg, #d7fffa 20%,#1d858c 80%);
+                overflow: auto;
+            }
+
+            .form-select{
+                margin: 5px 0px 0px;
+            }
+
+            .form-control,
+            .form-select{
+                margin-top: 5px;
+                margin-bottom: 5px;
+                padding: 10px;
+                border: 1px solid #1d858c;
+            }
+
+            .form-control:focus,
+            .form-select:focus{
+                border: 1px solid #1d858c;
+                box-shadow: 0px 0px 5px rgb(0, 255, 200);
+                outline: none;
+            }
+
+            #inputSexo,
+            #inputEstado,
+            #inputSangue{
+                cursor: pointer;
+            }
+
+            header{ /*Centralizar os elementos do header*/
+                margin-top: 50px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+            }
+            
+            h2{
+                margin-top: 30px;
+                color: white;
+                text-shadow: 0px 0px 5px #004e53;
+                text-align: center;
+            }
+            p{
+                text-align: center;
+                color: black;
+                font-size: 20px;
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            }
+        </style>
+    </head> 
+    <body>
+        <header>
+            <img src="../imagem/AesteticLogoCorte.png" alt="Logo da E2V Clínica Médica" >    
+        </header>
+        <div class="container">
+            <main>
+                <h2>Cadastrar Funcionário</h2>
+                <p>Preencha os campos abaixo com os dados correspondentes ao novo funcionário que deseja cadastrar.</p>
+                <form method="POST" action="#" class="row g-2">
+                    <div class="form-floating col-md-12 gy-2">
+                        <input type="text" class="form-control" id="inputNome" name="nome" placeholder="">
+                        <label for="inputNome" class="form-label">Nome</label>
+                    </div>
+                    <div class="form-floating col-md-8 gy-2">
+                        <input type="email" class="form-control" id="inputEmail" name="email" placeholder="" autocomplete="off">
+                        <label for="inputEmail" class="form-label">Email</label>
+                    </div>
+                    <div class="form-floating col-md-4 gy-2">
+                        <input type="password" class="form-control" id="senhaFunc" name="senhaFunc" placeholder="">
+                        <label for="senhaFunc" class="form-label">Senha</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="verifMedico" name="verifMedico" value="verifMedico">
+                        <label for="verifMedico">Funcionário é médico.</label>
+                    </div>
+                    <div class="form-floating col-md-8 gy-2">
+                        <input type="tel" class="form-control" id="inputTelefone" name="telefone" placeholder="">
+                        <label for="inputTelefone" class="form-label">Telefone</label>
+                    </div>
+                    <div class="form-floating col-md-4 gy-2">
+                        <select name="sexo" class="form-select" id="inputSexo">
+                            <option selected>Selecione</option>
+                            <option>Masculino</option>
+                            <option>Feminino</option>
+                            <option>Outros</option>
+                        </select>
+                        <label for="inputSexo" class="form-label">Sexo</label>
+                    </div>
+                    <div class="form-floating col-md-4 gy-2">
+                        <input type="text" class="form-control" id="inputCEP" name="cep" placeholder="">
+                        <label for="inputCEP" class="form-label">CEP</label>
+                    </div>
+                    <div class="form-floating col-md-8 gy-2">
+                        <input type="text" class="form-control" id="inputLogradouro" name="logradouro" placeholder="">
+                        <label for="inputLogradouro" class="form-label">Logradouro</label>
+                    </div>
+                    <div class="form-floating col-md-4 gy-2">
+                        <select name="estado" class="form-select" id="inputEstado">
+                            <option selected>Selecione</option>
+                            <option>Acre</option>
+                            <option>Alagoas</option>
+                            <option>Amapá</option>
+                            <option>Amazonas</option>
+                            <option>Bahia</option>
+                            <option>Ceará</option>
+                            <option>Distrito Federal</option>
+                            <option>Espírito Santo</option>
+                            <option>Goiás</option>
+                            <option>Maranhão</option>
+                            <option>Mato Grosso</option>
+                            <option>Mato Grosso do Sul</option>
+                            <option>Minas Gerais</option>
+                            <option>Pará</option>
+                            <option>Paraíba</option>
+                            <option>Paraná</option>
+                            <option>Pernambuco</option>
+                            <option>Piauí</option>
+                            <option>Rio de Janeiro</option>
+                            <option>Rio Grande do Norte</option>
+                            <option>Rio Grande do Sul</option>
+                            <option>Rondônia</option>
+                            <option>Roraima</option>
+                            <option>Santa Catarina</option>
+                            <option>São Paulo</option>
+                            <option>Sergipe</option>
+                            <option>Tocantins</option>
+                        </select>
+                        <label for="inputEstado" class="form-label">Estado</label>
+                    </div>
+                    <div class="form-floating col-md-8 gy-2">
+                        <input type="text" class="form-control" id="inputCidade" name="cidade" placeholder="">
+                        <label for="inputCidade" class="form-label">Cidade</label>
+                    </div>
+                    <div class="form-floating col-md-4 gy-2">
+                        <input type="text" class="form-control" id="inputEspecialidade" name="especialidade" placeholder="">
+                        <label for="inputEspecialidade" class="form-label">Especialidade</label>
+                    </div>
+                    <div class="form-floating col-md-2 gy-2">
+                        <input type="date" class="form-control" id="inputContrato" name="contrato" placeholder="">
+                        <label for="inputContrato" class="form-label">Início de Contrato</label>
+                    </div>
+                    <div class="form-floating col-md-3 gy-2">
+                        <input type="text" class="form-control" id="inputSalario" name="salario" placeholder="">
+                        <label for="inputSalario" class="form-label">Salário</label>
+                    </div>
+                    <div class="form-floating col-md-3 gy-2">
+                        <input type="text" class="form-control" id="inputCRM" name="crm" placeholder="">
+                        <label for="inputCRM" class="form-label">CRM</label>
+                    </div>                        
+                    <div class="col-md-12">
+                        <button type="submit" class="btn btn-primary">Cadastrar
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right-circle" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z"/>
+                            </svg>
+                        </button>
+                    </div>
+                </form>
+            </main>
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" 
+            integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" 
+            crossorigin="anonymous"></script>
+    </body>
+</html>
