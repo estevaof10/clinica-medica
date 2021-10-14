@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=devide-width, initial-scale=1, shrink-to-fit=no" />
+
+<!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <title>Galeria E2V</title>
+    <style>
+      *{
+        margin: 0;
+        padding: 0;
+        outline: 0;
+        box-sizing: border-box;
+    }
+    html{
+        font-size: 62.5%;
+    }
+    body{
+        font-size: 1.6rem;
+        width: 100%;
+        height: 100%;
+    }
+    body, html{
+        height: 100%;
+        background: linear-gradient(90deg,#d7fffa 20%,#1d858c 80%); /*Define as cores e o estilo do degradê */
+    }
+    .logo h1{
+        font-family: Arial, Helvetica, sans-serif;
+        color: whitesmoke;
+    }
+    header{
+        background: linear-gradient(90deg, #07c972, #359d9e);
+    }
+    header .container{
+        height: 80px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 90%;
+        max-width: 1100px;
+        margin: auto;
+    }
+    nav ul{
+        display: flex;
+    }
+    li{
+        list-style: none;
+    }
+    nav ul li a{
+        text-decoration: none;
+        color: #f8f9f7;
+        font-size: 2rem;
+        margin-left: 30px;
+        padding: 6px 10px;
+        font-family: Arial, Helvetica, sans-serif ;
+    }
+    nav ul li a:hover{
+        background-color: rgba(255, 255, 255, 0.356);
+        transition: 0.3s;
+        border-radius: 5px;
+    }
+    @media(max-width: 990px){
+        html{
+            font-size: 50%;
+        }
+    }
+    @media(max-width: 850px){
+        html{
+            font-size: 45%;
+        }
+    }
+    @media(max-width: 790px){
+        nav{
+            display: none;
+        }
+        .one,
+        .two,
+        .three{
+            background-color: white;
+            height: 5px;
+            width: 100%;
+            margin: 6px auto;
+            transition-duration: 0.3s;
+        }
+        .menu-burguer{
+            width: 40px;
+            height: 30px;
+        } 
+        .menu-section.on{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: linear-gradient(150deg, #07c972, #359d9e);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 12;
+        }
+        .menu-section.on nav{
+            display: block;
+        }
+        .menu-section.on .menu-burguer{
+            position: absolute;
+            right: 20px;
+            top: 20px;
+        }
+        .menu-section.on .menu-burguer .one{
+            transform: rotate(45deg) translate(7px, 7px);
+        }
+        .menu-section.on .menu-burguer .two{
+            opacity: 0;
+        }
+        .menu-section.on .menu-burguer .three{
+            transform: rotate(-45deg) translate(9px, -9px);
+        }
+        .menu-section.on nav ul{
+            display: block;
+            text-align: center;
+        }
+        .menu-section.on nav ul li a{
+            transition-duration: 0.3s;
+            font-size: 3rem;
+            line-height: 10rem;
+            margin-left: 0;
+        }
+      }
+      .content {
+        height: 440px; /* */
+        width: 860px; /* */
+        border-radius: 20px; /* */
+        overflow: hidden; /* */
+        position: relative; /* */
+        margin: 0 auto 0 auto;
+      }
+      .navigation {
+        position: absolute; /* */
+        bottom: 20px; /* */
+        left: 50%; /* */
+        transform: translate(-50%); /* */
+        display: flex; /* */
+      }
+      .bar {
+        width: 70px; /* */
+        height: 17px; /* */
+        border: 2px solid #fff; /* */
+        margin: 6px; /* */
+        border-radius: 5px; /* */
+        cursor: pointer; /* */
+        transition: 0.5s; /* */
+      }
+      .bar:hover {
+        background-color: #fff; /* */
+      }
+      input {
+        display: none; /* */
+      }
+      .slides {
+        display: flex; /* */
+        width: 500%; /* */
+      }
+      .slide {
+        width: 20%; /* */
+        transition: 0.6s; /* */
+      }
+      .slide img {
+        width: 100%;  
+        height: 100%;
+      }
+      #slide1:checked ~ .s1 {
+        margin-left: 0; /* */
+      }
+      #slide2:checked ~ .s1 {
+        margin-left: -20%;
+      }
+      #slide3:checked ~ .s1 {
+        margin-left: -40%;
+      }
+      #slide4:checked ~ .s1 {
+        margin-left: -60%;
+      }
+      #slide5:checked ~ .s1 {
+        margin-left: -80%;
+      }
+      h2{
+        margin-top: 30px;
+        color: white;
+        text-shadow: 0px 0px 5px #004e53;
+        text-align: center;
+      }
+      p{
+        text-align: center;
+        color: black;
+        font-size: 20px;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      }
+      @media(max-width: 990px){
+        .content{
+          width: 80%;
+          height: 60%;
+        }
+      }
+      @media(max-width: 850px){
+        .content{
+          width: 85%;  
+          height: 80%;
+        }
+      }
+      @media(max-width: 990px){
+        .navigation{
+
+          max-width: 90%;
+          max-height: 90%;
+        }
+      }
+      @media(max-width: 850px){
+        .navigation{
+          
+        max-width: 70%;
+        max-height: 70%;
+        }
+      }
+    </style>
+</head>
+<body>
+
+    <header>
+
+      <div class="container">
+
+        <div class="logo">
+            <h1>E2V Clinica Medica</h1>
+            <!--<img src="images/AesteticLogoCorte.png" alt="logo"> -->
+          
+        </div>
+
+        <div class="menu-section">
+
+            <div class="menu-burguer">
+                <div class="one"></div>
+                <div class="two"></div>
+                <div class="three"></div>
+            </div>
+
+            <nav>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Sobre</a></li>
+                    <li><a href="#">Galeria</a></li>
+                    <li><a href="#">Agendamento</a></li>
+                    <li><a href="#">Login</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    </header>
+
+    <main >
+      
+      <h2>Galeria</h2>
+      <p>Imagens da estrutura da clinica.</p>
+
+      <div class="content">
+        <div class="slides">
+          <input type="radio" name="slide" id="slide1" checked />
+          <input type="radio" name="slide" id="slide2" />
+          <input type="radio" name="slide" id="slide3" />
+          <input type="radio" name="slide" id="slide4" />
+          <input type="radio" name="slide" id="slide5" />
+
+          <div class="slide s1">
+            <img src="images/recepcao.jpg" alt="recepção da clinica" />
+          </div>
+          <div class="slide">
+            <img
+              src="images/sala.jpeg"
+              alt="consultorio da clinic"/>
+          </div>
+          <div class="slide">
+            <img
+              src="images/atendimento.jpg"
+              alt="sala de atendimento ao paciente"/>
+          </div>
+          <div class="slide">
+            <img
+              src="images/examesBebes.jpg"
+              alt="sala de exames para bebes"/>
+          </div>
+          <div class="slide">
+            <img
+              src="images/leitos.jpg" alt="leitos da clinica"/>
+          </div>
+        </div>
+
+        <div class="navigation">
+          <label class="bar" for="slide1"></label>
+          <label class="bar" for="slide2"></label>
+          <label class="bar" for="slide3"></label>
+          <label class="bar" for="slide4"></label>
+          <label class="bar" for="slide5"></label>
+        </div>
+    </div>
+
+  </main>
+
+  <script> 
+    let show = true // define o 'show' como true
+    const menuSection = document.querySelector(".menu-section") //busca
+    const menuBurguer = menuSection.querySelector(".menu-burguer") //busca 
+
+    menuBurguer.addEventListener("click", () =>{ //aciona o evento pelo click
+        menuSection.classList.toggle("on", show) //menuSection adciona uma lista de classe "on" atraves do toggle(função de adicionar e retirar do js)
+        show = !show //atualiza o show 
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agendamento de Consulta</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+
+    <style>
+        *{
+            margin: 0; /* define a margem de todo o codigo em 0 */
+            padding: 0; /* define o padding de todo o codigo em 0 */
+            outline: 0; /* define o outline de todo o codigo em 0 */
+            box-sizing: border-box; /* define o tamanho do elemento ate a borda,o width sera a soma do conteudo com a borda e o padding */
+        }
+        html{ /* stilização do html */
+            font-size: 62.5%; /* define o tamanho da fonte do codigo para que a cada 1rem seja considerado 10px */
+        }
+        body{ /* estilização do body */
+            font-size: 1.6rem; /* define o tamanho da fonte do body em rem para responsividade */
+        }
+        body, html{ /* estilização do body e html */
+            height: 100%; /* define a altura do body e html em 100% */
+            background: linear-gradient(90deg, #d7fffa 20%,#1d858c 80%);
+        }
+        .logo h1{ /* estilização da logo */
+            font-family: Arial, Helvetica, sans-serif; /* define a fonte da logo */
+            color: whitesmoke; /* define a cor do texto da logo */
+        }
+        header{
+            background-color: #7AC2C3; /* define a cor e efeito do background com degradê */
+        }
+        header .container{ /* estilização do container contido no header */
+            height: 80px; /* define a altura da header */
+            display: flex; /* alinha o items do header na horizontal/em linha */
+            justify-content: space-between; /* posiciona os elementos nas extremidades direita e esquerda */
+            align-items: center; /* alinha os items no centro */
+            width: 90%; /* define o tamanho do header em 90% */
+            max-width: 1100px; /* define o tamanho maximo da largura do header */
+            margin: auto; /* define a margem do header como automatica pra redimencionamento automatico*/
+        }
+        nav ul{ /* estilização da lista de itens do nav */
+            display: flex; /* alinhao a lista de itens na horizontal */
+        }
+        li{ /* estilização da lista de itens */
+            list-style: none; /* oculta os icones/pontos padroes dos itens de lista */
+        }
+        nav ul li a{ /* estilização da tag a*/
+            text-decoration: none; /* retira a decoração de link */
+            color: #f8f9f7; /* define a cor do texto */
+            font-size: 2rem; /* define o tamanho da fonte em rem para responsividade */
+            margin-left: 30px; /* define a margem esquerda entre os itens */
+            padding: 6px 10px; /* define o padding de 6px top e botton e 10px left e right */
+            font-family: Arial, Helvetica, sans-serif ; /* define a fonte dos links */
+        }
+        nav ul li a:hover{ /* estilização da animação de hover  */
+            background-color: rgba(255, 255, 255, 0.356); /* define a cor do efeito ao passar o mouse sobre os links  */
+            transition: 0.3s; /* define o tmepo do efeito de cor do hover */
+            border-radius: 5px; /* define a curvatura da borda do efeito hover */
+        }
+        @media(max-width: 990px){ /* define estilização do header quando a tela tiver 990px */
+            html{ /* estilização do html quando a tela tiver 990px */
+                font-size: 50%; /* define o tamanho da fonte do header em 50% quando a tela tiver 990px */
+        }
+        }
+        @media(max-width: 850px){ /*  define estilização do header quando a tela tiver850px */ 
+            html{ /* estilização do html quando a tela tiver 850px */
+                font-size: 45%; /* define o tamanho da fonte do header em 45% quando a tela tiver 850px */
+            }
+        }
+        @media(max-width: 790px){ /*  define estilização do header quando a tela tiver 790px */
+            nav{ /* /* estilização do nav quando a tela chegar em 790px */ 
+            display: none; /* oculta os itens da barra de navegação do header quando a tela chegar 790px*/
+            }
+            .one,
+            .two,
+            .three{ /* estilização das barras usadas no menu expansivo'modelo de haburguer' */
+                background-color: white; /* define a cor das barras do menu expansivo */
+                height: 5px;  /* define a altura das barras do menu expansivo  */
+                width: 100%; /* define a largura das barras do menu expansivo*/
+                margin: 6px auto; /*  */
+             transition-duration: 0.3s; /* define o tempo da animação das barras do menu expansivo depois do click */
+            }
+            .menu-burguer{ /* estilização do menu expansivo modelo de hamburguer */
+                width: 40px; /* define a largura do menu expansivo */
+                height: 30px; /* define a altura do menu exoansivo */
+            } 
+            .menu-section.on{ /* estilização do menu que mostrara os itens que estavam ocultos */
+                position: absolute; /* define a posição do elemento em qualquer lugar da tela */
+                top: 0; /* define o recuo superior em 0 */
+                left: 0; /* define o recuo esquerdo em 0 */
+                width: 100vw; /* define a largura em 100vw, toda a largura da tela */
+                height: 100vh; /* define a altura em 100vh, todaa altura da tela */
+                background-color: #7AC2C3;
+                display: flex; /* alinha os item em linha */
+                justify-content: center; /* posiciona os item ao centro do eixo x*/
+                align-items: center; /* posiciona os item ao centro do eixo y */
+                z-index: 12; /* define a profundidade do menu */
+            }
+            .menu-section.on nav{ /* estilização da nav om o menu expansivo ativo */
+                display: block; /* faz com que o conteudo dos itens ocultos voltem a aparecer */
+            }
+            .menu-section.on .menu-burguer{ /* estilização do icone do menu depois de ativo */
+                position: absolute; /* define a posição do menu depois de ativo */
+                right: 20px; /* define o recuo direito em 20px */ 
+                top: 20px; /* define o recuo superior em 20px */
+            }
+            .menu-section.on .menu-burguer .one{ /* estilização da primeira barra do menu depois de ativo */
+                transform: rotate(45deg) translate(7px, 7px); /* move a barra do icone do menu para a diagonal depois de ativo */
+            }
+            .menu-section.on .menu-burguer .two{ /* estilização da segunda barra do menu depois de ativo */
+                opacity: 0; /* oculta a segunda barra do icone do menu depois de ativo */
+            }
+            .menu-section.on .menu-burguer .three{ /* estilização da terceira barra do menu depois de ativo */
+                transform: rotate(-45deg) translate(9px, -9px); /* move a barra do icone do menu para a diagonal depois de ativo */
+            }
+            .menu-section.on nav ul{ /* estilização da lista depois do menu depois de ativo */
+                display: block; /* faz com que os item da lista fiquem alinhadosna vertical, um abaixo do outro */
+                text-align: center; /* alinha os itens da lista no centro */
+            }
+            .menu-section.on nav ul li a{ /* estilização dos links dos itens no menu depois de ativo */
+                transition-duration: 0.3s; /* define o tempo do efeito hover */
+                font-size: 3rem; /* define o tamanho da fonte em rem para responsividade */
+                line-height: 10rem; /* define o tamanho da linha */
+                margin-left: 0; /* define a margem esquerda em 0 */
+            }
+        }
+        .form-select{ /* estilização do input select pela classo */
+            margin: 5px 0px 0px; /* define a margen do input select */
+        }
+        .form-control, 
+        .form-select{ /* estilização do input select e control pela classe */
+            margin-top: 5px; /*  */
+            margin-bottom: 5px; /*  */
+            padding: 10px; /* define o padding do input */
+            border: 1px solid #1d858c; /* define a borda e cor do input */
+        }
+        .form-control:focus,
+        .form-select:focus{ /* estilização do focus dos inputs pela classe */ 
+            border: 1px solid #1d858c; /*  define a borda do input e a cor*/
+            box-shadow: 0px 0px 5px #00ffc8; /* define a sombra da borda do input e cor */
+            outline: none; /* retira o contorno do input */
+        }
+        #inputSexo, 
+        #inputData{ /* estilização dos inputs de data e sexo pelos ids */
+            cursor: pointer; /* /* define o efeito ao passar o mouse sobre os inputs  */
+        }
+        h2{ /* estilização do titulo */
+            margin-top: 30px; /* define a margem top/recuo superior */
+            color: white; /* define a cor do titulo */
+            text-shadow: 0px 0px 5px #004e53; /* define a cor do estlo de sombra das letras */
+            text-align: center; /* define a posição do titulo no centro */
+        }
+        p{ /* estilizção do paragrafo */
+            text-align: center; /* define a posição do texto no centro */
+            color: black; /* define a cor da fonte */
+            font-size: 18px; /* defiune o tamanho da fonte */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* define a fonte do texto */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        
+        <div class="container"> <!-- div principal -->
+
+            <div class="logo"> <!-- div com a classe logo -->
+                <h1>E2V Clinica Medica</h1>
+                <!--<img src="images/AesteticLogoCorte.png" alt="logo"> -->
+              
+            </div>
+    
+            <div class="menu-section"> <!-- classe que é responsavel pela barra de navegação -->
+    
+                <div class="menu-burguer"> <!-- define a classe menu-burguer para o formato do menu expansivo -->
+                    <div class="one"></div> <!-- div que representa a primeira barra do menu expansivo -->
+                    <div class="two"></div> <!-- div que representa a segunda barra do menu expansivo -->
+                    <div class="three"></div> <!-- div que representa a terceira barra do menu expansivo-->
+                </div>
+    
+                <nav> <!-- barra de navegação -->
+                    <ul> <!-- lista com opçoes da barra de navegação -->
+                        <li><a href="#">Home</a></li> <!-- link pra voltar a home da clinica-->
+                        <li><a href="#">Novo Endereço</a></li> <!-- link para ir a pagina de novo endereço da clinica -->
+                        <li><a href="#">Galeria</a></li> <!-- link para ir a pagina galeria da clinica -->
+                        <li><a href="#">Login</a></li> <!-- link para ir a pagina de login da clinica -->
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main>
+
+        <h2> Agendamento de Consulta</h2>
+        <p>Preencha os campos abaixo</p>
+        <div class="container"> <!-- div principal do formulario -->
+            <form method="POST" action="#" class="row g-2"> <!-- define o metodo do formulario-->
+                <div class="form-floating col-md-6 gy-2"> <!-- define o tamanho e classe do input-->
+                    <input type="text" class="form-control" id="inputNome" name="nome" placeholder=""> <!-- define o tipo e classe do input -->
+                    <label for="inputNome" class="form-label">Nome</label> <!-- define o label do input -->
+                </div> 
+    
+                <div class="form-floating col-md-6 gy-2"> <!-- define o tamanho e classe do input-->
+                    <input type="email" class="form-control" id="inputEmail" name="email" placeholder="" autocomplete="off"> <!-- define o tipo e classe do input -->
+                    <label for="inputEmail" class="form-label">Email</label> <!-- define o label do input-->
+                </div>
+
+                <div class="form-floating col-md-6 gy-2"> <!-- define o tamanho e classe do input-->
+                    <select name="especialidade" class="form-select" id="inputEspecialidade"> <!-- define a classe do select e opçoes-->
+                        <option selected>Selecione uma especialidade</option>
+                        <option>Cardiologia</option>
+                        <option>Cirurgia Geral</option>
+                        <option>Dermatologia</option>
+                        <option>Endocrinologia</option>
+                        <option>Ginecologia e Obstetrícia</option>
+                        <option>Medicina do Trabalho</option>
+                        <option>Neurologia</option>
+                        <option>Otorrinolaringologia</option>
+                        <option>Pediatria</option>
+                        <option>Psiquiatria</option>
+                        <option>Radioterapia</option>
+                    </select>
+                    <label for="inputSangue" class="form-label">Especialidade Médica</label> <!-- define o label do select -->
+                </div>
+
+                <div class="form-floating col-md-6 gy-2"> <!-- define o tamanho e classe do input-->
+                    <select name="especialista" class="form-select" id="inputEspecialista"> <!-- define a classe do select e opçoes-->
+                        <option selected>Selecione um especialista</option>
+                        <option>Cleide Pureza Torquato / Cardiologa</option>
+                        <option>Duarte Avelar Cangueiro / Cirurgico Geral</option>
+                        <option>Rúbia Saltão Granja / Dermatologa</option>
+                        <option>Álvaro Cotrim Orriça / Endocrinologista</option>
+                        <option>Nélson Carvalheiro Espargosa / Ginecologo e Obstetra</option>
+                        <option>Jeremias Canejo Fiães / Medico do Trabalho</option>
+                        <option>Milena Leiria Tigre / Neurologista</option>
+                        <option>Oséias Miguéis Serpa / Otorrinolaringologista</option>
+                        <option>Rose Teles Prada / Pediatra</option>
+                        <option>Mayara Gago Leão / Psiquiatra</option>
+                        <option>Luiz Regodeiro Carvalheira / Radioterapeuta</option>
+                    </select>
+                    <label for="inputSangue" class="form-label">Médico Especialista</label> <!-- define o label do select -->
+                </div>
+
+                <div class="form-floating col-md-4 gy-2"> <!-- define o tamanho e classe do input-->
+                    <input type="date" class="form-control" id="inputData" name="data" placeholder="" autocomplete="off"> <!-- define o tipo e classe do input -->
+                    <label for="inputData" class="form-label">Data</label> <!-- define a classe e label do input de data -->
+                </div>
+
+                <div class="form-floating col-md-4 gy-2"> <!-- define o tamanho e classe do input-->
+                    <select name="hora" class="form-select" id="inputHorario"> <!-- define a classe do select e opçoes-->
+                        <option selected>Selecione um horario</option> 
+                        <option>8:00</option>
+                        <option>9:00</option>
+                        <option>10:00</option>
+                        <option>11:00</option>
+                        <option>13:00</option>
+                        <option>14:00</option>
+                        <option>15:00</option>
+                        <option>16:00</option>
+                        <option>17:00</option>
+                    </select>
+                    <label for="inputSangue" class="form-label">Horário</label> <!-- define o label do select -->
+                </div>
+
+                <div class="form-floating col-md-4 gy-2"> <!-- define o tamanho e classe do input-->
+                    <select name="sexo" class="form-select" id="inputSexo"> <!-- define a classe do select e opçoes-->
+                        <option selected>Selecione</option> 
+                        <option>Masculino</option>
+                        <option>Feminino</option>
+                        <option>Outros</option>
+                    </select>
+                    <label for="inputSexo" class="form-label">Sexo</label> <!-- define o label do select -->
+                </div>
+    
+                <div class="col-md-4"> <!-- define o tamanho do botao-->
+                    <button type="submit" class="btn btn-primary">Cadastrar
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right-circle" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z"/>
+                        </svg> <!-- define o icone e label do botao-->
+                    </button>
+        </div>
+
+    </main>
+
+    <script> 
+        let show = true //inicializa o show como true
+        const menuSection = document.querySelector(".menu-section") // busca na div menu-section e armazena na variavel menuSection
+        const menuBurguer = menuSection.querySelector(".menu-burguer") // busca na menuSection e armazena na variavel menuBurguer
+    
+        menuBurguer.addEventListener("click", () =>{ //crição do evento de click no menuBurguer e dispara a função
+            menuSection.classList.toggle("on", show) //menuSection adciona uma lista de classe "on" atraves da função toggle(função de adicionar e retirar do js)
+            show = !show //atualiza o show apos o click, fazendo o valor dele se alterar
+        })
+      </script>
+
+</body>
+</html>
