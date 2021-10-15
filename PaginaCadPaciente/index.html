@@ -45,6 +45,9 @@
             nav ul{ /* estilização da lista de itens do nav */
                 display: flex; /* alinhao a lista de itens na horizontal */
             }
+            ul{
+                margin: auto;
+            }
             li{ /* estilização da lista de itens */
                 list-style: none; /* oculta os icones/pontos padroes dos itens de lista */
             }
@@ -188,6 +191,10 @@
                 font-size: 12px;
                 text-align: center;
             }
+            .btn.btn-primary {
+                font-size: 18px;
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            }
         </style>
     </head> 
     <body>
@@ -210,10 +217,7 @@
                     <nav> <!-- barra de navegação -->
                         <ul> <!-- lista com opçoes da barra de navegação -->
                             <li><a href="#">Home</a></li> <!-- link pra voltar a home da clinica-->
-                            <li><a href="#">Galeria</a></li> <!-- link para ir a pagina galeria da clinica -->
-                            <li><a href="../PaginaNovoEndereco/index.html">Novo Endereço</a></li> <!-- link para ir a pagina novo endereço da clinica -->
-                            <li><a href="#">Agendamento</a></li> <!-- link para ir a pagina de agendamentos da clinica -->
-                            <li><a href="#">Login</a></li> <!-- link para ir a pagina de login da clinica -->
+                            <li><a href="#">Sair</a></li> <!-- link para fazer logout da clinica -->
                         </ul>
                     </nav>
                 </div>
@@ -334,8 +338,11 @@
                 show = !show //atualiza o show apos o click, fazendo o valor dele se alterar
             })
           </script>
-        <footer>
-            <p>© Copyright 2021. Todos os direitos reservados. Vinícius Alves, Vinícius Adriano e Estevão Filipe.</p>
-        </footer>
+          
+          <div>
+            <footer>
+                <p>© Copyright 2021. Todos os direitos reservados. Vinícius Alves, Vinícius Adriano e Estevão Filipe.</p>
+            </footer>
+        </div>
     </body>
 </html>

@@ -29,10 +29,6 @@
         height: 100%; /* define a altura do body e html em 100% */
         background: linear-gradient(90deg,#d7fffa 20%,#1d858c 80%); /*Define as cores e o estilo do degradê */
       }
-      .logo h1{ /* estilização da logo */
-        font-family: Arial, Helvetica, sans-serif; /* define a fonte da logo */
-        color: whitesmoke; /* define a cor do texto da logo */
-      }
       header{ /* estilização do header */
         background-color: #7AC2C3; /* define a cor e efeito do background com degradê */
       }
@@ -47,6 +43,9 @@
       }
       nav ul{ /* estilização da lista de itens do nav */
         display: flex; /* alinhao a lista de itens na horizontal */
+      }
+      ul{
+        margin: auto;
       }
       li{ /* estilização da lista de itens */
         list-style: none; /* oculta os icones/pontos padroes dos itens de lista */
@@ -68,6 +67,9 @@
         html{ /* estilização do html quando a tela tiver 990px */
           font-size: 50%; /* define o tamanho da fonte do header em 50% quando a tela tiver 990px */
         }
+        img{ /* estilização do tamanho da logo quando a tela tiver 990px*/
+          width: 85%; 
+      }
       }
       @media(max-width: 850px){ /*  define estilização do header quando a tela tiver850px */ 
         html{ /* estilização do html quando a tela tiver 850px */
@@ -188,8 +190,8 @@
       #slide5:checked ~ .s1 {
         margin-left: -80%; /* define a margem esquerda do slide 1 em -80% em relação ao slide checked*/
       }
-      h2{ /* estilização do titulo */
-        margin-top: 30px; /* define a margem top/recuo superior */
+      h1{ /* estilização do titulo */
+        margin-top: 20px; /* define a margem top/recuo superior */
         color: white; /* define a cor do titulo */
         text-shadow: 0px 0px 5px #004e53; /* define a cor do estlo de sombra das letras */
         text-align: center; /* define a posição do titulo no centro */
@@ -261,7 +263,7 @@
 
     <main >
       
-      <h2>Galeria</h2>
+      <h1>Galeria</h1>
       <p>Imagens da estrutura da clínica.</p>
 
       <div class="content"> <!-- div principal do carousel  -->
@@ -310,8 +312,11 @@
         show = !show //atualiza o show apos o click, fazendo o valor dele se alterar
     })
   </script>
-  <footer>
-    <p>© Copyright 2021. Todos os direitos reservados. Vinícius Alves, Vinícius Adriano e Estevão Filipe.</p>
-  </footer>
+  
+  <div>
+    <footer>
+        <p>© Copyright 2021. Todos os direitos reservados. Vinícius Alves, Vinícius Adriano e Estevão Filipe.</p>
+    </footer>
+</div>
 </body>
 </html>

@@ -16,7 +16,14 @@
             *{
                 padding: 0;
                 margin: 0;
+                outline: none;
                 box-sizing: border-box;
+            }
+            html{ /* stilização do html */
+                font-size: 62.5%; /* define o tamanho da fonte do codigo para que a cada 1rem seja considerado 10px */
+            }
+            body{ /* estilização do body */
+                font-size: 1.6rem; /* define o tamanho da fonte do body em rem para responsividade */
             }
             body, html{
                 width: 100vw;
@@ -24,10 +31,7 @@
                 background: linear-gradient(90deg, #d7fffa 20%,#1d858c 80%);
                 overflow: auto;
             }
-            main > img{
-                align-items: center;
-            }
-            h2{
+            h1{
                 margin-top: 30px;
                 color: white;
                 text-shadow: 0px 0px 5px #004e53;
@@ -39,9 +43,7 @@
                 font-size: 20px;
                 font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             } 
-            main > img{
-                align-items: center;
-            } 
+            
             form{
                 background-color: #f1fffd;
                 font-size: 25px;
@@ -49,11 +51,9 @@
                 margin-top: 0px;
                 margin: auto;
                 border: 2px solid #1d858c;
-                border-radius: 10px;
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
+                border-radius: 10px;  
+                min-height: 50px;
+                font-size: 18px; 
             }
             label{
                 font-size: 18px;
@@ -69,6 +69,8 @@
                 margin-bottom: 5px;
                 padding: 10px;
                 border: 1px solid #1d858c;
+                min-height: 50px;
+                font-size: 18px;
             }
 
             .form-control:focus,
@@ -96,6 +98,9 @@
             }
             nav ul{ /* estilização da lista de itens do nav */
                 display: flex; /* alinhao a lista de itens na horizontal */
+            }
+            ul{
+                margin: auto;
             }
             li{ /* estilização da lista de itens */
                 list-style: none; /* oculta os icones/pontos padroes dos itens de lista */
@@ -183,12 +188,10 @@
                     margin-left: 0; /* define a margem esquerda em 0 */
                 }
             }
-
             .btn.btn-primary {
                 font-size: 18px;
                 font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             }
-
         </style>
     </head>
     <body>
@@ -196,7 +199,6 @@
             <div class="container"> <!-- div principal -->
 
                 <div class="logo"> <!-- div com a classe logo -->
-                    <!--<h1>E2V Clinica Medica</h1> -->
                     <img src="../imagem/LogoHeaderMini.png" alt="Logo da E2V Clínica Médica">                  
                 </div>
         
@@ -221,8 +223,9 @@
         </header>
         <div class="container">
             <main>
-                <h2>Novo Endereço</h2>  
+                <h1>Novo Endereço</h1>  
                 <p>Preencha os campos abaixo com os dados correspondentes ao endereço que deseja cadastrar.</p>              
+                
                 <form method="POST" action="#" class="row g-2">
                     <div class ="form-floating col-md-3 gy-2">
                         <input type="text" class="form-control" id="cep" placeholder="">
@@ -300,5 +303,11 @@
             integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" 
             crossorigin="anonymous">
         </script>
+
+        <div>
+            <footer>
+                <p>© Copyright 2021. Todos os direitos reservados. Vinícius Alves, Vinícius Adriano e Estevão Filipe.</p>
+            </footer>
+        </div>
     </body>
 </html>
