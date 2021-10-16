@@ -169,6 +169,19 @@
             font-size: 18px;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
+
+        footer{
+                bottom: 0;
+                position: absolute;
+                background-color: #266566;
+                width: 100%;
+            }
+            footer p{
+                color: white;
+                text-align: center;
+                font-size: 18px;
+            }
+
     </style>
 </head>
 <body>
@@ -205,7 +218,7 @@
         <h1> Agendamento de Consulta</h1>
         <p>Preencha os campos abaixo</p>
         <div class="container"> <!-- div principal do formulario -->
-            <form method="POST" action="#" class="row g-2"> <!-- define o metodo do formulario-->
+            <form id ="agendaForm" class="row g-2"> <!-- define o metodo do formulario-->
                 <div class="form-floating col-md-6 gy-2"> <!-- define o tamanho e classe do input-->
                     <input type="text" class="form-control" id="inputNome" name="nome" placeholder=""> <!-- define o tipo e classe do input -->
                     <label for="inputNome" class="form-label">Nome</label> <!-- define o label do input -->
@@ -302,6 +315,287 @@
             menuSection.classList.toggle("on", show) //menuSection adciona uma lista de classe "on" atraves da função toggle(função de adicionar e retirar do js)
             show = !show //atualiza o show apos o click, fazendo o valor dele se alterar
         })
+      </script>
+    
+      <script>
+        // function que lista todas as especialidades que tem um médico cadastrado  
+        function listar() {
+            
+            let xhr = new XMLHttpRequest();
+            xhr.open("POST", "espec.php", true);
+
+            xhr.onload = function () {
+                
+                if (xhr.status != 200) {
+                    console.error("Falha inesperada: " + xhr.responseText);
+                    return;
+                }
+
+                try {
+                    var medico = JSON.parse(xhr.responseText);
+
+                } catch (e) {
+                    console.error("String JSON inválida: " + xhr.responseText);
+                    return;
+                }
+
+                for (let i = 0; i < medico.especialidade.length; i++) {
+                    var campoSelect = document.getElementById("especialidade");
+                    var option = document.createElement("option");
+                    option.text = medico.especialidade[i];
+                    option.value = medico.especialidade[i];
+                    campoSelect.add(option);
+                }
+            }
+
+            xhr.onerror = function () {
+                console.error("Erro de rede");
+            };
+
+            xhr.send();   
+
+        }   
+
+        function enviar(especialidade) {
+
+            let xhr = new XMLHttpRequest();
+            xhr.open("GET", "getMedico.php?especialidade=" + especialidade, true);
+            xhr.onload = function () {
+
+                if (xhr.status != 200) {
+                    console.error("Falha inesperada: " + xhr.responseText);
+                    return;
+                }
+
+                try {
+                    var medicos = JSON.parse(xhr.responseText);
+                }
+                catch (e) {
+                    console.error("String JSON inválida: " + xhr.responseText);
+                    return;
+                }
+                var campoSelect = document.getElementById("medico");
+                var option = document.createElement("option");
+                option.text = '';
+                option.value = '';
+                campoSelect.add(option);
+
+                for (let i = 0; i < medicos.nomes.length; i++) {
+                    var campoSelect = document.getElementById("medico");
+                    var option = document.createElement("option");
+                    option.text = medicos.nomes[i];
+                    option.value = medicos.nomes[i];
+                    campoSelect.add(option);
+                }
+            }
+
+            xhr.onerror = function () {
+                console.error("Erro de rede");
+            };
+
+            xhr.send();
+
+        }
+
+        //Busca horario
+        function buscaHorario(data, especialidade, medico) {
+                        
+                        let xhr = new XMLHttpRequest();
+                        xhr.open("GET", "getHorario.php?data=" + data + "&especialidade=" + especialidade + "&medico=" + medico, true);
+            
+                        xhr.onload = function () {
+                            if (xhr.status != 200) {
+                                console.error("Falha inesperada: " + xhr.responseText);
+                                return;
+                            }
+                            try {
+                                var horarioAg = JSON.parse(xhr.responseText);
+                            } catch (e) {
+                                console.error("String JSON inválida: " + xhr.responseText);
+                                return;
+                            }
+                            var horarios_exibir = ["8", "9", "10", "11", "12", "13", "14", "15", "16", "17"];
+                            
+                            for(i = 0; i<horarioAg.horarios.length; i++){
+                                for(j = 0; j<10; j++){
+                                    if(horarioAg.horarios[i] == horarios_exibir[j]){
+                                        var indice = horarios_exibir.indexOf(horarios_exibir[j]);
+                                        horarios_exibir.splice(indice, 1);
+                                        console.log(horarios_exibir);
+                                    }
+                                }
+                            }
+                            var campoSelect = document.getElementById("horario");
+                            var option = document.createElement("option");
+                            option.text = '';
+                            option.value = '';
+                            campoSelect.add(option);
+            
+                            for(i = 0;i<horarios_exibir.length;i++){
+                                var campoSelect = document.getElementById("horario");
+                                var option = document.createElement("option");
+                                option.text = horarios_exibir[i]+'h';
+                                option.value = horarios_exibir[i];
+                                campoSelect.add(option);
+                            }
+                            
+                        }
+                        xhr.onerror = function () {
+                            console.error("Erro de rede");
+                        };
+                        xhr.send();
+        }
+
+                //Envia dados
+        function enviaDadosPost() {
+
+        let meuForm = document.querySelector("form");
+        let formData = new FormData(meuForm);
+
+        const options = {
+            method: "POST",
+            body: formData
+        }
+
+        fetch("agenda.php", options)
+            .then(response => response.json())
+            .then(data =>{
+                console.log(data.success);
+                if(data.success == true){
+                document.querySelector(".modal").style.display = "block";
+                meuForm.reset();
+                }else{
+                    throw new Error(response.status);
+                }
+                })
+            .catch(error => {
+                console.error(error);
+                document.querySelector(".modal-erro").style.display = "block";
+            })
+        }
+
+            //busca horario
+            const inputForm= document.querySelector("#form_agenda");
+            const inputData= inputForm.querySelector("#data");
+            const inputMedico= inputForm.querySelector("#medico");
+            const inputEspecialidade = inputForm.querySelector("#especialidade");
+            const inputHorario = inputForm.querySelector("#horario");
+            inputData.addEventListener('change', (event) => {
+                for (var i = 0; i < 11; i++) {
+                    var campoSelect = document.getElementById("horario");
+                    var option = document.createElement("option");
+                    option.text = '';
+                    option.value = '';
+                    campoSelect.remove(option);
+                }
+                buscaHorario(inputData.value, inputEspecialidade.value, inputMedico.value);
+            });
+
+            const botao = document.querySelector("#botao");
+            botao.onclick = enviaDadosPost;
+
+            const modalErro = document.querySelector(".modal-erro");
+            const buttonCloseErro = modalErro.querySelector(".buttonCloseErro");
+            buttonCloseErro.addEventListener("click", function(){
+                modalErro.style.display = "none";
+            });
+
+            const modal = document.querySelector(".modal");
+            const buttonClose = modal.querySelector(".buttonClose");
+            buttonClose.addEventListener("click", function(){
+                modal.style.display = "none";
+            });
+        
+            window.onload = function () {
+            listar();
+            const selecionado = document.querySelector("#especialidade");
+            selecionado.addEventListener('change', (event) => {
+                for (var i = 0; i < especialidade.length; i++) {
+                    var campoSelect = document.getElementById("medico");
+                    var option = document.createElement("option");
+                    option.text = '';
+                    option.value = '';
+                    campoSelect.remove(option);
+                }
+                enviar(selecionado.value);
+            });
+        }
+
+        //Envia dados
+        function enviaDadosPost() {
+
+                    let meuForm = document.querySelector("form");
+                    let formData = new FormData(meuForm);
+
+                    const options = {
+                        method: "POST",
+                        body: formData
+                    }
+
+                    fetch("agenda.php", options)
+                        .then(response => response.json())
+                        .then(data =>{
+                            console.log(data.success);
+                            if(data.success == true){
+                            document.querySelector(".modal").style.display = "block";
+                            meuForm.reset();
+                            }else{
+                                throw new Error(response.status);
+                            }
+                            })
+                        .catch(error => {
+                            console.error(error);
+                            document.querySelector(".modal-erro").style.display = "block";
+                        })
+                    }
+
+                        //busca horario
+                        const inputForm= document.querySelector("#form_agenda");
+                        const inputData= inputForm.querySelector("#data");
+                        const inputMedico= inputForm.querySelector("#medico");
+                        const inputEspecialidade = inputForm.querySelector("#especialidade");
+                        const inputHorario = inputForm.querySelector("#horario");
+                        inputData.addEventListener('change', (event) => {
+                            for (var i = 0; i < 11; i++) {
+                                var campoSelect = document.getElementById("horario");
+                                var option = document.createElement("option");
+                                option.text = '';
+                                option.value = '';
+                                campoSelect.remove(option);
+                            }
+                            buscaHorario(inputData.value, inputEspecialidade.value, inputMedico.value);
+                        });
+
+                        const botao = document.querySelector("#botao");
+                        botao.onclick = enviaDadosPost;
+
+                        const modalErro = document.querySelector(".modal-erro");
+                        const buttonCloseErro = modalErro.querySelector(".buttonCloseErro");
+                        buttonCloseErro.addEventListener("click", function(){
+                            modalErro.style.display = "none";
+                        });
+
+                        const modal = document.querySelector(".modal");
+                        const buttonClose = modal.querySelector(".buttonClose");
+                        buttonClose.addEventListener("click", function(){
+                            modal.style.display = "none";
+                        });
+
+                        window.onload = function () {
+                        listar();
+                        const selecionado = document.querySelector("#especialidade");
+                        selecionado.addEventListener('change', (event) => {
+                            for (var i = 0; i < especialidade.length; i++) {
+                                var campoSelect = document.getElementById("medico");
+                                var option = document.createElement("option");
+                                option.text = '';
+                                option.value = '';
+                                campoSelect.remove(option);
+                            }
+                            enviar(selecionado.value);
+                        });
+        }
+
       </script>
 
       <div>
