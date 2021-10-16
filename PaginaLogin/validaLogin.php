@@ -51,9 +51,9 @@ if ($senhaHash = checkPassword($pdo, $email, $senha)) {
   }//teste
   
   if($result_ok == true){
-  $response = new RequestResponse(true, 'parte_restrita_medico/index.php');
+  $response = new RequestResponse(true, 'PaginaHomeRestrita/index.html');
   }else{
-    $response = new RequestResponse(true, 'parte_restrita/index.php'); 
+    $response = new RequestResponse(true, 'PaginaHomeRestrita/index.html'); 
   }
 } 
 else

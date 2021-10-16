@@ -91,10 +91,10 @@
 
         if($emails == $_SESSION['emailUsuario']){ 
                 
-          header("Location: parte_restrita/listar_meus_agendamentos.php");
+          header("Location: PaginaHomeRestrita/index.html");
           exit();          
         }else{
-          header("Location: parte_restrita/index.php");
+          header("Location: PaginaHomeRestrita/index.html");
           exit(); 
         } 
       }
