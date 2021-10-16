@@ -5,14 +5,14 @@ require "conectaMySQL.php";
 $pdo = mysqlConnect();
 
 $cep = $_POST["cep"] ?? "";
-$logrd = $_POST["logrd"] ?? "";
+$logradouro = $_POST["logradouro"] ?? "";
 $estado = $_POST["estado"] ?? "";
-$cid = $_POST["cid"] ?? "";
+$cidade = $_POST["cidade"] ?? "";
 
 try {
 
   $sql = <<<SQL
-  INSERT INTO baseAjax (cep, logrd, cid, estado)
+  INSERT INTO baseAjax (cep, logradouro, cidade, estado)
   VALUES (?, ?, ?, ?)
   SQL;
 
@@ -21,7 +21,7 @@ try {
   // cadastrar dados fornecidos pelo usuário 
   $stmt = $pdo->prepare($sql);
   $stmt->execute([
-    $cep, $cpf, $logrd, $cid,
+    $cep,$logradouro, $cidade,
     $estado]);
 
   header("location: index.html");
