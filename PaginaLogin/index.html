@@ -15,26 +15,22 @@
 
         <style>
             *{
-                margin: 0;
                 padding: 0;
-                outline: 0;
+                margin: 0;
+                outline: none;
                 box-sizing: border-box;
             }
-            html{
-                margin: 0;
-                padding: 0;
+            html{ /* stilização do html */
+                font-size: 62.5%; /* define o tamanho da fonte do codigo para que a cada 1rem seja considerado 10px */
             }
-
-            body{
-                margin: 0;
-                padding: 0;
-                width: 100%;
+            body{ /* estilização do body */
+                font-size: 1.6rem; /* define o tamanho da fonte do body em rem para responsividade */
+            }
+            body, html{
+                width: 100vw;
                 height: 100vh;
-                /*background: #6161cc; define fundo da pag*/
-                background-size: cover;
-                display: table;
-                background: linear-gradient(90deg,#d7fffa 20%,#1d858c 80%);
-                overflow: hidden;
+                background: linear-gradient(90deg, #d7fffa 20%,#1d858c 80%);
+                overflow: auto;
             }
             header{
                 background-color: #7AC2C3; /* define a cor do background*/
@@ -60,7 +56,7 @@
             nav ul li a{ /* estilização da tag a*/
                 text-decoration: none; /* retira a decoração de link */
                 color: #f8f9f7; /* define a cor do texto */
-                font-size: 1.4rem; /* define o tamanho da fonte em rem para responsividade */
+                font-size: 2rem; /* define o tamanho da fonte em rem para responsividade */
                 margin-left: 30px; /* define a margem esquerda entre os itens */
                 padding: 6px 10px; /* define o padding de 6px top e botton e 10px left e right */
                 font-family: Arial, Helvetica, sans-serif ; /* define a fonte dos links */
@@ -74,13 +70,19 @@
                 html{ /* estilização do html quando a tela tiver 990px */
                     font-size: 50%; /* define o tamanho da fonte do header em 50% quando a tela tiver 990px */
                 }
-                .logo img{ /* estilização do tamanho da logo quando a tela tiver 990px*/
+                img{ /* estilização do tamanho da logo quando a tela tiver 990px*/
                     width: 85%; 
+                }
+                main .container{
+                    min-width: 70%;
                 }
             }
             @media(max-width: 850px){ /*  define estilização do header quando a tela tiver850px */ 
                 html{ /* estilização do html quando a tela tiver 850px */
                     font-size: 45%; /* define o tamanho da fonte do header em 45% quando a tela tiver 850px */
+                }
+                main .container{
+                    min-width: 80%;
                 }
             }
             @media(max-width: 790px){ /*  define estilização do header quando a tela tiver 790px */
@@ -139,8 +141,11 @@
                     line-height: 10rem; /* define o tamanho da linha */
                     margin-left: 0; /* define a margem esquerda em 0 */
                 }
+                main .container{
+                    min-width: 90%;
+                }
             }
-            .principalLogin{
+            /*main .container{
                 width: 30%;
                 height: 55%;
                 border: 2px solid rgba(0, 0, 0, 0.801);
@@ -151,15 +156,12 @@
                 margin: 50px auto;
                 background-color: rgb(238, 238, 238);
             }
-            .principalLogin img{
-                width: 100%;
-            }
             input{
                 display: block;
                 width: 100%;
                 height: 50px;
                 border: 1px solid rgba(0, 0, 0, 0.5);
-                font-family: "Rajdhani Bold";
+                
                 background: rgba(247, 245, 245, 0.918);
                 outline: none;
                 font-family: Source Sans Pro;
@@ -176,14 +178,70 @@
                 border: 1px solid #1d858c;
                 box-shadow: 0px 0px 5px rgb(0, 255, 200);
                 outline: none;
+            }*/
+            main .container{
+                background-color: #f1fffd;
+                font-size: 25px;
+                padding: 25px;
+                margin: 0 auto;
+                border: 2px solid #1d858c;
+                border-radius: 10px;  
+                width: 40%;
             }
-            form{
+            label{
+                font-size: 18px;
+            }
+            h1{
+                margin-top: 30px;
+                color: white;
+                text-shadow: 0px 0px 5px #004e53;
+                text-align: center;
+            }
+            p{
+                text-align: center;
+                color: black;
+                font-size: 20px;
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            }
+            .btn.btn-primary {
+                font-size: 18px;
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                width: 100%;
+                margin-top: 10px;;
+            }
+            .form-control{
+                margin-top: 5px;
+                margin-bottom: 5px;
+                padding: 10px;
+                border: 1px solid #1d858c;
+                min-height: 50px;
+                font-size: 18px;
+            }
+            .form-control:focus{
+                border: 1px solid #1d858c;
+                box-shadow: 0px 0px 5px rgb(0, 255, 200);
+                outline: none;
+            }
+            main img{
+                width: 60%;
+                margin-left: 20%;
                 
             }
-
-            button{
-                width: 100%;
-                cursor: pointer;
+            .inputs{
+                margin-top: 15px;
+                width: 80%;
+                margin-left: 10%;
+            }
+            .lembrasenha label{
+                height: 20px;
+                font-size: 15px;
+            }
+            .links a{
+                font-size: 15px;
+                font-size: 15px;
+                text-decoration: none;
+                margin-top: 10px;
+                font-style: italic;
             }
         </style>
 
@@ -209,34 +267,55 @@
                     <nav> <!-- barra de navegação -->
                         <ul> <!-- lista com opçoes da barra de navegação -->
                             <li><a href="../PaginaHome/index.html">Home</a></li> <!-- link pra voltar a home da clinica-->
+                            <li><a href="../PaginaNovoEndereco/index.html">Novo Endereço</a></li> <!-- link para ir a pagina de novo endereço da clinica -->
                             <li><a href="../PaginaGaleria/index.html">Galeria</a></li> <!-- link para ir a pagina galeria da clinica -->
                             <li><a href="../Agendamento Consulta/index.html">Agendamento</a></li> <!-- link para ir a pagina de agendamento de consulta da clinica -->
-                            <li><a href="../PaginaLogin/index.html">Login</a></li> <!-- link para ir a pagina de login da clinica -->
                         </ul>
                     </nav>
                 </div>
             </div>
         </header>
-        <div class="principalLogin"> 
-            <div>
-                <img src="../imagem/LogoHeaderMini.png" alt="logo">
-            </div>
-            <form action="action.php" method="POST">
+
+    <main>
+        <h1>Login</h1>
+        <p>Preencha os campos abaixo com os dados de login</p>
+
+        <div class="container"> 
+
+            <form action="action.php" method="POST" class="row">
+
                 <div>
-                    <input type="email" placeholder="Entre com seu Email">
-                    
-                    <input type="password" placeholder="Entre com sua Senha">
-                    
-                    
-                    <button type="submit" class="btn btn-primary">Cadastrar
+                    <img src="../imagem/LogoHeaderMini.png" alt="logo">
+                </div>
+
+                <div class="inputs">
+                    <div class="form-floating">
+                        <input type="email" class="form-control" id="inputEmail" name="email" placeholder="" autocomplete="off">
+                        <label for="inputEmail" class="form-label">Email</label>
+                    </div>
+                    <div class="form-floating">
+                        <input type="password" class="form-control" id="senhaFunc" name="senhaFunc" placeholder="">
+                        <label for="senhaFunc" class="form-label">Senha</label>
+                    </div>
+                    <div class="lembrasenha">
+                        <input type="checkbox" id="lembraSenha" name="lembraSenha" checked>
+                        <label for="lembraSenha">Lembrar Senha</label>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Login
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right-circle" viewBox="0 0 16 16">
                             <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z"/>
                         </svg>
                     </button>
+                    <div class="links">
+                        <a href="../PaginaCadFunc/index.html">Criar nova conta</a>
+                    </div>
                 </div>
+                
             </form>
-        </div>
+            
 
+        </div>
+    </main>
         <script>  
             let show = true //inicializa o show como true
             const menuSection = document.querySelector(".menu-section") // busca na div menu-section e armazena na variavel menuSection

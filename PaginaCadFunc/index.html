@@ -199,7 +199,7 @@
         
                     <nav> <!-- barra de navegação -->
                         <ul> <!-- lista com opçoes da barra de navegação -->
-                            <li><a href="#">Home</a></li> <!-- link pra voltar a home da clinica-->
+                            <li><a href="../PaginaHomeRestrita/index.html">Home</a></li> <!-- link pra voltar a home da clinica-->
                             <li><a href="#">Sair</a></li> <!-- link para ir a pagina de login da clinica -->
                         </ul>
                     </nav>
@@ -212,99 +212,111 @@
                 <h1>Cadastrar Funcionário</h1>
                 <p>Preencha os campos abaixo com os dados correspondentes ao novo funcionário que deseja cadastrar.</p>
                 
-                <form method="POST" action="#" class="row g-2">
-                    <div class="form-floating col-md-12 gy-2">
-                        <input type="text" class="form-control" id="inputNome" name="nome" placeholder="">
-                        <label for="inputNome" class="form-label">Nome</label>
+                <form method="POST" action="#" >
+                    <div class="row g-2">
+                        <div class="form-floating col-md-12 gy-2">
+                            <input type="text" class="form-control" id="inputNome" name="nome" placeholder="">
+                            <label for="inputNome" class="form-label">Nome</label>
+                        </div>
                     </div>
-                    <div class="form-floating col-md-8 gy-2">
-                        <input type="email" class="form-control" id="inputEmail" name="email" placeholder="" autocomplete="off">
-                        <label for="inputEmail" class="form-label">Email</label>
+                    <div class="row g-2">
+                        <div class="form-floating col-md-8 gy-2">
+                            <input type="email" class="form-control" id="inputEmail" name="email" placeholder="" autocomplete="off">
+                            <label for="inputEmail" class="form-label">Email</label>
+                        </div>
+                        <div class="form-floating col-md-4 gy-2">
+                            <input type="password" class="form-control" id="senhaFunc" name="senhaFunc" placeholder="">
+                            <label for="senhaFunc" class="form-label">Senha</label>
+                        </div>
                     </div>
-                    <div class="form-floating col-md-4 gy-2">
-                        <input type="password" class="form-control" id="senhaFunc" name="senhaFunc" placeholder="">
-                        <label for="senhaFunc" class="form-label">Senha</label>
+                    <div class="row g-2">
+                        <div class="form-floating col-md-8 gy-2">
+                            <input type="tel" class="form-control" id="inputTelefone" name="telefone" placeholder="">
+                            <label for="inputTelefone" class="form-label">Telefone</label>
+                        </div>
+                        <div class="form-floating col-md-4 gy-2">
+                            <select name="sexo" class="form-select" id="inputSexo">
+                                <option selected>Selecione</option>
+                                <option>Masculino</option>
+                                <option>Feminino</option>
+                                <option>Outros</option>
+                            </select>
+                            <label for="inputSexo" class="form-label">Sexo</label>
+                        </div>
                     </div>
-                    <div class="form-floating col-md-8 gy-2">
-                        <input type="tel" class="form-control" id="inputTelefone" name="telefone" placeholder="">
-                        <label for="inputTelefone" class="form-label">Telefone</label>
+                    <div class="row g-2">
+                        <div class="form-floating col-md-4 gy-2">
+                            <input type="text" class="form-control" id="inputCEP" name="cep" placeholder="">
+                            <label for="inputCEP" class="form-label">CEP</label>
+                        </div>
+                        <div class="form-floating col-md-4 gy-2">
+                            <input type="text" class="form-control" id="inputLogradouro" name="logradouro" placeholder="">
+                            <label for="inputLogradouro" class="form-label">Logradouro</label>
+                        </div>
+                        <div class="form-floating col-md-4 gy-2">
+                            <select name="estado" class="form-select" id="inputEstado">
+                                <option selected>Selecione</option>
+                                <option>Acre</option>
+                                <option>Alagoas</option>
+                                <option>Amapá</option>
+                                <option>Amazonas</option>
+                                <option>Bahia</option>
+                                <option>Ceará</option>
+                                <option>Distrito Federal</option>
+                                <option>Espírito Santo</option>
+                                <option>Goiás</option>
+                                <option>Maranhão</option>
+                                <option>Mato Grosso</option>
+                                <option>Mato Grosso do Sul</option>
+                                <option>Minas Gerais</option>
+                                <option>Pará</option>
+                                <option>Paraíba</option>
+                                <option>Paraná</option>
+                                <option>Pernambuco</option>
+                                <option>Piauí</option>
+                                <option>Rio de Janeiro</option>
+                                <option>Rio Grande do Norte</option>
+                                <option>Rio Grande do Sul</option>
+                                <option>Rondônia</option>
+                                <option>Roraima</option>
+                                <option>Santa Catarina</option>
+                                <option>São Paulo</option>
+                                <option>Sergipe</option>
+                                <option>Tocantins</option>
+                            </select>
+                            <label for="inputEstado" class="form-label">Estado</label>
+                        </div>
                     </div>
-                    <div class="form-floating col-md-4 gy-2">
-                        <select name="sexo" class="form-select" id="inputSexo">
-                            <option selected>Selecione</option>
-                            <option>Masculino</option>
-                            <option>Feminino</option>
-                            <option>Outros</option>
-                        </select>
-                        <label for="inputSexo" class="form-label">Sexo</label>
+                    <div class="row g-2">
+                        <div class="form-floating col-md-8 gy-2">
+                            <input type="text" class="form-control" id="inputCidade" name="cidade" placeholder="">
+                            <label for="inputCidade" class="form-label">Cidade</label>
+                        </div>
+                        <div class="form-floating col-md-2 gy-2">
+                            <input type="date" class="form-control" id="inputContrato" name="contrato" placeholder="">
+                            <label for="inputContrato" class="form-label">Início de Contrato</label>
+                        </div>
+                        <div class="form-floating col-md-2 gy-2">
+                            <input type="text" class="form-control" id="inputSalario" name="salario" placeholder="">
+                            <label for="inputSalario" class="form-label">Salário</label>
+                        </div>
                     </div>
-                    <div class="form-floating col-md-4 gy-2">
-                        <input type="text" class="form-control" id="inputCEP" name="cep" placeholder="">
-                        <label for="inputCEP" class="form-label">CEP</label>
-                    </div>
-                    <div class="form-floating col-md-4 gy-2">
-                        <input type="text" class="form-control" id="inputLogradouro" name="logradouro" placeholder="">
-                        <label for="inputLogradouro" class="form-label">Logradouro</label>
-                    </div>
-                    <div class="form-floating col-md-4 gy-2">
-                        <select name="estado" class="form-select" id="inputEstado">
-                            <option selected>Selecione</option>
-                            <option>Acre</option>
-                            <option>Alagoas</option>
-                            <option>Amapá</option>
-                            <option>Amazonas</option>
-                            <option>Bahia</option>
-                            <option>Ceará</option>
-                            <option>Distrito Federal</option>
-                            <option>Espírito Santo</option>
-                            <option>Goiás</option>
-                            <option>Maranhão</option>
-                            <option>Mato Grosso</option>
-                            <option>Mato Grosso do Sul</option>
-                            <option>Minas Gerais</option>
-                            <option>Pará</option>
-                            <option>Paraíba</option>
-                            <option>Paraná</option>
-                            <option>Pernambuco</option>
-                            <option>Piauí</option>
-                            <option>Rio de Janeiro</option>
-                            <option>Rio Grande do Norte</option>
-                            <option>Rio Grande do Sul</option>
-                            <option>Rondônia</option>
-                            <option>Roraima</option>
-                            <option>Santa Catarina</option>
-                            <option>São Paulo</option>
-                            <option>Sergipe</option>
-                            <option>Tocantins</option>
-                        </select>
-                        <label for="inputEstado" class="form-label">Estado</label>
-                    </div>
-                    <div class="form-floating col-md-8 gy-2">
-                        <input type="text" class="form-control" id="inputCidade" name="cidade" placeholder="">
-                        <label for="inputCidade" class="form-label">Cidade</label>
-                    </div>
-                    <div class="form-floating col-md-2 gy-2">
-                        <input type="date" class="form-control" id="inputContrato" name="contrato" placeholder="">
-                        <label for="inputContrato" class="form-label">Início de Contrato</label>
-                    </div>
-                    <div class="form-floating col-md-2 gy-2">
-                        <input type="text" class="form-control" id="inputSalario" name="salario" placeholder="">
-                        <label for="inputSalario" class="form-label">Salário</label>
+
+                    <div class="row g-2">
+                        <div id="verificado" style="display: none;">
+                            <div class="form-floating col-md-2 gy-2" >
+                                <input type="text" class="form-control" id="inputEspecialidade" name="especialidade" placeholder="">
+                                <label for="inputEspecialidade" class="form-label">Especialidade</label>
+                            </div>
+                            <div class="form-floating col-md-2 gy-2 ">
+                                <input type="text" class="form-control" id="inputCRM" name="CRM" placeholder="" > 
+                                <label for="inputCRM" class="form-label">CRM</label>
+                            </div>
+                        </div>
                     </div>
                     <div>
                         <input onclick="mostrar()" type="checkbox" id="verifMedico" name="verifMedico" value="false">
                         <label for="verifMedico">Funcionário é médico.</label>
-                    </div>
-
-                    <div id="verificado" style="display: none;">
-                        <div class="form-floating col-md-6 gy-2" >
-                            <input type="text" class="form-control" id="inputEspecialidade" name="especialidade" placeholder="">
-                            <label for="inputEspecialidade" class="form-label">Especialidade</label>
-                        </div>
-                        <div class="form-floating col-md-6 gy-2">
-                            <input type="text" class="form-control" id="inputCRM" name="CRM" placeholder="" > 
-                            <label for="inputCRM" class="form-label">CRM</label>
-                        </div>
                     </div>
                     
                     <div class="col-md-12">
@@ -327,7 +339,6 @@
                 menuSection.classList.toggle("on", show) //menuSection adciona uma lista de classe "on" atraves da função toggle(função de adicionar e retirar do js)
                 show = !show //atualiza o show apos o click, fazendo o valor dele se alterar
             });
-            mostrar();
         </script>
             
         <script>
