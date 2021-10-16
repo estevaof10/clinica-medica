@@ -257,7 +257,6 @@
     <body>
         <header>           
             <div class="container"> <!-- div principal -->
-
                 <div class="logo"> <!-- div com a classe logo -->
                     <img src="../imagem/LogoHeaderMini.png" alt="Logo da E2V Clínica Médica">                  
                 </div>
@@ -271,9 +270,7 @@
         
                     <nav> <!-- barra de navegação -->
                         <ul> <!-- lista com opçoes da barra de navegação -->
-                            <li><button class="btn btn-outline-light" id="sair-button">Sair</button>
-                            <!-- <a href="../PaginaLogin/index.html">Sair</a></li> link para ir a pagina de login da clinica 
-                            comentando para testar como botão e manipular o comportamento com JavaScript-->
+                            <li><button class="btn btn-outline-light" id="sair-button">Sair</button></li>
                         </ul>
                     </nav>
                 </div>
@@ -382,6 +379,15 @@
             }
         </script>
         
+        <script>
+            var botaoSair = document.getElementById("sair-button");
+            botaoSair.onclick = function () {
+                var confirmacao = confirm("Deseja realmente sair?");
+                if(confirmacao==true)
+                    window.location.href = "../PaginaLogin/index.html";
+            }
+        </script>
+
         <div>
             <footer>
                 <p>© Copyright 2021. Todos os direitos reservados. Vinícius Alves, Vinícius Adriano e Estevão Filipe.</p>
