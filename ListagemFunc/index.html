@@ -149,6 +149,17 @@
             font-size: 18px; /* defiune o tamanho da fonte */
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* define a fonte do texto */
         }
+        footer{
+            bottom: 0;
+            position: absolute;
+            background-color: #266566;
+            width: 100%;
+        }
+        footer p{
+            color: white;
+            text-align: center;
+            font-size: 18px;
+        }
     </style>
 </head>
 
@@ -178,6 +189,7 @@
             </div>
         </div>
     </header>
+    
     <div class="container">
         <main>
             <h2>Listagem dos Funcionários</h2>
@@ -185,6 +197,16 @@
 
         </main>
     </div>
-    
+
+    <script>  
+        let show = true //inicializa o show como true
+        const menuSection = document.querySelector(".menu-section") // busca na div menu-section e armazena na variavel menuSection
+        const menuBurguer = menuSection.querySelector(".menu-burguer") // busca na menuSection e armazena na variavel menuBurguer
+
+         menuBurguer.addEventListener("click", () =>{ //crição do evento de click no menuBurguer e dispara a função
+        menuSection.classList.toggle("on", show) //menuSection adciona uma lista de classe "on" atraves da função toggle(função de adicionar e retirar do js)
+        show = !show //atualiza o show apos o click, fazendo o valor dele se alterar
+        })
+    </script>
 </body>
 </html>

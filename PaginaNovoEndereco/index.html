@@ -192,6 +192,17 @@
                 font-size: 18px;
                 font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             }
+            footer{
+                bottom: 0;
+                position: absolute;
+                background-color: #266566;
+                width: 100%;
+            }
+            footer p{
+                color: white;
+                text-align: center;
+                font-size: 18px;
+            }
         </style>
     </head>
     <body>
@@ -226,14 +237,14 @@
                 <h1>Novo Endereço</h1>  
                 <p>Preencha os campos abaixo com os dados correspondentes ao endereço que deseja cadastrar.</p>              
                 
-                <form method="POST" action="#" class="row g-2">
+                <form method="POST" action="actionNovoEndereco.php" class="row g-2">
                     <div class ="form-floating col-md-3 gy-2">
-                        <input type="text" class="form-control" id="cep" placeholder="">
+                        <input type="text" class="form-control" id="cep" placeholder="" name="cep">
                         <label for="cep" id="cep">CEP</label>   
                     </div>
 
                     <div class ="form-floating col-md-9 gy-2">
-                        <input type="text" id="logradouro" class="form-control" placeholder="">
+                        <input type="text" id="logradouro" class="form-control" placeholder="" name="logradouro">
                         <label for="logradouro" id="logradouro">Logradouro</label>   
                     </div>
 
@@ -272,7 +283,7 @@
                     </div>
 
                     <div class ="form-floating col-md-9 gy-2">
-                        <input type="text" id="cidade" class="form-control" placeholder="">
+                        <input type="text" id="cidade" class="form-control" placeholder="" name="cidade">
                         <label for="cidade" id="cidade">Cidade</label>     
                     </div>
 
