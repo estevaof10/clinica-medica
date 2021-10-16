@@ -184,16 +184,38 @@
                 width: 70%;
                 margin: 0 auto; /*Define a margem como 0*/
             }
-            .listaValores{
-                list-style-type: circle;
-                text-align: center;
+            .valores ul li{
+                background-color: #d7fffa;
+                color: #033d3d;
+                margin: 5px;
             }
             .corpoMedico img{
                 width: 175px;
                 height: 200px;
                 position: relative;
-                border: 2px solid #033d3d;
+                border: 1px solid #033d3d;
                 border-radius: 2%;
+                box-shadow: 0px 0px 5px #01a3a3;
+            }
+            .doutores{
+                display: flex;
+                flex-direction: row;
+            }
+            .doutores figure{
+                font-family: 'Helvetica Neue', sans-serif;
+                font-size: 18px;
+                margin: 10px;
+            }
+            footer{
+                bottom: 0;
+                position: fixed ;
+                background-color: #266566;
+                width: 100%;
+            }
+            footer p{
+                color: white;
+                text-align: center;
+                font-size: 18px;
             }
         </style>
 
@@ -245,23 +267,38 @@
                     </div>
                     <div class="corpoMedico">
                         <h2>Corpo Médico</h2><br>
-                            <img src="../imagem/medicoEstevao.jpg" alt="Dr Estevão">
-                            <img src="../imagem/medicoVinicius.jpg" alt="Dr Vinícius Alves">
-                            <img src="../imagem/doutorViniciusAdriano.jpeg" alt="Dr Vinícius Adriano">
+                        <div class="doutores justify-content-center">
+                            <figure>
+                                <img src="../imagem/medicoEstevao.jpg" alt="Dr Estevão">
+                                <figcaption>Dr. Estevão</figcaption>
+                            </figure>
+                            <figure>
+                                <img src="../imagem/medicoVinicius.jpg" alt="Dr Vinícius Alves">
+                                <figcaption>Dr. Vinícius Alves</figcaption>
+                            </figure>
+                            <figure>
+                                <img src="../imagem/doutorViniciusAdriano.jpeg" alt="Dr Vinícius Adriano">
+                                <figcaption>Dr. Vinícius Adriano</figcaption>
+                            </figure>
+                        </div>
                     </div>
                     <div class="valores">
                         <h2>Nossos valores</h2><br>
                         <ul>
-                            <li class="listaValores">Generosidade</li>
-                            <li class="listaValores">Transparência</li>
-                            <li class="listaValores">Compromisso com a vida</li>
-                            <li class="listaValores">Inovação</li>
-                            <li class="listaValores">Sustentabilidade</li>
+                            <li class="card-header text-center rounded">Generosidade</li>
+                            <li class="card-header text-center rounded">Transparência</li>
+                            <li class="card-header text-center rounded">Compromisso com a vida</li>
+                            <li class="card-header text-center rounded">Inovação</li>
+                            <li class="card-header text-center rounded">Sustentabilidade</li>
                         </ul>
                     </div>
                 </div>
             </div> 
         </main>
+
+        <footer>
+                <p>© Copyright 2021. Todos os direitos reservados. Vinícius Alves, Vinícius Adriano e Estevão Filipe.</p>
+        </footer>
 
         <script>  
             let show = true //inicializa o show como true
@@ -273,12 +310,5 @@
             show = !show //atualiza o show apos o click, fazendo o valor dele se alterar
             })
         </script>
-        
-        <div>
-            <footer>
-                <p>© Copyright 2021. Todos os direitos reservados. Vinícius Alves, Vinícius Adriano e Estevão Filipe.</p>
-            </footer>
-        </div>
-        
     </body>
 </html>
