@@ -155,9 +155,7 @@
                 position: relative; /*Define como elemento pode ser posicionado no documento */
                 top: 350px; /*Define o*/
                 background: #ffffff; /*Define a cor de fundo*/
-                opacity: 0.9;
-                
-                
+                opacity: 0.9;  
             }
             nav button {
                 position: relative;
@@ -217,6 +215,22 @@
                 border-radius: 5px; /* define a curvatura da borda do efeito hover */
                 color: #f8f9f7;
             }
+            #sair-button{
+                text-decoration: none; /* retira a decoração de link */
+                color: #f8f9f7; /* define a cor do texto */
+                font-size: 2rem; /* define o tamanho da fonte em rem para responsividade */
+                margin-left: 30px; /* define a margem esquerda entre os itens */
+                padding: 6px 10px; /* define o padding de 6px top e botton e 10px left e right */
+                font-family: Arial, Helvetica, sans-serif ; /* define a fonte dos links */
+            }
+            #sair-button:hover{
+                text-decoration: none; /* retira a decoração de link */
+                color: #003029; /* define a cor do texto */
+                font-size: 2rem; /* define o tamanho da fonte em rem para responsividade */
+                margin-left: 30px; /* define a margem esquerda entre os itens */
+                padding: 6px 10px; /* define o padding de 6px top e botton e 10px left e right */
+                font-family: Arial, Helvetica, sans-serif ; /* define a fonte dos links */
+            }
             footer{
                 bottom: 0;
                 position: fixed;
@@ -257,7 +271,9 @@
         
                     <nav> <!-- barra de navegação -->
                         <ul> <!-- lista com opçoes da barra de navegação -->
-                            <li><a href="../PaginaLogin/index.html">Sair</a></li> <!-- link para ir a pagina de login da clinica -->
+                            <li><button class="btn btn-outline-light" id="sair-button">Sair</button>
+                            <!-- <a href="../PaginaLogin/index.html">Sair</a></li> link para ir a pagina de login da clinica 
+                            comentando para testar como botão e manipular o comportamento com JavaScript-->
                         </ul>
                     </nav>
                 </div>
