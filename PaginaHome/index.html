@@ -159,12 +159,13 @@
                 position: relative; /*Define como elemento pode ser posicionado no documento */
                 top: 450px; /*Define o*/
                 background: #ffffff; /*Define a cor de fundo*/
-                height: 900px; /*Define a altura em px*/
+                height: 1500px; /*Define a altura em px*/
                 opacity: 0.9;
                 color: black;
             }
             .info h2{
-                font-family: bignoodletitling;  /*Define a fonte */
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;  /*Define a fonte */
+                color: #033d3d;
                 letter-spacing: 4px;    /*Define o espaçamento das letras*/
                 padding-top: 30px; /*Define o padding de cima com 30px*/
                 font-size: 40px;    /*Define o tamanho da fonte */
@@ -182,6 +183,17 @@
             .valores{
                 width: 70%;
                 margin: 0 auto; /*Define a margem como 0*/
+            }
+            .listaValores{
+                list-style-type: circle;
+                text-align: center;
+            }
+            .corpoMedico img{
+                width: 175px;
+                height: 200px;
+                position: relative;
+                border: 2px solid #033d3d;
+                border-radius: 2%;
             }
         </style>
 
@@ -206,6 +218,7 @@
                     <nav> <!-- barra de navegação -->
                         <ul> <!-- lista com opçoes da barra de navegação -->
                             <li><a href="../PaginaGaleria/index.html">Galeria</a></li> <!-- link para ir a pagina galeria da clinica -->
+                            <li><a href="../PaginaNovoEndereco/index.html">Novo Endereço</a></li> <!-- link para ir a pagina de cadastrar endereço da clinica -->
                             <li><a href="../Agendamento Consulta/index.html">Agendamento</a></li> <!-- link para ir a pagina de agendamento de consulta da clinica -->
                             <li><a href="../PaginaLogin/index.html">Login</a></li> <!-- link para ir a pagina de login da clinica -->
                         </ul>
@@ -219,15 +232,32 @@
 
                 <div class="info">
                     <div class="description">
-                        <h2>Quem somos:</h2>
-                        <p>Clinica que pensa em seu bem estar</p>
-                        <p>Fundada em Fevereiro de 1990, a E2V iniciou suas atividades de maneira impactante em seu ramo de atuação, trazendo precisão e segurança em seus procedimentos clínicos,
-                        sempre trabalhando com respeito e integridade frente aos clientes.</p>
-                        <p>Onde nos encontrar:</p>
+                        <img src="../imagem/AesteticLogoHome2.png" alt="Logo e nome da clínica">
+                        <h2>Quem somos</h2>
+                        <p>Criada em 01 de outubro de 2020, a E2V Clínica Médica surgiu com o intuito de trazer tecnologia e segurança para a área de saúde.
+                            Com equipamentos de primeira linha para diagnóstico, tratamento, monitoramento e controle da saúde do paciente, conseguimos fazer com que o paciente 
+                            se sinta seguro e saiba, com mais precisão, como está sua saúde, garantindo que qualquer enfermidade seja tratada o quanto antes, sem mais danos à ele. 
+                            <br>O Grupo E2V conta com um corpo clínico altamente qualificado, com profissionais credenciados e serviços complementares que irão proporcionar aos pacientes 
+                            tranquilidade e segurança, além de um tratamento diferenciado e humanizado.
+                            <br>Atualmente, estamos localizados em 30 países, dentre eles o Estados Unidos, Holanda, Austrália, e o Brasil, onde, recentemente, foi inaugurada a segunda central de atendimento da E2V.
+                        </p>
+                        <img src="../imagem/multinacionaisbrasileiras.png" alt="Mapa das centrais de atendimento da E2V Clínica Médica">                         
+                    </div>
+                    <div class="corpoMedico">
+                        <h2>Corpo Médico</h2><br>
+                            <img src="../imagem/medicoEstevao.jpg" alt="Dr Estevão">
+                            <img src="../imagem/medicoVinicius.jpg" alt="Dr Vinícius Alves">
+                            <img src="../imagem/doutorViniciusAdriano.jpeg" alt="Dr Vinícius Adriano">
                     </div>
                     <div class="valores">
-                        <h2>Valores</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore aut quisquam accusantium fuga, nobis nihil cumque. Mollitia, earum ea aliquid impedit recusandae ipsa a, commodi dolore nostrum harum repellat officia odio perferendis est hic culpa sed ratione quasi laboriosam consectetur sequi iure! Rerum, ea consequuntur temporibus repudiandae incidunt ab dolorem fuga illo quia eligendi odio quisquam soluta enim perferendis debitis, reiciendis eius excepturi sint, tempore iste aut suscipit ducimus mollitia! Odit voluptatem reprehenderit ipsum est fugit magnam repellendus deleniti esse incidunt asperiores, perspiciatis beatae numquam, praesentium quas fugiat inventore aperiam doloribus odio mollitia? Repellendus nihil, magni beatae adipisci sed dolore?</p>
+                        <h2>Nossos valores</h2><br>
+                        <ul>
+                            <li class="listaValores">Generosidade</li>
+                            <li class="listaValores">Transparência</li>
+                            <li class="listaValores">Compromisso com a vida</li>
+                            <li class="listaValores">Inovação</li>
+                            <li class="listaValores">Sustentabilidade</li>
+                        </ul>
                     </div>
                 </div>
             </div> 
