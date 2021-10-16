@@ -51,7 +51,7 @@ CREATE TABLE agenda
 (
    codigo int PRIMARY KEY,
    data_agenda date,
-   horario time,
+   horario char(15),
    nome varchar(200),
    sexo varchar(50),
    email varchar(100),
