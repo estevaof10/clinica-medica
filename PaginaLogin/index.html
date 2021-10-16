@@ -332,13 +332,13 @@
         </script>
 
         <script>
-                            function enviaForm() {
+            function enviaForm() {
                     
                     let xhr = new XMLHttpRequest();
                     
                     // O formulário será enviado como um objeto FormData
                     // A requisição deve utilizar o método POST
-                    xhr.open("POST", "checar_login.php");
+                    xhr.open("POST", "validaLogin.php");
                     xhr.onload = function () {
                         // verifica o código de status retornado pelo servidor
                         if (xhr.status != 200) {

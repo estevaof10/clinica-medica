@@ -1,6 +1,6 @@
 <?php
 
-require_once "conexaoMysql.php";
+require_once "conectaMySQL.php";
 require_once "autentica.php";
 session_start();
 
