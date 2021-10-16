@@ -59,7 +59,7 @@ CREATE TABLE agenda
    FOREIGN KEY (codigoMedico) REFERENCES medico(codigo) ON DELETE CASCADE
 ) ENGINE=InnoDB;
 
-# Inserir dados nas tabelas de editoras e assuntos ao mesmo tempo:
+#Inserir dados nas tabelas de editoras e assuntos ao mesmo tempo:
   INSERT INTO pessoa(codigo,nome,sexo,email,telefone,cep,logradouro,cidade,estado)
   VALUES('3666668','Maria','Feminino','maria@email.com',3434343,'366655','rua','city','RJ');
   INSERT INTO paciente(peso,altura,tipo_sanguineo,codigo)
