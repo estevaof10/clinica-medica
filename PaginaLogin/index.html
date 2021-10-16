@@ -243,6 +243,17 @@
                 margin-top: 10px;
                 font-style: italic;
             }
+            footer{
+                bottom: 0;
+                position: absolute;
+                background-color: #266566;
+                width: 100%;
+            }
+            footer p{
+                color: white;
+                text-align: center;
+                font-size: 18px;
+            }
         </style>
 
     </head>
@@ -250,14 +261,12 @@
     <body>
         <header>           
             <div class="container"> <!-- div principal -->
-
                 <div class="logo"> <!-- div com a classe logo -->
                     
                     <img src="../imagem/LogoHeaderMini.png" alt="Logo da E2V Clínica Médica">                  
                 </div>
         
                 <div class="menu-section"> <!-- classe que é responsavel pela barra de navegação -->
-        
                     <div class="menu-burguer"> <!-- define a classe menu-burguer para o formato do menu expansivo -->
                         <div class="one"></div> <!-- div que representa a primeira barra do menu expansivo -->
                         <div class="two"></div> <!-- div que representa a segunda barra do menu expansivo -->
@@ -276,46 +285,41 @@
             </div>
         </header>
 
-    <main>
-        <h1>Login</h1>
-        <p>Preencha os campos abaixo com os dados de login</p>
+        <main>
+            <h1>Login</h1>
+            <p>Preencha corretamente os campos abaixo para realizar o login</p>
 
-        <div class="container"> 
-
-            <form action="action.php" method="POST" class="row">
-
-                <div>
-                    <img src="../imagem/LogoHeaderMini.png" alt="logo">
-                </div>
-
-                <div class="inputs">
-                    <div class="form-floating">
-                        <input type="email" class="form-control" id="inputEmail" name="email" placeholder="" autocomplete="off">
-                        <label for="inputEmail" class="form-label">Email</label>
+            <div class="container"> 
+                <form action="action.php" method="POST" class="row">
+                    <div>
+                        <img src="../imagem/LogoHeaderMini.png" alt="logo">
                     </div>
-                    <div class="form-floating">
-                        <input type="password" class="form-control" id="senhaFunc" name="senhaFunc" placeholder="">
-                        <label for="senhaFunc" class="form-label">Senha</label>
-                    </div>
-                    <div class="lembrasenha">
-                        <input type="checkbox" id="lembraSenha" name="lembraSenha" checked>
-                        <label for="lembraSenha">Lembrar Senha</label>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Login
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right-circle" viewBox="0 0 16 16">
-                            <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z"/>
-                        </svg>
-                    </button>
-                    <div class="links">
-                        <a href="../PaginaCadFunc/index.html">Criar nova conta</a>
-                    </div>
-                </div>
-                
-            </form>
-            
 
-        </div>
-    </main>
+                    <div class="inputs">
+                        <div class="form-floating">
+                            <input type="email" class="form-control" id="inputEmail" name="email" placeholder="" autocomplete="off">
+                            <label for="inputEmail" class="form-label">Email</label>
+                        </div>
+                        <div class="form-floating">
+                            <input type="password" class="form-control" id="senhaFunc" name="senhaFunc" placeholder="">
+                            <label for="senhaFunc" class="form-label">Senha</label>
+                        </div>
+                        <div class="lembrasenha">
+                            <input type="checkbox" id="lembraSenha" name="lembraSenha" checked>
+                            <label for="lembraSenha">Lembrar Senha</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Login
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right-circle" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z"/>
+                            </svg>
+                        </button>
+                        <div class="links">
+                            <a href="../PaginaCadFunc/index.html">Criar nova conta</a>
+                        </div>
+                    </div>                  
+                </form>
+            </div>
+        </main>
         <script>  
             let show = true //inicializa o show como true
             const menuSection = document.querySelector(".menu-section") // busca na div menu-section e armazena na variavel menuSection

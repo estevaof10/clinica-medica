@@ -85,7 +85,7 @@
                 
             }
             @media(max-width: 790px){ /*  define estilização do header quando a tela tiver 790px */
-                nav{ /* /* estilização do nav quando a tela chegar em 790px */ 
+                header nav{ /* /* estilização do nav quando a tela chegar em 790px */ 
                 display: none; /* oculta os itens da barra de navegação do header quando a tela chegar 790px*/
                 }
                 .one,
@@ -140,25 +140,23 @@
                     line-height: 10rem; /* define o tamanho da linha */
                     margin-left: 0; /* define a margem esquerda em 0 */
                 }
-                nav .container{
-                    width: auto;
-                }
+                
             }
             .banner{
-                width: 100vw; /*Define o tamanho da area do banner */
-                height: 100vh; /*Define o tamanho da altura do banner*/
+                width: 100%; /*Define o tamanho da area do banner */
+                height: 800px; /*Define o tamanho da altura do banner*/
                 position: fixed; /*Define como elemento pode ser posicionado no documento */
                 background-image: url(../imagem/bn3.jpg);
                 margin-top: 80px;
             }
             .info{
                 width: 100%;/*Define a largura do elemento*/
+                height: 500px; /*Define a altura em px*/
                 position: relative; /*Define como elemento pode ser posicionado no documento */
-                top: 450px; /*Define o*/
+                top: 350px; /*Define o*/
                 background: #ffffff; /*Define a cor de fundo*/
-                height: 350px; /*Define a altura em px*/
                 opacity: 0.9;
-                color: black;
+                
                 
             }
             nav button {
@@ -166,12 +164,11 @@
                 top: 0;
                 width: 100%;
                 text-align: center;
-                flex-wrap: normal;
             }
             
             .info nav ul{ /* estilização da lista de itens do nav */
                 display: flex; /* alinhao a lista de itens na horizontal */
-
+                padding: 0;
             }
             .info ul{
                 margin: auto;
@@ -189,7 +186,6 @@
                 margin: 10px auto;
                 border-radius: 5px;
                 border: none;
-                background-color: none;
             }
             .info nav ul li button:hover{ /* estilização da animação de hover  */
                 background-color: #003029e7; /* define a cor do efeito ao passar o mouse sobre os links  */
@@ -221,6 +217,25 @@
                 border-radius: 5px; /* define a curvatura da borda do efeito hover */
                 color: #f8f9f7;
             }
+            footer{
+                bottom: 0;
+                position: fixed;
+                background-color: #266566;
+                width: 100%;
+            }
+            footer p{
+                color: white;
+                text-align: center;
+                font-size: 18px;
+            }
+            @media(max-width: 790px){
+                footer p{
+                    font-size: 10px;
+                }
+                .info{
+                    height: 650px 
+                }
+            }
         </style>
 
     </head>
@@ -234,7 +249,6 @@
                 </div>
         
                 <div class="menu-section"> <!-- classe que é responsavel pela barra de navegação -->
-        
                     <div class="menu-burguer"> <!-- define a classe menu-burguer para o formato do menu expansivo -->
                         <div class="one"></div> <!-- div que representa a primeira barra do menu expansivo -->
                         <div class="two"></div> <!-- div que representa a segunda barra do menu expansivo -->
@@ -243,73 +257,68 @@
         
                     <nav> <!-- barra de navegação -->
                         <ul> <!-- lista com opçoes da barra de navegação -->
-                            <li><a href="#">Sair</a></li> <!-- link para ir a pagina de login da clinica -->
+                            <li><a href="../PaginaLogin/index.html">Sair</a></li> <!-- link para ir a pagina de login da clinica -->
                         </ul>
                     </nav>
                 </div>
             </div>
         </header>
         <main>
-                <div class="banner"></div>
+            <div class="banner"></div>
 
-                <div class="info">
-                    <nav class="container"> <!-- barra de navegação -->
-                        <section class="botoes">
-                            <ul> <!-- lista com opçoes da barra de navegação -->
-                                <li><button>Novo Funcionário</button></li>
-                                <li><button>Novo Paciente</button></li>
-                                <li><button>Listagem Funcionários</button></li>
-                                <li><button>Listagem Pacientes</button></li>
-                                <li><button>Listagem Endereços</button></li>
-                                <li><button>Listar Todos Agendamentos</button></li>
-                            </ul>
-                        </section>
-                        
-                    </nav>
-                 
+            <div class="info">
+                <nav class="container"> <!-- barra de navegação -->
+                    <ul class="row"> <!-- lista com opçoes da barra de navegação -->
+                        <li class="col-md-2"><button>Cadastro de Funcionário</button></li>
+                        <li class="col-md-2"><button>Cadastro de Paciente</button></li>
+                        <li class="col-md-2"><button>Listagem Funcionários</button></li>
+                        <li class="col-md-2"><button>Listagem Pacientes</button></li>
+                        <li class="col-md-2"><button>Listagem Endereços</button></li>
+                        <li class="col-md-2"><button>Listar Todos Agendamentos</button></li>
+                    </ul>
+                </nav>
 
                 <div class = "tabs">
                     <section>
                         <h2>Cadastro de novo Funcionário</h2>
-                        <p>Nesta pagina é possivel cadastrar um novo funcionário a ClÍnica Médica</p>
+                        <p>Nesta página é possível cadastrar um novo funcionário a Clínica Médica</p>
                         <p>Para realizar o cadastro de um novo funcionário, clique no link abaixo e realize o cadastro dos dados.</p> 
                         <p><a href="../PaginaCadFunc/index.html">Cadastro de Novo Funcionário</a></p>     
                     </section>
                     <section>
                         <h2>Cadastro de novo Paciente</h2>
-                        <p>Nesta pagina é possivel cadastrar um novo paciente a ClÍnica Médica</p>
+                        <p>Nesta página é possível cadastrar um novo paciente na E2V Clínica Médica</p>
                         <p>Para realizar o cadastro de um novo paciente, clique no link abaixo e realize o cadastro dos dados.</p>
                         <p><a href="../PaginaCadPaciente/index.html">Cadastro de Novo Paciente</a></p>
                     </section>
                     <section>
                         <h2>Listagem dos Funcionários</h2>
-                        <p>Nesta pagina é possivel encontrar a listagem dos funcionários cadastrados a Clínica Médica</p>
-                        <p>Para visualizar a listagems dos dados, acesse o link abaixo.</p>
-                        <p><a href="..//ListagemFunc/index.html">Listagem dos Funcionários</a></p>
+                        <p>Nesta página é possível encontrar a listagem dos funcionários cadastrados na E2V Clínica Médica.</p>
+                        <p>Para visualizar a listagens dos dados, acesse o link abaixo.</p>
+                        <p><a href="../ListagemFunc/index.html">Listagem dos Funcionários</a></p>
                     </section>
                     <section>
                         <h2>Listagem dos Pacientes</h2>
-                        <p>Nesta pagina é possivel encontrar a listagem os pacientes cadastrados na Clínica Médica</p>
-                        <p>Para visualizar a listagems dos dados, acesse o link abaixo.</p>
+                        <p>Nesta página é possível encontrar a listagem dos pacientes cadastrados na E2V Clínica Médica.</p>
+                        <p>Para visualizar a listagens dos dados, acesse o link abaixo.</p>
                         <p><a href="../ListagemPac/index.html">Listagem dos Pacientes</a></p>
                     </section>
                     <section>
                         <h2>Listegem dos Endereços</h2>
-                        <p>Nesta pagina é possivel encontrar a listagem dos endereços cadastrados na Clínica Médica</p>
-                        <p>Para visualizar a listagems dos dados, acesse o link abaixo.</p>
+                        <p>Nesta página é possível encontrar a listagem dos endereços cadastrados na E2V Clínica Médica.</p>
+                        <p>Para visualizar a listagens dos dados, acesse o link abaixo.</p>
                         <p><a href="../ListagemEnd/index.html">Listegem dos Endereços</a></p>
                     </section>
                     <section>
                         <h2>Listagem de todos os Agendamentos de Consultas</h2>
-                        <p>Nesta pagina é possivel encontrar a listagem de todos os agendamentos de consultas da Clínica Médica</p>
-                        <p>Para visualizar a listagems dos dados, acesse os links abaixo.</p>
+                        <p>Nesta página é possível encontrar a listagem de todos os agendamentos de consultas da E2V Clínica Médica.</p>
+                        <p>Para visualizar a listagens dos dados, acesse os links abaixo.</p>
                         <p><a href="../ListagemAgend/index.html">Listagem de todos os Agendamentos</a></p>
                         
                         <div class="agendMed">
-                            <p>Neste link é possivel ver a listagems dos meus Agendamentos de Consultas da Clínica Médica</p>
+                            <p>Neste link é possível visualizar a listagens dos meus agendamentos de consultas da E2V Clínica Médica.</p>
                             <p><a href="../ListagemAgendMed/index.html">Listagem dos Meus Agendamentos</a></p>
                         </div>
-                        
                     </section>
                 </div>
             </div>
@@ -362,6 +371,5 @@
                 <p>© Copyright 2021. Todos os direitos reservados. Vinícius Alves, Vinícius Adriano e Estevão Filipe.</p>
             </footer>
         </div>
-        
     </body>
 </html>
