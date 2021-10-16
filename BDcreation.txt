@@ -1,0 +1,68 @@
+CREATE TABLE baseAjax
+(
+   cep varchar(50) PRIMARY KEY,
+   logradouro varchar(50),
+   cidade varchar(50),
+   estado varchar(50)
+) ENGINE=InnoDB;
+
+
+CREATE TABLE agenda
+(
+   codigo int PRIMARY KEY,
+   data date,
+   horario time,
+   nome varchar(200),
+   sexo varchar(50),
+   email varchar(100),
+   codigoMedico varchar(50)
+   FOREIGN KEY (codigoMedico) REFERENCES medico(codigo) ON DELETE CASCADE
+) ENGINE=InnoDB;
+
+# Inserir dados nas tabelas de editoras e assuntos ao mesmo tempo:
+START TRANSACTION;
+  INSERT INTO pessoa(codigo,nome,sexo,email,telefone,cep,logradouro,cidade,estado)
+  VALUES('3999999','Maria','Feminino','maria@email.com',3434343,'366655','rua','city','RJ');
+  INSERT INTO paciente(peso,altura,tipo_sanguineo,codigo)
+  VALUES(13,145,'O+','3666668');
+COMMIT;
+
+CREATE TABLE paciente
+(
+   peso int,
+   altura int,
+   tipo_sanguineo char(2),
+   codigo varchar(50) not null,
+   FOREIGN KEY (codigo) REFERENCES pessoa(codigo) ON DELETE CASCADE
+) ENGINE=InnoDB;
+
+CREATE TABLE pessoa
+(
+   codigo varchar(50) PRIMARY KEY,
+   nome varchar(50),
+   sexo char(20) ,
+   email varchar(50) UNIQUE,
+   telefone varchar(50),
+   cep varchar(50),
+   logradouro varchar(50),
+   cidade varchar(50),
+   estado varchar(50)
+) ENGINE=InnoDB;
+
+CREATE TABLE funcionario
+(
+   codigo varchar(50),
+   salario float,
+   senhaHash varchar(200),
+   dataContrato date,
+   FOREIGN KEY (codigo) REFERENCES pessoa(codigo) ON DELETE CASCADE
+) ENGINE=InnoDB;
+
+CREATE TABLE medico
+(
+   codigo varchar(50),
+   especialidade varchar(75)
+   crm varchar(50)
+   FOREIGN KEY (codigo) REFERENCES pessoa(codigo) ON DELETE CASCADE
+) ENGINE=InnoDB;
+
