@@ -21,11 +21,10 @@ $senha = $_POST['senha'] ?? '';
 
 $pdo = mysqlConnect();//
 if ($senhaHash = checkPassword($pdo, $email, $senha)) {
-  // Armazena dados úteis para confirmação //
-  // de login em outros scripts PHP
+
   $_SESSION['emailUsuario'] = $email;
   $_SESSION['loginString'] = hash('sha512', $senhaHash . $_SERVER['HTTP_USER_AGENT']);  
-  //teste
+
   try {
 
     $sql = <<<SQL
@@ -48,7 +47,7 @@ if ($senhaHash = checkPassword($pdo, $email, $senha)) {
     if($emails == $emailLog){ 
       $result_ok = true;
     }
-  }//teste
+  }
   
   if($result_ok == true){
   $response = new RequestResponse(true, 'PaginaHomeRestrita/index.html');
@@ -60,7 +59,4 @@ else
   $response = new RequestResponse(false, ''); 
 
 echo json_encode($response);
-
-
-
 ?>

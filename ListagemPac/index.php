@@ -1,3 +1,14 @@
+<?php
+
+require_once "../conectaMySQL.php";
+require_once "../autentica.php";
+
+session_start();
+$pdo = mysqlConnect();
+exitWhenNotLogged($pdo);
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,7 +20,7 @@
             integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" 
             crossorigin="anonymous">
 
-    <title>Listagem Agendamentos - E2V Clínica Médica</title> 
+    <title>Listagem Pacientes - E2V Clínica Médica</title> 
     <link rel="icon" href="../imagem/E2V title.png">
 
     <style>
@@ -149,17 +160,6 @@
             font-size: 18px; /* defiune o tamanho da fonte */
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* define a fonte do texto */
         }
-        footer{
-            bottom: 0;
-            position: absolute;
-            background-color: #266566;
-            width: 100%;
-        }
-        footer p{
-            color: white;
-            text-align: center;
-            font-size: 18px;
-        }
     </style>
 </head>
 
@@ -191,8 +191,78 @@
     </header>
     <div class="container">
         <main>
-            <h2>Listagem dos Agendamentos de Consultas</h2>
-            <p>Segue abaixo a listagem com as informações das consultas já agendadas</p>
+            <h2>Listagem dos Pacientes</h2>
+            <p>Segue abaixo a listagem com as informações dos pacientes já cadastrados</p>
+
+            <table class="tabela-exibicao table table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Nome</th>
+                            <th>Sexo</th>
+                            <th>Email</th>
+                            <th>Telefone</th>
+                            <th>CEP</th>
+                            <th>Logradouro</th>
+                            <th>Cidade</th>
+                            <th>Estado</th>
+                            <th>Peso</th>
+                            <th>Altura</th>
+                            <th>Tipo Sanguineo</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                    <?php
+                        $pdo = mysqlConnect();
+
+                        try {
+
+                            $sql = <<<SQL
+                                SELECT pessoa.nome, pessoa.sexo, pessoa.email, pessoa.telefone, 
+                                    pessoa.cep, pessoa.logradouro, pessoa.cidade, pessoa.estado,
+                                    paciente.peso, paciente.altura, paciente.tipoSanguineo, paciente.codigo
+                                FROM pessoa, paciente
+                                WHERE pessoa.codigo = paciente.codigo
+                            SQL;
+
+                            $stmt = $pdo->query($sql);
+                        } 
+                        catch (Exception $e) {
+                            exit('Ocorreu uma falha: ' . $e->getMessage());
+                        }
+
+                        while ($row = $stmt->fetch()) {                                    
+                            $nome = htmlspecialchars($row['nome']);
+                            $email = htmlspecialchars($row['email']);
+                            $telefone = htmlspecialchars($row['telefone']);
+                            $cep = htmlspecialchars($row['cep']);
+                            $logradouro = htmlspecialchars($row['logradouro']);
+                            $cidade = htmlspecialchars($row['cidade']);
+                            $peso = htmlspecialchars($row['peso']);
+                            $altura = htmlspecialchars($row['altura']);
+                            
+                            echo <<<HTML
+                                <tr>
+                                    <td>{$row['codigo']}</td>                       
+                                    <td>$nome</td> 
+                                    <td>{$row['sexo']}</td>
+                                    <td>$email</td>
+                                    <td>$telefone</td>
+                                    <td>$cep</td>
+                                    <td>$logradouro</td>
+                                    <td>$cidade</td>
+                                    <td>{$row['estado']}</td>
+                                    <td>$peso</td>            
+                                    <td>$altura</td> 
+                                    <td>{$row['tipoSanguineo']}</td>
+                                </tr>      
+                            HTML;
+                        }
+                    ?>
+                    </tbody>
+                </table>
+
         </main>
     </div>
     

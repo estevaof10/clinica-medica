@@ -1,3 +1,14 @@
+<?php
+
+require_once "conectaMySQL.php";
+require_once "../PaginaLogin/autentica.php";
+
+session_start();
+$pdo = mysqlConnect();
+exitWhenNotLogged($pdo);
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -194,6 +205,75 @@
         <main>
             <h2>Listagem dos Funcionários</h2>
             <p>Segue abaixo a listagem com as informações dos funcionários já cadastrados</p>
+            <table class="tabela-exibicao table table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Nome</th>
+                            <th>Sexo</th>
+                            <th>Email</th>
+                            <th>Telefone</th>
+                            <th>CEP</th>
+                            <th>Logradouro</th>
+                            <th>Cidade</th>
+                            <th>Estado</th>
+                            <th>Data do Contrato</th>
+                            <th>Salário</th>                        
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                    <?php
+                        $pdo = mysqlConnect();
+
+                        try {
+
+                            $sql = <<<SQL
+                                SELECT pessoa.nome, pessoa.sexo, pessoa.email, pessoa.telefone, 
+                                    pessoa.cep, pessoa.logradouro, pessoa.cidade, pessoa.estado,
+                                    funcionario.dataContrato, funcionario.salario, funcionario.senhaHash,
+                                    funcionario.codigo
+                                FROM pessoa, funcionario
+                                WHERE pessoa.codigo = funcionario.codigo
+                            SQL;
+
+                            $stmt = $pdo->query($sql);
+                        } 
+                        catch (Exception $e) {
+                            exit('Ocorreu uma falha: ' . $e->getMessage());
+                        }
+
+                        while ($row = $stmt->fetch()) {                                    
+                            $nome = htmlspecialchars($row['nome']);
+                            $email = htmlspecialchars($row['email']);
+                            $telefone = htmlspecialchars($row['telefone']);
+                            $cep = htmlspecialchars($row['cep']);
+                            $logradouro = htmlspecialchars($row['logradouro']);
+                            $cidade = htmlspecialchars($row['cidade']);
+                            $salario = htmlspecialchars($row['salario']);
+                            $data = new DateTime($row['dataContrato']);
+                            $data_contrato = $data->format('d/m/Y');
+
+                            echo <<<HTML
+                                <tr>
+                                    <td>{$row['codigo']}</td>                       
+                                    <td>$nome</td> 
+                                    <td>{$row['sexo']}</td>
+                                    <td>$email</td>
+                                    <td>$telefone</td>
+                                    <td>$cep</td>
+                                    <td>$logradouro</td>
+                                    <td>$cidade</td>
+                                    <td>{$row['estado']}</td>
+                                    <td>$data_contrato</td>            
+                                    <td>$salario</td>                  
+                                </tr>
+                            HTML;
+                        }
+                    ?>
+                    </tbody>
+                </table>
+        
         </main>
     </div>
 

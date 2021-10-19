@@ -205,7 +205,7 @@
         
                     <nav> <!-- barra de navegação -->
                         <ul> <!-- lista com opçoes da barra de navegação -->
-                            <li><a href="../PaginaHomeRestrita/index.html">Home</a></li> <!-- link pra voltar a home da clinica-->
+                            <li><a href="../PaginaHomeRestrita/index.php">Home</a></li> <!-- link pra voltar a home da clinica-->
                             <li><a href="../PaginaLogin/index.html">Sair</a></li> <!-- link para fazer logout e voltar para a pagina de login -->
                         </ul>
                     </nav>
@@ -217,7 +217,7 @@
                 <h1>Cadastrar Funcionário</h1>
                 <p>Preencha os campos abaixo com os dados correspondentes ao novo funcionário que deseja cadastrar.</p>
                 
-                <form method="POST" action="#" >
+                <form>
                     <div class="row g-2">
                         <div class="form-floating col-md-12 gy-2">
                             <input type="text" class="form-control" id="inputNome" name="nome" placeholder="">
@@ -325,7 +325,7 @@
                     </div>
                     
                     <div class="col-md-12">
-                        <button type="submit" class="btn btn-primary">Cadastrar
+                        <button id = "botao" type="submit" class="btn btn-primary">Cadastrar
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right-circle" viewBox="0 0 16 16">
                                 <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z"/>
                             </svg>
@@ -345,18 +345,83 @@
                 show = !show //atualiza o show apos o click, fazendo o valor dele se alterar
             });
         </script>
-            
+
         <script>
-            function mostrar() {
-                var checkBox = document.getElementById("verifMedico");
-                var input = document.getElementById("verificado");
-            
-                if (checkBox.checked == true){
-                  input.style.display = "block";
-                } else {
-                  input.style.display = "none";
+            function buscaEndereco(cep) {
+                if (cep.length != 9) return;
+
+                let xhr = new XMLHttpRequest();
+                xhr.open("GET", "getCep.php?cep=" + cep, true);
+
+                xhr.onload = function () {
+                    if (xhr.status != 200) {
+                        console.error("Falha inesperada: " + xhr.responseText);
+                        return;
+                    }
+                    try {
+                        var endereco = JSON.parse(xhr.responseText);
+                    }
+                    catch (e) {
+                        console.error("String JSON inválida: " + xhr.responseText);
+                        return;
+                    }
+                    let form = document.querySelector("form");
+                    form.logradouro.value = endereco.logradouro;
+                    form.cidade.value = endereco.cidade;
+                    form.estado.value = endereco.estado;
                 }
-              }
+
+                xhr.onerror = function () {
+                    console.error("Erro de rede - requisição não finalizada");
+                };
+
+                xhr.send();
+            }
+
+        </script>    
+            
+        <script>    
+            function enviaDadosPost() {
+
+                let meuForm = document.querySelector("form");
+                let formData = new FormData(meuForm);
+
+                const options = {
+                    method: "POST",
+                    body: formData
+                }
+
+                fetch("cadFunc.php", options)
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log(data.success)})
+                    .catch(error => {
+                        console.error(error);
+                    })
+                }
+        </script>
+
+        <script>
+            const inputCep = document.querySelector("#cep");
+            inputCep.onkeyup = () => buscaEndereco(inputCep.value);
+
+            const botao = document.querySelector("#botao");
+            botao.onclick = enviaDadosPost;     
+        </script>
+
+        <script>
+
+            const checkBox = document.getElementById("verifMedico");
+            const input = document.getElementById("verifMedico");
+
+        
+            function mostrar() {
+                if (checkBox.checked == true){
+                input.style.display = "block";
+                } else {
+                input.style.display = "none";
+                }
+            }
         </script>
 
         <div>

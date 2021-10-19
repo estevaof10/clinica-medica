@@ -1,3 +1,14 @@
+<?php
+
+require_once "conectaMySQL.php";
+require_once "../PaginaLogin/autentica.php";
+
+session_start();
+$pdo = mysqlConnect();
+exitWhenNotLogged($pdo);
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -5,11 +16,11 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" 
-            rel="stylesheet" 
-            integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" 
-            crossorigin="anonymous">
+                rel="stylesheet" 
+                integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" 
+                crossorigin="anonymous">
 
-        <title>Listagem Meus Agendamentos - E2V Clínica Médica</title> 
+        <title>Listagem Endereços - E2V Clínica Médica</title> 
         <link rel="icon" href="../imagem/E2V title.png">
 
         <style>
@@ -168,7 +179,6 @@
             <div class="container"> <!-- div principal -->
 
                 <div class="logo"> <!-- div com a classe logo -->
-                    <!--<h1>E2V Clinica Medica</h1> -->
                     <img src="../imagem/LogoHeaderMini.png" alt="Logo da E2V Clínica Médica">                  
                 </div>
         
@@ -191,8 +201,58 @@
         </header>
         <div class="container">
             <main>
-                <h2>Listagem dos Meus Agendamentos de Consultas</h2>
-                <p>Segue abaixo a listagem com as informações de sua agenda de consultas</p>
+                <h2>Listagem dos Endereços</h2>
+                <p>Segue abaixo a listagem com as informações dos endereços já cadastrados</p>
+
+                <table class="tabela-exibicao table table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th>CEP</th>
+                            <th>Logradouro</th>
+                            <th>Cidade</th>
+                            <th>Estado</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                    <?php
+                        $pdo = mysqlConnect();
+            
+                        try {
+            
+                            $sql = <<<SQL
+                                SELECT cep, logradouro, cidade, estado
+                                FROM baseAjax
+                            SQL;
+            
+                            $stmt = $pdo->query($sql);
+                        } 
+                        catch (Exception $e) {
+                            exit('Ocorreu uma falha: ' . $e->getMessage());
+                        }
+            
+
+                        while ($row = $stmt->fetch()) {
+
+                            $cep = htmlspecialchars($row['cep']);
+                            $logradouro = htmlspecialchars($row['logradouro']);
+                            $cidade = htmlspecialchars($row['cidade']);
+
+                            echo <<<HTML
+                                <tr>            
+                                    <td>$cep</td>
+                                    <td>$logradouro</td>
+                                    <td>$cidade</td>
+                                    <td>{$row['estado']}</td>
+                                </tr>      
+                            HTML;
+                        }
+
+                    ?>
+                    </tbody>
+                </table>
+
+            
             </main>
         </div>
         

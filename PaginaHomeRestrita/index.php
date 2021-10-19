@@ -1,3 +1,36 @@
+<?php
+
+require_once "conectaMySQL.php";
+require_once "../PaginaLogin/autentica.php";
+
+session_start();
+$pdo = mysqlConnect();
+exitWhenNotLogged($pdo);
+
+try {
+
+    $sql = <<<SQL
+    SELECT email, nome
+    FROM pessoa
+    SQL;
+
+    $stmt = $pdo->query($sql);
+} catch (Exception $e) {
+    exit('Ocorreu uma falha: ' . $e->getMessage());
+}
+$emails = '';
+$emailLog = '';
+$nome = '';
+$emailLog = $_SESSION['emailUsuario'];
+while ($row = $stmt->fetch()) {
+    $emails = htmlspecialchars($row['email']);
+
+    if ($emails == $emailLog) {
+        $nome = htmlspecialchars($row['nome']);
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
     
@@ -302,31 +335,31 @@
                         <h2>Cadastro de novo Paciente</h2>
                         <p>Nesta página é possível cadastrar um novo paciente na E2V Clínica Médica</p>
                         <p>Para realizar o cadastro de um novo paciente, clique no link abaixo e realize o cadastro dos dados.</p>
-                        <p><a href="../PaginaCadPaciente/index.html">Cadastro de Novo Paciente</a></p>
+                        <p><a href="../PaginaCadPaciente/index.php">Cadastro de Novo Paciente</a></p>
                     </section>
                     <section>
                         <h2>Listagem dos Funcionários</h2>
                         <p>Nesta página é possível encontrar a listagem dos funcionários cadastrados na E2V Clínica Médica.</p>
                         <p>Para visualizar a listagens dos dados, acesse o link abaixo.</p>
-                        <p><a href="../ListagemFunc/index.html">Listagem dos Funcionários</a></p>
+                        <p><a href="../ListagemFunc/index.php">Listagem dos Funcionários</a></p>
                     </section>
                     <section>
                         <h2>Listagem dos Pacientes</h2>
                         <p>Nesta página é possível encontrar a listagem dos pacientes cadastrados na E2V Clínica Médica.</p>
                         <p>Para visualizar a listagens dos dados, acesse o link abaixo.</p>
-                        <p><a href="../ListagemPac/index.html">Listagem dos Pacientes</a></p>
+                        <p><a href="../ListagemPac/index.php">Listagem dos Pacientes</a></p>
                     </section>
                     <section>
                         <h2>Listegem dos Endereços</h2>
                         <p>Nesta página é possível encontrar a listagem dos endereços cadastrados na E2V Clínica Médica.</p>
                         <p>Para visualizar a listagens dos dados, acesse o link abaixo.</p>
-                        <p><a href="../ListagemEnd/index.html">Listegem dos Endereços</a></p>
+                        <p><a href="../ListagemEnd/index.php">Listegem dos Endereços</a></p>
                     </section>
                     <section>
                         <h2>Listagem de todos os Agendamentos de Consultas</h2>
                         <p>Nesta página é possível encontrar a listagem de todos os agendamentos de consultas da E2V Clínica Médica.</p>
                         <p>Para visualizar a listagens dos dados, acesse os links abaixo.</p>
-                        <p><a href="../ListagemAgend/index.html">Listagem de todos os Agendamentos</a></p>
+                        <p><a href="../ListagemAgend/index.php">Listagem de todos os Agendamentos</a></p>
                         
                         <div class="agendMed">
                             <p>Neste link é possível visualizar a listagens dos meus agendamentos de consultas da E2V Clínica Médica.</p>

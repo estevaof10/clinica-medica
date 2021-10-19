@@ -1,3 +1,14 @@
+<?php
+
+require_once "conectaMySQL.php";
+require_once "../PaginaLogin/autentica.php";
+
+session_start();
+$pdo = mysqlConnect();
+exitWhenNotLogged($pdo);
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,7 +20,7 @@
             integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" 
             crossorigin="anonymous">
 
-    <title>Listagem Pacientes - E2V Clínica Médica</title> 
+    <title>Listagem Agendamentos - E2V Clínica Médica</title> 
     <link rel="icon" href="../imagem/E2V title.png">
 
     <style>
@@ -149,6 +160,17 @@
             font-size: 18px; /* defiune o tamanho da fonte */
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* define a fonte do texto */
         }
+        footer{
+            bottom: 0;
+            position: absolute;
+            background-color: #266566;
+            width: 100%;
+        }
+        footer p{
+            color: white;
+            text-align: center;
+            font-size: 18px;
+        }
     </style>
 </head>
 
@@ -180,8 +202,61 @@
     </header>
     <div class="container">
         <main>
-            <h2>Listagem dos Pacientes</h2>
-            <p>Segue abaixo a listagem com as informações dos pacientes já cadastrados</p>
+            <h2>Listagem dos Agendamentos de Consultas</h2>
+            <p>Segue abaixo a listagem com as informações das consultas já agendadas</p>
+        
+            <table class="tabela-exibicao table table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th>Data</th>
+                            <th>Horário</th>
+                            <th>Nome</th>
+                            <th>Sexo</th>
+                            <th>E-mail</th>
+                            <th>Código do Médico</th>                        
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                            $pdo = mysqlConnect();
+
+                            try {
+
+                                $sql = <<<SQL
+                                    SELECT data_agenda, horario, nome, sexo, email, codigoMedico
+                                    FROM agenda                               
+                                SQL;
+
+                                $stmt = $pdo->query($sql);
+                            } 
+                            catch (Exception $e) {
+                                exit('Ocorreu uma falha: ' . $e->getMessage());
+                            }
+
+                            while ($row = $stmt->fetch()) {                                    
+                                $nome = htmlspecialchars($row['nome']);
+                                $email = htmlspecialchars($row['email']);
+                                
+                                $data = new DateTime($row['data_agenda']);
+                                $data_agenda = $data->format('d/m/Y');
+
+                                $codigoMedico = htmlspecialchars($row['codigoMedico']);
+
+                                echo <<<HTML
+                                    <tr>
+                                        <td>$data_agenda</td>
+                                        <td>{$row['horario']}</td>                         
+                                        <td>$nome</td> 
+                                        <td>{$row['sexo']}</td>
+                                        <td>$email</td> 
+                                        <td>$codigoMedico</td>                                    
+                                    </tr>      
+                                HTML;
+                            }
+                        ?>
+                    </tbody>
+                </table>
+
         </main>
     </div>
     

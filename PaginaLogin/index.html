@@ -335,9 +335,7 @@
             function enviaForm() {
                     
                     let xhr = new XMLHttpRequest();
-                    
-                    // O formulário será enviado como um objeto FormData
-                    // A requisição deve utilizar o método POST
+
                     xhr.open("POST", "validaLogin.php");
                     xhr.onload = function () {
                         // verifica o código de status retornado pelo servidor
@@ -346,7 +344,6 @@
                         return;
                         }
 
-                        // converte a string JSON para objeto JS
                         try {
                         var response = JSON.parse(xhr.responseText);
                         }
@@ -355,7 +352,6 @@
                         return;
                         }
 
-                        // utiliza os dados da resposta
                         if (response.success){
                         document.querySelector("#msgErro").style.display = "none";
                         let url = window.open(response.detail, '_blank');
@@ -373,7 +369,6 @@
                         console.error("Erro de rede - requisição não finalizada");
                     };
 
-                    // envia o formulário de login utilizando a interface FormData
                     const form = document.querySelector("form");
                     xhr.send(new FormData(form));
                     }

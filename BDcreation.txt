@@ -39,8 +39,9 @@ CREATE TABLE paciente
 
 
 CREATE TABLE baseAjax
-(
-   cep varchar(50) PRIMARY KEY,
+(  
+   id int PRIMARY KEY,
+   cep varchar(50),
    logradouro varchar(50),
    cidade varchar(50),
    estado varchar(50)

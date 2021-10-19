@@ -1,3 +1,14 @@
+<?php
+
+require_once "../conectaMySQL.php";
+require_once "../autentica.php";
+
+session_start();
+$pdo = mysqlConnect();
+exitWhenNotLogged($pdo);
+
+?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
     <head>
@@ -346,6 +357,39 @@
                 menuSection.classList.toggle("on", show) //menuSection adciona uma lista de classe "on" atraves da função toggle(função de adicionar e retirar do js)
                 show = !show //atualiza o show apos o click, fazendo o valor dele se alterar
             })
+          </script>
+
+          <script>
+        
+        function enviaFormulario() {
+            
+            let meuForm = document.querySelector("form");
+            let formData = new FormData(meuForm);
+            
+            const options = {
+                method: "POST",
+                body: formData
+            }
+            
+            fetch("cadPac.php", options)
+                .then(response => response.json()) 
+                .then(data =>{
+                    console.log(data.success);
+                    if(data.success == true){
+                    meuForm.reset();
+                    }else{
+                            throw new Error(response.status);
+                        }
+                        })
+                .catch(error => {
+                    console.error(error);
+                })
+        }
+
+            window.onload = function () {
+            const botao = document.querySelector("#botao");
+            botao.onclick = enviaFormulario;
+
           </script>
           
           <div>
