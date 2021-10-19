@@ -1,6 +1,6 @@
 <?php
 
-require_once "conectaMySQL.php";
+require_once "../conectaMySQL.php";
 require_once "../PaginaLogin/autentica.php";
 
 session_start();
@@ -248,22 +248,6 @@ while ($row = $stmt->fetch()) {
                 border-radius: 5px; /* define a curvatura da borda do efeito hover */
                 color: #f8f9f7;
             }
-            #sair-button{
-                text-decoration: none; /* retira a decoração de link */
-                color: #f8f9f7; /* define a cor do texto */
-                font-size: 2rem; /* define o tamanho da fonte em rem para responsividade */
-                margin-left: 30px; /* define a margem esquerda entre os itens */
-                padding: 6px 10px; /* define o padding de 6px top e botton e 10px left e right */
-                font-family: Arial, Helvetica, sans-serif ; /* define a fonte dos links */
-            }
-            #sair-button:hover{
-                text-decoration: none; /* retira a decoração de link */
-                color: #003029; /* define a cor do texto */
-                font-size: 2rem; /* define o tamanho da fonte em rem para responsividade */
-                margin-left: 30px; /* define a margem esquerda entre os itens */
-                padding: 6px 10px; /* define o padding de 6px top e botton e 10px left e right */
-                font-family: Arial, Helvetica, sans-serif ; /* define a fonte dos links */
-            }
             footer{
                 bottom: 0;
                 position: fixed;
@@ -303,7 +287,7 @@ while ($row = $stmt->fetch()) {
         
                     <nav> <!-- barra de navegação -->
                         <ul> <!-- lista com opçoes da barra de navegação -->
-                            <li><button class="btn btn-outline-light" id="sair-button">Sair</button></li>
+                            <li><a id="sair-button" href="#">Sair</a></li> <!-- link para ir a pagina de login da clinica -->
                         </ul>
                     </nav>
                 </div>

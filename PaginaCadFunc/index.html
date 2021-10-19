@@ -206,7 +206,7 @@
                     <nav> <!-- barra de navegação -->
                         <ul> <!-- lista com opçoes da barra de navegação -->
                             <li><a href="../PaginaHomeRestrita/index.php">Home</a></li> <!-- link pra voltar a home da clinica-->
-                            <li><a href="../PaginaLogin/index.html">Sair</a></li> <!-- link para fazer logout e voltar para a pagina de login -->
+                            <li><a id="sair-button" href="#">Sair</a></li> <!-- link para ir a pagina de login da clinica -->
                         </ul>
                     </nav>
                 </div>
@@ -421,6 +421,15 @@
                 } else {
                 input.style.display = "none";
                 }
+            }
+        </script>
+
+        <script>
+            var botaoSair = document.getElementById("sair-button");
+            botaoSair.onclick = function () {
+                var confirmacao = confirm("Deseja realmente sair?");
+                if(confirmacao==true)
+                    window.location.href = "../PaginaLogin/index.html";
             }
         </script>
 

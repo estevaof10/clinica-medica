@@ -236,8 +236,8 @@ exitWhenNotLogged($pdo);
         
                     <nav> <!-- barra de navegação -->
                         <ul> <!-- lista com opçoes da barra de navegação -->
-                            <li><a href="../PaginaHomeRestrita/index.html">Home</a></li> <!-- link pra voltar a home da clinica-->
-                            <li><a href="../PaginaLogin/index.html">Sair</a></li> <!-- link para fazer logout e voltar para a pagina de login -->
+                            <li><a href="../PaginaHomeRestrita/index.php">Home</a></li> <!-- link pra voltar a home da clinica-->
+                            <li><a id="sair-button" href="#">Sair</a></li> <!-- link para ir a pagina de login da clinica -->
                         </ul>
                     </nav>
                 </div>
@@ -359,38 +359,45 @@ exitWhenNotLogged($pdo);
             })
           </script>
 
-          <script>
-        
-        function enviaFormulario() {
-            
-            let meuForm = document.querySelector("form");
-            let formData = new FormData(meuForm);
-            
-            const options = {
-                method: "POST",
-                body: formData
-            }
-            
-            fetch("cadPac.php", options)
-                .then(response => response.json()) 
-                .then(data =>{
-                    console.log(data.success);
-                    if(data.success == true){
-                    meuForm.reset();
-                    }else{
-                            throw new Error(response.status);
-                        }
-                        })
-                .catch(error => {
-                    console.error(error);
-                })
-        }
+        <script>
+            function enviaFormulario() {
+                let meuForm = document.querySelector("form");
+                let formData = new FormData(meuForm);
+                
+                const options = {
+                    method: "POST",
+                    body: formData
+                }
+                
+                fetch("cadPac.php", options)
+                    .then(response => response.json()) 
+                    .then(data =>{
+                        console.log(data.success);
+                        if(data.success == true){
+                        meuForm.reset();
+                        }else{
+                                throw new Error(response.status);
+                            }
+                            })
+                    .catch(error => {
+                        console.error(error);
+                    })
+                }
 
-            window.onload = function () {
-            const botao = document.querySelector("#botao");
-            botao.onclick = enviaFormulario;
-
+                window.onload = function () {
+                const botao = document.querySelector("#botao");
+                botao.onclick = enviaFormulario;
+                }
           </script>
+
+        <script>
+            var botaoSair = document.getElementById("sair-button");
+            botaoSair.onclick = function () {
+                var confirmacao = confirm("Deseja realmente sair?");
+                if(confirmacao==true)
+                    window.location.href = "../PaginaLogin/index.html";
+            }
+        </script>
           
           <div>
             <footer>

@@ -10,7 +10,7 @@ class Response
   }
 }
 
-require "conectaMySQL.php";
+require "../conectaMySQL.php";
 $pdo = mysqlConnect();
 
 $codigo = $nome = $sexo = $email = $telefone = "";

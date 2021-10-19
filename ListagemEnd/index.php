@@ -1,6 +1,6 @@
 <?php
 
-require_once "conectaMySQL.php";
+require_once "../conectaMySQL.php";
 require_once "../PaginaLogin/autentica.php";
 
 session_start();
@@ -192,8 +192,8 @@ exitWhenNotLogged($pdo);
         
                     <nav> <!-- barra de navegação -->
                         <ul> <!-- lista com opçoes da barra de navegação -->
-                            <li><a href="../PaginaHomeRestrita/index.html">Home</a></li> <!-- link pra voltar a home da clinica-->
-                            <li><a href="../PaginaLogin/index.html">Sair</a></li> <!-- link para fazer logout e voltar para a pagina de login -->
+                            <li><a href="../PaginaHomeRestrita/index.php">Home</a></li> <!-- link pra voltar a home da clinica-->
+                            <li><a id="sair-button" href="#">Sair</a></li> <!-- link para ir a pagina de login da clinica -->
                         </ul>
                     </nav>
                 </div>
@@ -204,55 +204,52 @@ exitWhenNotLogged($pdo);
                 <h2>Listagem dos Endereços</h2>
                 <p>Segue abaixo a listagem com as informações dos endereços já cadastrados</p>
 
-                <table class="tabela-exibicao table table-striped table-hover">
+                <table>
                     <thead>
                         <tr>
                             <th>CEP</th>
                             <th>Logradouro</th>
-                            <th>Cidade</th>
                             <th>Estado</th>
+                            <th>Cidade</th>                            
                         </tr>
                     </thead>
                     <tbody>
+                        <?php
+                            $pdo = mysqlConnect();
+                
+                            try {
+                
+                                $sql = <<<SQL
+                                    SELECT cep, logradouro, estado, cidade,
+                                    FROM baseAjax
+                                SQL;
+                
+                                $stmt = $pdo->query($sql);
+                            } 
+                            catch (Exception $e) {
+                                exit('Erro ao executar seleção! ' . $e->getMessage());
+                            }
+                
 
-                    <?php
-                        $pdo = mysqlConnect();
-            
-                        try {
-            
-                            $sql = <<<SQL
-                                SELECT cep, logradouro, cidade, estado
-                                FROM baseAjax
-                            SQL;
-            
-                            $stmt = $pdo->query($sql);
-                        } 
-                        catch (Exception $e) {
-                            exit('Ocorreu uma falha: ' . $e->getMessage());
-                        }
-            
+                            while ($row = $stmt->fetch()) {
 
-                        while ($row = $stmt->fetch()) {
+                                $cep = htmlspecialchars($row['cep']);
+                                $logradouro = htmlspecialchars($row['logradouro']);
+                                $cidade = htmlspecialchars($row['cidade']);
 
-                            $cep = htmlspecialchars($row['cep']);
-                            $logradouro = htmlspecialchars($row['logradouro']);
-                            $cidade = htmlspecialchars($row['cidade']);
+                                echo <<<HTML
+                                    <tr>            
+                                        <td>$cep</td>
+                                        <td>$logradouro</td>
+                                        <td>{$row['estado']}</td>
+                                        <td>$cidade</td>                                    
+                                    </tr>      
+                                HTML;
+                            }
 
-                            echo <<<HTML
-                                <tr>            
-                                    <td>$cep</td>
-                                    <td>$logradouro</td>
-                                    <td>$cidade</td>
-                                    <td>{$row['estado']}</td>
-                                </tr>      
-                            HTML;
-                        }
-
-                    ?>
+                        ?>
                     </tbody>
-                </table>
-
-            
+                </table>            
             </main>
         </div>
         
@@ -265,6 +262,15 @@ exitWhenNotLogged($pdo);
             menuSection.classList.toggle("on", show) //menuSection adciona uma lista de classe "on" atraves da função toggle(função de adicionar e retirar do js)
             show = !show //atualiza o show apos o click, fazendo o valor dele se alterar
             })
+        </script>
+
+        <script>
+            var botaoSair = document.getElementById("sair-button");
+            botaoSair.onclick = function () {
+                var confirmacao = confirm("Deseja realmente sair?");
+                if(confirmacao==true)
+                    window.location.href = "../PaginaLogin/index.html";
+            }
         </script>
     </body>
 </html>

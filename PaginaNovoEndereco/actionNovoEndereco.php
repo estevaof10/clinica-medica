@@ -1,6 +1,6 @@
 <?php
 
-require "conectaMySQL.php";
+require "../conectaMySQL.php";
 
 $pdo = mysqlConnect();
 
