@@ -204,7 +204,7 @@ exitWhenNotLogged($pdo);
                 <h2>Listagem dos Endereços</h2>
                 <p>Segue abaixo a listagem com as informações dos endereços já cadastrados</p>
 
-                <table>
+                <table class="tabela-exibicao table table-striped table-hover">
                     <thead>
                         <tr>
                             <th>CEP</th>
@@ -220,7 +220,7 @@ exitWhenNotLogged($pdo);
                             try {
                 
                                 $sql = <<<SQL
-                                    SELECT cep, logradouro, estado, cidade,
+                                    SELECT cep, logradouro, estado, cidade
                                     FROM baseAjax
                                 SQL;
                 
