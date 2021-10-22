@@ -28,31 +28,15 @@ if (isset($_POST["logradouro"])) $logradouro = $_POST["logradouro"];
 if (isset($_POST["cidade"])) $cidade = $_POST["cidade"];
 if (isset($_POST["estado"])) $estado = $_POST["estado"];
 //Funcionário
-if (isset($_POST["dataContrato"])) $dataContrato = $_POST["dataContrato"];
+if (isset($_POST["contrato"])) $dataContrato = $_POST["contrato"];
 if (isset($_POST["salario"])) $salario = $_POST["salario"];
-if (isset($_POST["senha"])) $senha = $_POST["senha"];
+if (isset($_POST["senhaFunc"])) $senha = $_POST["senhaFunc"];
 //Médico
 if (isset($_POST["funcao"])) $funcao = $_POST["funcao"];
 if (isset($_POST["especialidade"])) $especialidade = $_POST["especialidade"];
 if (isset($_POST["crm"])) $crm = $_POST["crm"];
 
 $hashsenha = password_hash($senha, PASSWORD_DEFAULT);
-
-try {
-  $sql = <<<SQL
-    SELECT codigo FROM pessoa ORDER BY codigo DESC limit 1  
-  SQL;
-
-  $stmt = $pdo->query($sql);
-} 
-catch (Exception $e) {
-  exit('Ocorreu uma falha: ' . $e->getMessage());
-}
-
-while ($row = $stmt->fetch()) {                                    
-  $codigo = $row['codigo'] + 10;
-}
-
 
 $sql1 = <<<SQL
   INSERT INTO pessoa (codigo, nome, sexo, email, telefone, 
@@ -73,6 +57,7 @@ $sql2 = <<<SQL
   SQL;
 
 try {
+  
   $pdo->beginTransaction();
 
   $stmt1 = $pdo->prepare($sql1);
@@ -84,19 +69,23 @@ try {
   $idNovoFunc = $pdo->lastInsertId();
   $stmt2 = $pdo->prepare($sql2);
   if (!$stmt2->execute([
-    $codigo, $dataContrato, $salario, $hashsenha
+    $idNovoFunc, $dataContrato, $salario, $hashsenha
   ])) throw new Exception('Falha na segunda inserção');
 
     if($funcao=='medico') {
        $idNovoMed = $pdo->lastInsertId();
        $stmt3 = $pdo->prepare($sql3);
       if (!$stmt3->execute([
-        $codigo, $especialidade, $crm
+        $idNovoMed, $especialidade, $crm
       ])) throw new Exception('Falha na terceira inserção');
 
     } 
 
   $pdo->commit();
+
+  header("location: index.html");
+  exit();
+
   $response = new Response(true);
 } 
 catch (Exception $e) {
