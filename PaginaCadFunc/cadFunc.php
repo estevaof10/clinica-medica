@@ -98,9 +98,8 @@ try {
   $pdo->commit();
 
   header("location: index.html");
-        exit();
-
   exit();
+
 
   $response = new Response(true);
 } 

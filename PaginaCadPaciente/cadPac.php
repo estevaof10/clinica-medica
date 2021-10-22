@@ -10,7 +10,7 @@ class Response
   }
 }
 
-require "../conexaoMysql.php";
+require "../conectaMySQL.php";
 $pdo = mysqlConnect();
 
 $codigo = $nome = $sexo = $email = $telefone = $cep = $logradouro = "";
@@ -52,7 +52,7 @@ while ($row = $stmt->fetch()) {
 
 $sql2 = <<<SQL
   INSERT INTO paciente 
-    (codigo, peso, altura, tipoSanguineo)
+    (codigo, peso, altura, tipo_sanguineo)
   VALUES (?, ?, ?, ?)
   SQL;
   
@@ -73,6 +73,10 @@ $sql2 = <<<SQL
     
   
     $pdo->commit();
+
+    header("location: index.php");
+    exit();
+
     $response = new Response(true);
     
   } 

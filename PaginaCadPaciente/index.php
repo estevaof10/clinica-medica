@@ -1,11 +1,11 @@
 <?php
 
 require_once "../conectaMySQL.php";
-require_once "../autentica.php";
+//require_once "../PaginaLogin/autentica.php";
 
 session_start();
 $pdo = mysqlConnect();
-exitWhenNotLogged($pdo);
+//exitWhenNotLogged($pdo);
 
 ?>
 
@@ -247,7 +247,7 @@ exitWhenNotLogged($pdo);
             <main>
                 <h2>Cadastrar Paciente</h2>
                 <p>Preencha os campos abaixo com os dados correspondentes ao novo paciente que deseja cadastrar.</p>
-                <form method="POST" action="#" class="row g-2">
+                <form method="POST" action="cadPac.php" class="row g-2">
                     <div class="form-floating col-md-12 gy-2">
                         <input type="text" class="form-control" id="inputNome" name="nome" placeholder="">
                         <label for="inputNome" class="form-label">Nome</label>
@@ -359,7 +359,7 @@ exitWhenNotLogged($pdo);
             })
           </script>
 
-        <script>
+        <!-- <script>
             function enviaFormulario() {
                 let meuForm = document.querySelector("form");
                 let formData = new FormData(meuForm);
@@ -388,7 +388,7 @@ exitWhenNotLogged($pdo);
                 const botao = document.querySelector("#botao");
                 botao.onclick = enviaFormulario;
                 }
-          </script>
+          </script> -->
 
         <script>
             var botaoSair = document.getElementById("sair-button");
@@ -397,6 +397,49 @@ exitWhenNotLogged($pdo);
                 if(confirmacao==true)
                     window.location.href = "../PaginaLogin/index.html";
             }
+        </script>
+
+        <script>
+                //Busca cep
+
+                function buscaEndereco(cep) {
+                    if (cep.length != 9) return;
+
+                    let xhr = new XMLHttpRequest();
+                    xhr.open("GET", "getCep.php?cep=" + cep, true);
+
+                    xhr.onload = function () {
+                        if (xhr.status != 200) {
+                            console.error("Falha inesperada: " + xhr.responseText);
+                            return;
+                        }
+                        try {
+                            var endereco = JSON.parse(xhr.responseText);
+                        }
+                        catch (e) {
+                            console.error("String JSON inválida: " + xhr.responseText);
+                            return;
+                        }
+                        let form = document.querySelector("form");
+                        form.logradouro.value = endereco.logradouro;
+                        form.cidade.value = endereco.cidade;
+                        form.estado.value = endereco.estado;
+                    }
+
+                    xhr.onerror = function () {
+                        console.error("Erro de rede - requisição não finalizada");
+                    };
+
+                    xhr.send();
+                }
+
+                window.onload = function(){
+                const inputCep = document.querySelector("#inputCEP");
+                inputCep.onkeyup = () => buscaEndereco(inputCep.value);
+                }
+
+                const botao = document.querySelector("#botao");
+
         </script>
           
           <div>

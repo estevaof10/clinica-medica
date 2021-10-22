@@ -1,11 +1,11 @@
 <?php
 
 require_once "../conectaMySQL.php";
-require_once "../autentica.php";
+//require_once "../PaginaLogin/autentica.php";
 
 session_start();
 $pdo = mysqlConnect();
-exitWhenNotLogged($pdo);
+//exitWhenNotLogged($pdo);
 
 ?>
 
@@ -194,7 +194,7 @@ exitWhenNotLogged($pdo);
                 <h2>Listagem dos Pacientes</h2>
                 <p>Segue abaixo a listagem com as informações dos pacientes já cadastrados</p>
 
-                <table>
+                <table class="tabela-exibicao table table-striped table-hover">
                     <thead>
                         <tr>
                             <th>#</th>
@@ -221,7 +221,7 @@ exitWhenNotLogged($pdo);
                             $sql = <<<SQL
                                 SELECT pessoa.nome, pessoa.email, pessoa.telefone, pessoa.sexo,
                                     pessoa.cep, pessoa.logradouro, pessoa.estado, pessoa.cidade,
-                                    paciente.peso, paciente.altura, paciente.tipoSanguineo, paciente.codigo
+                                    paciente.peso, paciente.altura, paciente.tipo_sanguineo, paciente.codigo
                                 FROM pessoa, paciente
                                 WHERE pessoa.codigo = paciente.codigo
                             SQL;

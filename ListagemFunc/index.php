@@ -5,7 +5,6 @@ require_once "../PaginaLogin/autentica.php";
 
 session_start();
 $pdo = mysqlConnect();
-exitWhenNotLogged($pdo);
 
 ?>
 
@@ -205,7 +204,7 @@ exitWhenNotLogged($pdo);
             <main>
                 <h2>Listagem dos Funcionários</h2>
                 <p>Segue abaixo a listagem com as informações dos funcionários já cadastrados</p>
-                <table>
+                <table class="tabela-exibicao table table-striped table-hover">
                     <thead>
                         <tr>
                             <th>#</th>
