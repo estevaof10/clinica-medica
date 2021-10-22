@@ -49,7 +49,7 @@ catch (Exception $e) {
 }
 
 while ($row = $stmt->fetch()) {                                    
-  $codigo = $row['codigo'] + 10;
+  $codigo = $row['codigo'] * 3;
 }
 
 $sql1 = <<<SQL

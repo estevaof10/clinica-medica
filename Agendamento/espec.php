@@ -9,7 +9,7 @@ class Medico
     $this->especialidade = $especialidade;
   }
 }
-	require "conexaoMysql.php";
+	require "conectaMySQL.php";
 	$pdo = mysqlConnect();
 
 	$especialidade = "";

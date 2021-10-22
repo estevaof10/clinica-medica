@@ -9,7 +9,7 @@ class Horarios
     $this->horarios = $horarios;
   }
 }
-require "conexaoMysql.php";
+require "conectaMySQL.php";
 $pdo = mysqlConnect();
 
 $especialidade = $medico = '';

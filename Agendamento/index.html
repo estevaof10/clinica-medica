@@ -247,7 +247,7 @@
                 </div>
 
                 <div class="form-floating col-md-6 gy-2"> <!-- define o tamanho e classe do input-->
-                    <select name="especialista" class="form-select" id="inputEspecialista"> <!-- define a classe do select e opçoes-->
+                    <select name="medico" class="form-select" id="medico"> <!-- define a classe do select e opçoes-->
                         <option selected>Selecione um especialista</option>
                         <option>Cleide Pureza Torquato / Cardiologa</option>
                         <option>Duarte Avelar Cangueiro / Cirurgico Geral</option>
@@ -265,8 +265,8 @@
                 </div>
 
                 <div class="form-floating col-md-4 gy-2"> <!-- define o tamanho e classe do input-->
-                    <input type="date" class="form-control" id="inputData" name="data" placeholder="" autocomplete="off"> <!-- define o tipo e classe do input -->
-                    <label for="inputData" class="form-label">Data</label> <!-- define a classe e label do input de data -->
+                    <input type="date" class="form-control" id="data" name="data" placeholder="" autocomplete="off"> <!-- define o tipo e classe do input -->
+                    <label for="data" class="form-label">Data</label> <!-- define a classe e label do input de data -->
                 </div>
 
                 <div class="form-floating col-md-4 gy-2"> <!-- define o tamanho e classe do input-->
@@ -536,7 +536,6 @@
                         .then(data =>{
                             console.log(data.success);
                             if(data.success == true){
-                            document.querySelector(".modal").style.display = "block";
                             meuForm.reset();
                             }else{
                                 throw new Error(response.status);
@@ -544,56 +543,8 @@
                             })
                         .catch(error => {
                             console.error(error);
-                            document.querySelector(".modal-erro").style.display = "block";
                         })
                     }
-
-                        //busca horario
-                        const inputForm= document.querySelector("#form_agenda");
-                        const inputData= inputForm.querySelector("#data");
-                        const inputMedico= inputForm.querySelector("#medico");
-                        const inputEspecialidade = inputForm.querySelector("#especialidade");
-                        const inputHorario = inputForm.querySelector("#horario");
-                        inputData.addEventListener('change', (event) => {
-                            for (var i = 0; i < 11; i++) {
-                                var campoSelect = document.getElementById("horario");
-                                var option = document.createElement("option");
-                                option.text = '';
-                                option.value = '';
-                                campoSelect.remove(option);
-                            }
-                            buscaHorario(inputData.value, inputEspecialidade.value, inputMedico.value);
-                        });
-
-                        const botao = document.querySelector("#botao");
-                        botao.onclick = enviaDadosPost;
-
-                        const modalErro = document.querySelector(".modal-erro");
-                        const buttonCloseErro = modalErro.querySelector(".buttonCloseErro");
-                        buttonCloseErro.addEventListener("click", function(){
-                            modalErro.style.display = "none";
-                        });
-
-                        const modal = document.querySelector(".modal");
-                        const buttonClose = modal.querySelector(".buttonClose");
-                        buttonClose.addEventListener("click", function(){
-                            modal.style.display = "none";
-                        });
-
-                        window.onload = function () {
-                        listar();
-                        const selecionado = document.querySelector("#especialidade");
-                        selecionado.addEventListener('change', (event) => {
-                            for (var i = 0; i < especialidade.length; i++) {
-                                var campoSelect = document.getElementById("medico");
-                                var option = document.createElement("option");
-                                option.text = '';
-                                option.value = '';
-                                campoSelect.remove(option);
-                            }
-                            enviar(selecionado.value);
-                        });
-        }
 
       </script>
 

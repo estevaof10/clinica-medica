@@ -10,7 +10,7 @@
     }
     }
 
-        require "conexaoMysql.php";
+        require "conectaMySQL.php";
         $pdo = mysqlConnect();
 
     $especialidade = $_GET['especialidade'];
