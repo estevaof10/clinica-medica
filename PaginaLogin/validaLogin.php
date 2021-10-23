@@ -1,7 +1,7 @@
 <?php
 
 require_once "../conectaMySQL.php";
-require_once "autentica.php";
+require_once "../PaginaLogin/autentica.php";
 session_start();
 
 class RequestResponse
@@ -50,9 +50,9 @@ if ($senhaHash = checkPassword($pdo, $email, $senha)) {
   }
   
   if($result_ok == true){
-  $response = new RequestResponse(true, 'PaginaHomeRestrita/index.html');
+  $response = new RequestResponse(true, 'PaginaHomeRestrita/index.php');
   }else{
-    $response = new RequestResponse(true, 'PaginaHomeRestrita/index.html'); 
+    $response = new RequestResponse(true, 'PaginaHomeRestrita/index.php'); 
   }
 } 
 else

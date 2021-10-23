@@ -1,11 +1,11 @@
 <?php
 
 require_once "../conectaMySQL.php";
-//require_once "../PaginaLogin/autentica.php";
+require_once "../PaginaLogin/autentica.php";
 
 session_start();
 $pdo = mysqlConnect();
-//exitWhenNotLogged($pdo);
+exitWhenNotLogged($pdo);
 
 ?>
 

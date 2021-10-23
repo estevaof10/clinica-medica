@@ -255,29 +255,32 @@
             <p>Preencha corretamente os campos abaixo para realizar o login</p>
 
             <div class="container"> 
-                <form action="action.php" method="POST" class="row">
+                <form class="row">
                     <div>
                         <img src="../imagem/LogoHeaderMini.png" alt="logo">
                     </div>
 
                     <div class="inputs">
                         <div class="form-floating">
-                            <input type="email" class="form-control" id="inputEmail" name="email" placeholder="" autocomplete="off">
-                            <label for="inputEmail" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="email" name="email" placeholder="" autocomplete="off">
+                            <label for="email" class="form-label">Email</label>
                         </div>
                         <div class="form-floating">
-                            <input type="password" class="form-control" id="senhaFunc" name="senhaFunc" placeholder="">
-                            <label for="senhaFunc" class="form-label">Senha</label>
+                            <input type="password" class="form-control" id="senha" name="senha" placeholder="">
+                            <label for="senha" class="form-label">Senha</label>
                         </div>
                         <div class="lembrasenha">
                             <input type="checkbox" id="lembraSenha" name="lembraSenha" checked>
                             <label for="lembraSenha">Lembrar senha</label>
                         </div>
-                        <button type="submit" class="btn btn-primary">Login
+                        <button type="submit" class="btn btn-primary" id="botao" name="botao">Login
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-right-circle" viewBox="0 0 16 16">
                                 <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z"/>
                             </svg>
                         </button>
+                        <div class="col-sm-12 d-grid">
+                            <p id="msgErro">Dados inválidos! Tente novamente.</p>
+                        </div>
                         <div class="links">
                             <a href="../PaginaCadFunc/index.html">Criar nova conta</a>
                         </div>
@@ -303,7 +306,6 @@
 
                     xhr.open("POST", "validaLogin.php");
                     xhr.onload = function () {
-                        // verifica o código de status retornado pelo servidor
                         if (xhr.status != 200) {
                         console.error("Falha inesperada: " + xhr.responseText);
                         return;

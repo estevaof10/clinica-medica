@@ -5,6 +5,8 @@ require_once "../PaginaLogin/autentica.php";
 
 session_start();
 $pdo = mysqlConnect();
+exitWhenNotLogged($pdo);
+
 
 ?>
 
