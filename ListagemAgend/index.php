@@ -1,11 +1,11 @@
 <?php
 
 require_once "../conectaMySQL.php";
-require_once "../PaginaLogin/autentica.php";
+//require_once "../PaginaLogin/autentica.php";
 
-session_start();
+//session_start();
 $pdo = mysqlConnect();
-exitWhenNotLogged($pdo);
+//exitWhenNotLogged($pdo);
 
 ?>
 
@@ -203,7 +203,7 @@ exitWhenNotLogged($pdo);
                 <h2>Listagem dos Agendamentos de Consultas</h2>
                 <p>Segue abaixo a listagem com as informações das consultas já agendadas</p>
             
-                <table>
+                <table class="tabela-exibicao table table-striped table-hover">
                     <thead>
                         <tr>
                             <th>Nome</th>
@@ -242,7 +242,7 @@ exitWhenNotLogged($pdo);
                                         <td>$nome</td> 
                                         <td>$email</td> 
                                         <td>$data_agenda</td>
-                                        <td>{$row['horario']}</td>  
+                                        <td>{$row['horario']}h</td>  
                                         <td>{$row['sexo']}</td>
                                         <td>$codigoMedico</td>                                    
                                     </tr>      
