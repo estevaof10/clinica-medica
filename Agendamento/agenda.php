@@ -10,7 +10,7 @@ class Response
   }
 }
 
-  require "conectaMySQL.php";
+  require "../conectaMySQL.php";
   $pdo = mysqlConnect();
   
   function codigo($especialidade, $medico){
@@ -46,7 +46,7 @@ class Response
   if (isset($_POST["especialidade"])) $especialidade = $_POST["especialidade"];
   if (isset($_POST["medico"])) $medico = $_POST["medico"];
   if (isset($_POST["data"])) $data = $_POST["data"];
-  if (isset($_POST["horario"])) $horario = $_POST["horario"];
+  if (isset($_POST["hora"])) $horario = $_POST["hora"];
   if (isset($_POST["nome"])) $nome = $_POST["nome"];
   if (isset($_POST["email"])) $email = $_POST["email"];
   if (isset($_POST["sexo"])) $sexo = $_POST["sexo"];
@@ -57,7 +57,7 @@ class Response
 
     $sql = <<<SQL
     
-    INSERT INTO agenda(dataConsulta, horario, nome, sexo, email, codigoMedico)
+    INSERT INTO agenda(data_agenda, horario, nome, sexo, email, codigoMedico)
     VALUES (?, ?, ?, ?, ?, ?)
     SQL;
     

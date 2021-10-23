@@ -10,10 +10,11 @@
     }
     }
 
-        require "conectaMySQL.php";
-        $pdo = mysqlConnect();
-
-    $especialidade = $_GET['especialidade'];
+    require "../conectaMySQL.php";
+    $pdo = mysqlConnect();
+  
+    $especialidade = $_GET["especialidade"];
+    $codigo = '';
 
     try{
         $sql = <<<SQL
@@ -25,17 +26,23 @@
         $stmt = $pdo->query($sql);
 
     } 	catch(Exception $e) {
-        exit('Ocorreu uma falha: ' . $e->getMessage());
+        exit('Ocorreu uma erro: ' . $e->getMessage());
     }
     
-        $nomes = Array();
-        
-        while ($row = $stmt->fetch()) {
+    $nomes = Array();
+
+    while ($row = $stmt->fetch()) {
         if($especialidade == $row['especialidade']){
             $nomes [] = htmlspecialchars($row['nome']);                 
+            }
         }
-        }
+        
+        
     $medicos = new Medicos($nomes);
+
+    $meds = array(
+        $codigo => $medicos);
+
         echo json_encode($medicos);
 
 ?>

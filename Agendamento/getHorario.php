@@ -9,7 +9,7 @@ class Horarios
     $this->horarios = $horarios;
   }
 }
-require "conectaMySQL.php";
+require "../conectaMySQL.php";
 $pdo = mysqlConnect();
 
 $especialidade = $medico = '';
@@ -19,6 +19,8 @@ $especialidade = $medico = '';
 if (isset($_GET["especialidade"])) $especialidade = $_GET["especialidade"];
 if (isset($_GET["medico"])) $medico = $_GET["medico"];
 if (isset($_GET["data"])) $data = $_GET["data"];
+if (isset($_GET["hora"])) $horaAg = $_GET["hora"];
+
 
 function codigo($especialidade, $medico){
     $pdo = mysqlConnect();
@@ -49,9 +51,9 @@ function codigo($especialidade, $medico){
 function horarioAgendado($codMed, $dataInf){
     $pdo = mysqlConnect();
     $sql = <<<SQL
-          SELECT codigoMedico, dataConsulta, horario
+          SELECT codigoMedico, data_agenda, horario
           FROM agenda
-          WHERE codigoMedico = ? AND dataConsulta = ?
+          WHERE codigoMedico = ? AND data_agenda = ?
           ORDER BY `agenda`.`horario` ASC
           SQL;
     try {
@@ -65,8 +67,8 @@ function horarioAgendado($codMed, $dataInf){
     $horarioAg = Array();
     while($row = $stmt->fetch()) {
 
-      if($dataInf == $row['dataConsulta']);{
-        $horarioAg[] = htmlspecialchars($row['horario']); 
+      if($dataInf == $row['data_agenda']);{
+        $horarioAg[] = htmlspecialchars($row['hora']); 
       }
     }
     return $horarioAg;

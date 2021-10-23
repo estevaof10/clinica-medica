@@ -50,7 +50,7 @@ CREATE TABLE baseAjax
 
 CREATE TABLE agenda
 (
-   codigo int PRIMARY KEY,
+   codigo int PRIMARY KEY auto_increment,
    data_agenda date,
    horario char(15),
    nome varchar(200),

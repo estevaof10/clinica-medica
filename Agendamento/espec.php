@@ -9,7 +9,7 @@ class Medico
     $this->especialidade = $especialidade;
   }
 }
-	require "conectaMySQL.php";
+	require "../conectaMySQL.php";
 	$pdo = mysqlConnect();
 
 	$especialidade = "";
@@ -21,18 +21,21 @@ class Medico
             FROM medico
         SQL;
 
-
         $stmt = $pdo->query($sql);
     } 
     catch (Exception $e) {
         exit('Ocorreu uma falha: ' . $e->getMessage());
     }
+
     $especialidade = Array();
+
     while ($row = $stmt->fetch()) {
     	$especialidade [] = htmlspecialchars($row['especialidade']);
       
     }
+
     $medico = new Medico($especialidade);
+    
       echo json_encode($medico);
 
       
