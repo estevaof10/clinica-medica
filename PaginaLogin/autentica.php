@@ -81,7 +81,7 @@
 
         if($emails == $_SESSION['emailUsuario']){ 
                 
-          header("Location: ListagemAgendMed/index.php");
+          header("Location: PaginaHomeRestrita/index.php");
           exit();          
         }else{
           header("Location: PaginaHomeRestrita/index.php");
