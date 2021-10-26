@@ -37,20 +37,20 @@ if (isset($_POST["crm"])) $crm = $_POST["crm"];
 
 $hashsenha = password_hash($senha, PASSWORD_DEFAULT);
 
-// try {
-//   $sql = <<<SQL
-//     SELECT codigo FROM pessoa ORDER BY codigo DESC limit 1  
-//   SQL;
+try {
+  $sql = <<<SQL
+    SELECT codigo FROM pessoa ORDER BY codigo DESC limit 1  
+  SQL;
 
-//   $stmt = $pdo->query($sql);
-// } 
-// catch (Exception $e) {
-//   exit('Ocorreu uma falha: ' . $e->getMessage());
-// }
+  $stmt = $pdo->query($sql);
+} 
+catch (Exception $e) {
+  exit('Ocorreu uma falha: ' . $e->getMessage());
+}
 
-// while ($row = $stmt->fetch()) {                                    
-//   $codigo = $row['codigo']+1;
-// }
+while ($row = $stmt->fetch()) {                                    
+  $codigo = $row['codigo']+10;
+}
 
 $sql1 = <<<SQL
   INSERT INTO pessoa (codigo, nome, sexo, email, telefone, 

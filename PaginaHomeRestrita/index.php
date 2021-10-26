@@ -346,8 +346,39 @@ while ($row = $stmt->fetch()) {
                         <p><a href="../ListagemAgend/index.php">Listagem de todos os Agendamentos</a></p>
                         
                         <div class="agendMed">
-                            <p>Neste link é possível visualizar a listagens dos meus agendamentos de consultas da E2V Clínica Médica.</p>
-                            <p><a href="../ListagemAgendMed/index.html">Listagem dos Meus Agendamentos</a></p>
+                            <?php
+                                $pdo = mysqlConnect();
+                                  try {
+
+                                    $sql = <<<SQL
+                                    SELECT p.email, p.codigo
+                                    FROM medico m, pessoa p
+                                    WHERE p.codigo = m.codigo
+                                    SQL;
+                                
+                                    $stmt = $pdo->query($sql);
+                                  } 
+                                  catch (Exception $e) {
+                                      exit('Ocorreu uma falha: ' . $e->getMessage());
+                                  }
+                                  $result_ok = '';
+                                  $emails = '';
+                                  $emailLog = '';
+                                  $emailLog = $_SESSION['emailUsuario'];
+                                  while ($row = $stmt->fetch()) {                                    
+                                    $emails = htmlspecialchars($row['email']);              
+                                    if($emails == $emailLog){ 
+                                      $result_ok = true;
+                                    }
+                                  }
+                                  
+                                  if($result_ok == true){
+                                    echo<<<HTML
+                                        <p><a href="../ListagemAgendMed/index.php">Listagem dos Meus Agendamentos</a></p>
+                                        <p>Neste link é possível visualizar a listagens dos meus agendamentos de consultas da E2V Clínica Médica.</p>
+                                    HTML;
+                                  }
+                            ?>
                         </div>
                     </section>
                 </div>
@@ -371,7 +402,7 @@ while ($row = $stmt->fetch()) {
                 for (let button of buttons) {
                     button.addEventListener("click", changeTab); // função que muda a 'tab' de acordo com o click do usuario usando a função changeTab
                 }
-                openTad(0); // a função 'openTab abre a a section correspondente ao indice especificado 
+                openTab(0); // a função 'openTab abre a a section correspondente ao indice especificado 
             }
     
             function changeTab(e) { //a função 'changeTab' tem o papel de encontra o item de lista dentro da lista usando o parametro 'e' para obter detalhes do evento
