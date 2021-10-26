@@ -219,18 +219,18 @@
         <div class="container"> <!-- div principal do formulario -->
             <form id ="agendaForm" class="row g-2" > <!-- define o metodo do formulario action="agenda.php" method="POST" --> 
                 <div class="form-floating col-md-6 gy-2"> <!-- define o tamanho e classe do input-->
-                    <input type="text" class="form-control" id="nome" name="nome" placeholder=""> <!-- define o tipo e classe do input -->
+                    <input type="text" class="form-control" id="nome" name="nome" > <!-- define o tipo e classe do input -->
                     <label for="nome" class="form-label">Nome</label> <!-- define o label do input -->
                 </div> 
     
                 <div class="form-floating col-md-6 gy-2"> <!-- define o tamanho e classe do input-->
-                    <input type="email" class="form-control" id="email" name="email" placeholder="" autocomplete="off"> <!-- define o tipo e classe do input -->
+                    <input type="email" class="form-control" id="email" name="email" autocomplete="off"> <!-- define o tipo e classe do input -->
                     <label for="email" class="form-label">Email</label> <!-- define o label do input-->
                 </div>
 
                 <div class="form-floating col-md-6 gy-2"> <!-- define o tamanho e classe do input-->
                     <select name="especialidade" class="form-select" id="especialidade"> <!-- define a classe do select e opçoes-->
-                        <option value selected="true" >Selecione uma especialidade</option>
+                        <option value="" selected>Selecione uma especialidade</option>
                         <option value="Cardiologia">Cardiologia</option>
                         <option value="Cirurgia Geral">Cirurgia Geral</option>
                         <option value="Dermatologia">Dermatologia</option>
@@ -248,45 +248,25 @@
 
                 <div class="form-floating col-md-6 gy-2"> <!-- define o tamanho e classe do input-->
                     <select name="medico" class="form-select" id="medico" required> <!-- define a classe do select e opçoes-->
-                        <option value selected="true">Selecione um especialista</option>
-                        <!-- <option>Cleide Pureza Torquato</option>
-                        <option>Duarte Avelar Cangueiro</option>
-                        <option>Rúbia Saltão Granja</option>
-                        <option>Álvaro Cotrim Orriça</option>
-                        <option>Nélson Carvalheiro Espargosa</option>
-                        <option>Jeremias Canejo Fiães</option>
-                        <option>Milena Leiria Tigre</option>
-                        <option>Oséias Miguéis Serpa</option>
-                        <option>Rose Teles Prada</option>
-                        <option>Mayara Gago Leão</option>
-                        <option>Luiz Regodeiro Carvalheira</option> -->
+                        <option value="" selected>Selecione um especialista</option>
                     </select>
                     <label for="medico" class="form-label" >Médico Especialista</label> <!-- define o label do select -->
                 </div>
 
                 <div class="form-floating col-md-4 gy-2"> <!-- define o tamanho e classe do input-->
-                    <input type="date" class="form-control" id="data" name="data" placeholder="" autocomplete="off" required> <!-- define o tipo e classe do input -->
+                    <input type="date" class="form-control" id="data" name="data" autocomplete="off" required> <!-- define o tipo e classe do input -->
                     <label for="data" class="form-label">Data</label> <!-- define a classe e label do input de data -->
                 </div>
 
                 <div class="form-floating col-md-4 gy-2"> <!-- define o tamanho e classe do input-->
-                    <select name="hora" class="form-select" id="hora" required> <!-- define a classe do select e opçoes-->
+                    <select name="hora" class="form-select" id="hora"> <!-- define a classe do select e opçoes-->
                         <option selected>Selecione um horario</option> 
-                        <!-- <option>8:00</option>
-                        <option>9:00</option>
-                        <option>10:00</option>
-                        <option>11:00</option>
-                        <option>13:00</option>
-                        <option>14:00</option>
-                        <option>15:00</option>
-                        <option>16:00</option>
-                        <option>17:00</option> -->
                     </select>
                     <label for="hora" class="form-label">Horário</label> <!-- define o label do select -->
                 </div>
 
                 <div class="form-floating col-md-4 gy-2"> <!-- define o tamanho e classe do input-->
-                    <select name="sexo" class="form-select" id="sexo" required> <!-- define a classe do select e opçoes-->
+                    <select name="sexo" class="form-select" id="sexo"> <!-- define a classe do select e opçoes-->
                         <option selected>Selecione</option> 
                         <option value="Masculino">Masculino</option>
                         <option value="Feminino">Feminino</option>
@@ -303,6 +283,7 @@
                     </button>
                 </div>
             </form>
+        </div>
     </main>
 
     <script> 
