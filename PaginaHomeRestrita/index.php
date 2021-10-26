@@ -44,7 +44,7 @@ while ($row = $stmt->fetch()) {
             crossorigin="anonymous">
 
         <title>Clínica Médica E2V</title>
-        <link rel="icon" href="../imagem/E2V title.png">
+        <link rel="icon" href="../imagem/E2V-title.png">
     
         <style>
             *{

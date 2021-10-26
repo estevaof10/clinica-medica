@@ -21,7 +21,7 @@ exitWhenNotLogged($pdo);
                 crossorigin="anonymous">
 
         <title>Listagem Pacientes - E2V Clínica Médica</title> 
-        <link rel="icon" href="../imagem/E2V title.png">
+        <link rel="icon" href="../imagem/E2V-title.png">
 
         <style>
             *{

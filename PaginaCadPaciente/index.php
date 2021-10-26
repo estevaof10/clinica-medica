@@ -19,7 +19,7 @@ exitWhenNotLogged($pdo);
             integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" 
             crossorigin="anonymous">
         <title>Cadastro Paciente - E2V Clínica Médica</title> 
-        <link rel="icon" href="../imagem/E2V title.png">
+        <link rel="icon" href="../imagem/E2V-title.png">
 
         <style>
             *{
