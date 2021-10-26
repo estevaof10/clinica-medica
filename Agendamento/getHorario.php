@@ -19,8 +19,6 @@ $especialidade = $medico = '';
 if (isset($_GET["especialidade"])) $especialidade = $_GET["especialidade"];
 if (isset($_GET["medico"])) $medico = $_GET["medico"];
 if (isset($_GET["data"])) $data = $_GET["data"];
-if (isset($_GET["hora"])) $horaAg = $_GET["hora"];
-
 
 function codigo($especialidade, $medico){
     $pdo = mysqlConnect();
@@ -68,7 +66,7 @@ function horarioAgendado($codMed, $dataInf){
     while($row = $stmt->fetch()) {
 
       if($dataInf == $row['data_agenda']);{
-        $horarioAg[] = htmlspecialchars($row['hora']); 
+        $horarioAg[] = htmlspecialchars($row['horario']); 
       }
     }
     return $horarioAg;

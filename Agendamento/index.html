@@ -391,7 +391,7 @@
 
 
                     function buscaHorario(data, especialidade, medico) {
-                        
+                        console.log("ENTREI NO METODO")
                         let xhr = new XMLHttpRequest();
                         xhr.open("GET", "getHorario.php?data=" + data + "&especialidade=" + especialidade + "&medico=" + medico, true);
             
@@ -406,6 +406,7 @@
                                 console.error("String JSON inválida: " + xhr.responseText);
                                 return;
                             }
+                            console.log(horarioAg.horarios)
                             var horarios_exibir = ["8", "9", "10", "11", "12", "13", "14", "15", "16", "17"];
                             
                             for(i = 0; i<horarioAg.horarios.length; i++){
@@ -477,6 +478,24 @@
                     listaMed(selecionado.value);
                 });
             }
+
+      </script>
+      <script>
+          function data(){
+                var data_agend = new Date();
+                var dia_agend = String(data_agend.getDate() + 1).padStart(2, '0');
+                var ano_agend = data_agend.getFullYear();
+                var mes_agend = String(data_agend.getMonth() + 1).padStart(2, '0');
+               
+                var dataAtual = ano_agend + '-' + mes_agend + '-' + dia_agend;
+            
+                var input = document.getElementById("data");
+                    input.min = dataAtual;
+            }
+            
+            var inputdata = document.getElementById("data");
+            inputdata.onclick = () => data();
+        
       </script>
 
       <div>
