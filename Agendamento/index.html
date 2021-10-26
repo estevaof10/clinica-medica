@@ -231,7 +231,7 @@
                 <div class="form-floating col-md-6 gy-2"> <!-- define o tamanho e classe do input-->
                     <select name="especialidade" class="form-select" id="especialidade"> <!-- define a classe do select e opçoes-->
                         <option value="" selected>Selecione uma especialidade</option>
-                        <option value="Cardiologia">Cardiologia</option>
+                        <!-- <option value="Cardiologia">Cardiologia</option>
                         <option value="Cirurgia Geral">Cirurgia Geral</option>
                         <option value="Dermatologia">Dermatologia</option>
                         <option value="Endocrinologia">Endocrinologia</option>
@@ -241,7 +241,7 @@
                         <option value="Otorrinolaringologia">Otorrinolaringologia</option>
                         <option value="Pediatria">Pediatria</option>
                         <option value="Psiquiatria">Psiquiatria</option>
-                        <option value="Radioterapia">Radioterapia</option> 
+                        <option value="Radioterapia">Radioterapia</option>  -->
                     </select>
                     <label for="especialidade" class="form-label">Especialidade Médica</label> <!-- define o label do select -->
                 </div>
@@ -300,10 +300,6 @@
       <script>
         
         function listaEspec(){
-
-            // let meuForm = document.querySelector("form");
-            // let formData = new FormData(meuForm); 
-
             let xhr = new XMLHttpRequest();
             xhr.open("POST", "espec.php", true);
 
@@ -321,18 +317,7 @@
                             console.error("String JSON inválida: " + xhr.responseText);
                             return;
                }
-
-            //    console.log();
-
-            //    document.getElementById("medico").innerHTML ="";
-            //    var seleciona = document.getElementById("especialidade");
-            //    var option = document.createElement("option");
-            //    option.text="";
-            //    option.value="";
-            //    option.setAttribute('selected',true);
-            //    seleciona.add(option);
-
-                for(i=0; i < medico.length; i++){
+                for(let i=0; i < medico.especialidade.length; i++){
                     var selecao = document.getElementById("especialidade");
                     var option = document.createElement("option");
                     option.text = medico.especialidade[i];
@@ -351,9 +336,6 @@
         function listaMed(especialidade){
             console.log("PASSEI 3");
 
-            // let meuForm = document.querySelector("form");
-            // let formData = new FormData(meuForm);
-
             let xhr = new XMLHttpRequest();
             xhr.open("GET", "getMedico.php?especialidade=" + especialidade, true);
             xhr.onload = function () {
@@ -369,12 +351,10 @@
                             console.error("String JSON inválida: " + xhr.responseText);
                             return;
                 }
-               //document.getElementById("medico").innerHTML ="";
                var seleciona = document.getElementById("especialidade");
                var option = document.createElement("option");
                option.text='';
                option.value='';
-               //option.setAttribute('selected',true);
                seleciona.add(option);
 
 
@@ -508,11 +488,6 @@
                     listaMed(selecionado.value);
                 });
             }
-
-            
-                // let inputMed = document.querySelector("#especialidade");
-                // inputMed.onkeyup = () => listaMed(inputMed.value);
-                // }
       </script>
 
       <div>
