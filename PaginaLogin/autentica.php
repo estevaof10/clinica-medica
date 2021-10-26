@@ -84,7 +84,7 @@
           header("Location: PaginaHomeRestrita/index.php");
           exit();          
         }else{
-          header("Location: PaginaHomeRestrita/index.php");
+          header("Location: PaginaLogin/index.html");
           exit(); 
         } 
       }

@@ -1,7 +1,7 @@
 <?php
 
 require_once "../conectaMySQL.php";
-require_once "../PaginaLogin/autentica.php";
+require_once "autentica.php";
 session_start();
 
 class RequestResponse
@@ -23,7 +23,8 @@ $pdo = mysqlConnect();//
 if ($senhaHash = checkPassword($pdo, $email, $senha)) {
 
   $_SESSION['emailUsuario'] = $email;
-  $_SESSION['loginString'] = hash('sha512', $senhaHash . $_SERVER['HTTP_USER_AGENT']);  
+  $_SESSION['loginString'] = hash('sha512', $senhaHash . $_SERVER['HTTP_USER_AGENT']);
+  $response = new RequestResponse(true, 'PaginaHomeRestrita/index.php');
 
   try {
 
@@ -50,9 +51,9 @@ if ($senhaHash = checkPassword($pdo, $email, $senha)) {
   }
   
   if($result_ok == true){
-  $response = new RequestResponse(true, 'PaginaHomeRestrita/index.php');
+  $response = new RequestResponse(true, '../PaginaHomeRestrita/index.php');
   }else{
-    $response = new RequestResponse(true, 'PaginaHomeRestrita/index.php'); 
+    $response = new RequestResponse(true, 'index.html'); 
   }
 } 
 else
