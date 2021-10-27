@@ -201,13 +201,6 @@
                 height: 20px;
                 font-size: 15px;
             }
-            .links a{
-                font-size: 15px;
-                font-size: 15px;
-                text-decoration: none;
-                margin-top: 10px;
-                font-style: italic;
-            }
             footer{
                 bottom: 0;
                 position: absolute;
@@ -277,12 +270,6 @@
                                 <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z"/>
                             </svg>
                         </button>
-                        <div class="col-sm-12 d-grid">
-                            <p id="msgErro">Dados inválidos! Tente novamente.</p>
-                        </div>
-                        <div class="links">
-                            <a href="../PaginaCadFunc/index.html">Criar nova conta</a>
-                        </div>
                     </div>                  
                 </form>
             </div>
@@ -318,12 +305,10 @@
                     }
 
                     if (response.success){
-                        document.querySelector("#msgErro").style.display = "none";
-                            form.reset();
+                        form.reset();
                         window.location = response.detail;
                     }
                     else {
-                        document.querySelector("#msgErro").style.display = 'block';
                         form.senha.value = "";
                         form.senha.focus();
                     }
