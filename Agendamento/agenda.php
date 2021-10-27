@@ -27,7 +27,7 @@ class Response
       $stmt->execute([$medico]);
     } 
     catch (Exception $e) {
-      exit('Ocorreu uma falha: ' . $e->getMessage());
+      exit('Ocorreu uma falha durante a execução desse comando: ' . $e->getMessage());
     }
     
     $codigo = '';
@@ -69,7 +69,7 @@ class Response
     $response = new Response(true);
   } 
   catch (Exception $e) {  
-      exit('Falha ao cadastrar os dados: ' . $e->getMessage());
+      exit('Ocorreu uma falha durante a tentativa de cadastrar os dados: ' . $e->getMessage());
       $response = new Response(false);
   }
   

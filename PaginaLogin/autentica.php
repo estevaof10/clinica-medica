@@ -22,7 +22,7 @@
       return $senhaHash;
     } 
     catch (Exception $e) {
-      exit('Falha inesperada: ' . $e->getMessage());
+      exit('Ocorreu uma falha durante a execução desse comando: ' . $e->getMessage());
     }
   }
 
@@ -54,7 +54,7 @@
       return true;
     } 
     catch (Exception $e) {
-      exit('Falha inesperada: ' . $e->getMessage());
+      exit('Ocorreu uma falha durante a execução desse comando: ' . $e->getMessage());
     }
   }
 
@@ -72,7 +72,7 @@
         $stmt = $pdo->query($sql);
       } 
       catch (Exception $e) {
-          exit('Ocorreu uma falha: ' . $e->getMessage());
+          exit('Ocorreu uma falha durante a execução desse comando: ' . $e->getMessage());
       }
       $emails = '';
       

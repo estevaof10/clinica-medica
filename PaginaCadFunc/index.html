@@ -185,14 +185,12 @@
             footer p{
                 color: white;
                 text-align: center;
-                font-size: 18px;
+                font-size: 1.5rem;
             }
         </style>
     </head> 
     <body>
         <header>
-                
-
             <div class="container"> <!-- div principal -->
 
                 <div class="logo"> <!-- div com a classe logo -->
@@ -200,12 +198,11 @@
                 </div>
         
                 <div class="menu-section"> <!-- classe que é responsavel pela barra de navegação -->
-        
                     <div class="menu-burguer"> <!-- define a classe menu-burguer para o formato do menu expansivo -->
                         <div class="one"></div> <!-- div que representa a primeira barra do menu expansivo -->
                         <div class="two"></div> <!-- div que representa a segunda barra do menu expansivo -->
                         <div class="three"></div> <!-- div que representa a terceira barra do menu expansivo-->
-                   </div>
+                    </div>
         
                     <nav> <!-- barra de navegação -->
                         <ul> <!-- lista com opçoes da barra de navegação -->
@@ -214,9 +211,8 @@
                             <li><a id="sair-button" href="../PaginaLogin/logout.php">Sair</a></li> <!-- link para ir a pagina de login da clinica -->
                         </ul>
                     </nav>
-                  </div>
                 </div>
-
+            </div>
         </header>
         <div class="container">
             <main>
@@ -376,56 +372,51 @@
         </script>
 
         <script>
-                //Busca cep
+            function buscaEndereco(cep) {
+                if (cep.length != 9) return;
 
-                function buscaEndereco(cep) {
-                    if (cep.length != 9) return;
+                let xhr = new XMLHttpRequest();
+                xhr.open("GET", "getCep.php?cep=" + cep, true);
 
-                    let xhr = new XMLHttpRequest();
-                    xhr.open("GET", "getCep.php?cep=" + cep, true);
-
-                    xhr.onload = function () {
-                        if (xhr.status != 200) {
-                            console.error("Falha inesperada: " + xhr.responseText);
-                            return;
-                        }
-                        try {
-                            var endereco = JSON.parse(xhr.responseText);
-                        }
-                        catch (e) {
-                            console.error("String JSON inválida: " + xhr.responseText);
-                            return;
-                        }
-                        let form = document.querySelector("form");
-                        form.logradouro.value = endereco.logradouro;
-                        form.cidade.value = endereco.cidade;
-                        form.estado.value = endereco.estado;
+                xhr.onload = function () {
+                    if (xhr.status != 200) {
+                        console.error("Falha inesperada: " + xhr.responseText);
+                        return;
                     }
-
-                    xhr.onerror = function () {
-                        console.error("Erro de rede - requisição não finalizada");
-                    };
-
-                    xhr.send();
+                    try {
+                        var endereco = JSON.parse(xhr.responseText);
+                    }
+                    catch (e) {
+                        console.error("String JSON inválida: " + xhr.responseText);
+                        return;
+                    }
+                    let form = document.querySelector("form");
+                    form.logradouro.value = endereco.logradouro;
+                    form.cidade.value = endereco.cidade;
+                    form.estado.value = endereco.estado;
                 }
 
-                const funcao = document.getElementById('verifMedico');
-                const especialidade = document.querySelector('.especialidade');
-                const crm = document.querySelector('.crm');
+                xhr.onerror = function () {
+                    console.error("Erro de rede - requisição não finalizada");
+                };
 
-                window.onload = function(){
-                const inputCep = document.querySelector("#inputCEP");
-                inputCep.onkeyup = () => buscaEndereco(inputCep.value);
-                }
+                xhr.send();
+            }
 
-                const botao = document.querySelector("#botao");
+            const funcao = document.getElementById('verifMedico');
+            const especialidade = document.querySelector('.especialidade');
+            const crm = document.querySelector('.crm');
 
+            window.onload = function(){
+            const inputCep = document.querySelector("#inputCEP");
+            inputCep.onkeyup = () => buscaEndereco(inputCep.value);
+            }
+
+            const botao = document.querySelector("#botao");
         </script>
 
-        <div>
-            <footer>
-                <p>© Copyright 2021. Todos os direitos reservados. Vinícius Alves, Vinícius Adriano e Estevão Filipe.</p>
-            </footer>
-        </div>
+        <footer>
+            <p>© Copyright 2021. Todos os direitos reservados. Vinícius Alves, Vinícius Adriano e Estevão Filipe.</p>
+        </footer>
     </body>
 </html>

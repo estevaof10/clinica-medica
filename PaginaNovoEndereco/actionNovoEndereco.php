@@ -26,7 +26,7 @@ try {
 } 
 catch (Exception $e) {  
   if ($e->errorInfo[1] === 1062)
-    exit('Dados duplicados: ' . $e->getMessage());
+    exit('Erro! Dados duplicados: ' . $e->getMessage());
   else
     exit('Erro ao cadastrar: ' . $e->getMessage());
 }

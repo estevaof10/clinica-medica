@@ -24,7 +24,7 @@ class Medico
         $stmt = $pdo->query($sql);
     } 
     catch (Exception $e) {
-        exit('Ocorreu uma falha: ' . $e->getMessage());
+        exit('Ocorreu uma falha durante a execução desse comando: ' . $e->getMessage());
     }
 
     $especialidade = Array();

@@ -169,7 +169,7 @@ exitWhenNotLogged($pdo);
             footer p{
                 color: white;
                 text-align: center;
-                font-size: 18px;
+                font-size: 1.5rem;
             }
         </style>
     </head>
@@ -184,7 +184,6 @@ exitWhenNotLogged($pdo);
                 </div>
         
                 <div class="menu-section"> <!-- classe que é responsavel pela barra de navegação -->
-        
                     <div class="menu-burguer"> <!-- define a classe menu-burguer para o formato do menu expansivo -->
                         <div class="one"></div> <!-- div que representa a primeira barra do menu expansivo -->
                         <div class="two"></div> <!-- div que representa a segunda barra do menu expansivo -->
@@ -205,88 +204,85 @@ exitWhenNotLogged($pdo);
                 <h2>Listagem dos Meus Agendamentos de Consultas</h2>
                 <p>Segue abaixo a listagem com as informações de sua agenda de consultas</p>
                 <div>
-                <table class="tabela-exibicao table table-striped table-hover">
-                    <thead>
-                        <tr>
-                            <th>Data</th>
-                            <th>Horário</th>
-                            <th>Nome</th>
-                            <th>Sexo</th>
-                            <th>E-mail</th>
-                            <th>Código do Médico</th>                        
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php                            
-                            $pdo = mysqlConnect();
+                    <table class="tabela-exibicao table table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th>Data</th>
+                                <th>Horário</th>
+                                <th>Nome</th>
+                                <th>Sexo</th>
+                                <th>E-mail</th>
+                                <th>Código do Médico</th>                        
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php                            
+                                $pdo = mysqlConnect();                       
 
-                            //testando                            
+                                try {
 
-                            try {
-
-                                $sql = <<<SQL
-                                SELECT p.email, p.codigo
-                                FROM medico m, pessoa p
-                                WHERE p.codigo = m.codigo
-                                SQL;
-                        
-                                $stmt = $pdo->query($sql);
-                              } 
-                              catch (Exception $e) {
-                                  exit('Ocorreu uma falha: ' . $e->getMessage());
-                              }
-                              $emails = '';
-                              $emailLog = '';
-                              $emailLog = $_SESSION['emailUsuario'];
-                              while ($row = $stmt->fetch()) {                                    
-                                $emails = htmlspecialchars($row['email']);              
-                        
-                                if($emails == $emailLog){ 
-                                  $codMed = htmlspecialchars($row['codigo']);       
-                                          
+                                    $sql = <<<SQL
+                                    SELECT p.email, p.codigo
+                                    FROM medico m, pessoa p
+                                    WHERE p.codigo = m.codigo
+                                    SQL;
+                            
+                                    $stmt = $pdo->query($sql);
+                                } 
+                                catch (Exception $e) {
+                                    exit('Ocorreu uma falha durante a execução desse comando: ' . $e->getMessage());
                                 }
-                              }
 
-                            //testando
+                                $emails = '';
+                                $emailLog = '';
+                                $emailLog = $_SESSION['emailUsuario'];
 
-                            try {
-
-                                $sql = <<<SQL
-                                    SELECT data_agenda, horario, nome, sexo, email, codigoMedico
-                                    FROM agenda                               
-                                SQL;
-
-                                $stmt = $pdo->query($sql);
-                            } 
-                            catch (Exception $e) {
-                                exit('Ocorreu uma falha: ' . $e->getMessage());
-                            }
-
-                            while ($row = $stmt->fetch()) {                                    
-                                $nome = htmlspecialchars($row['nome']);
-                                $email = htmlspecialchars($row['email']);
+                                while ($row = $stmt->fetch()) {                                    
+                                    $emails = htmlspecialchars($row['email']);              
+                        
+                                    if($emails == $emailLog){ 
+                                        $codMed = htmlspecialchars($row['codigo']);                                          
+                                    }
+                                }
                                 
-                                $data = new DateTime($row['data_agenda']);//
-                                $data_agenda = $data->format('d/m/Y');
+                                try {
 
-                                $codigoMedico = htmlspecialchars($row['codigoMedico']);
+                                    $sql = <<<SQL
+                                        SELECT data_agenda, horario, nome, sexo, email, codigoMedico
+                                        FROM agenda                               
+                                    SQL;
 
-                                if($codigoMedico== $codMed){
-                                    echo <<<HTML
-                                    <tr>
-                                        <td>$data_agenda</td>
-                                        <td>{$row['horario']}</td>                         
-                                        <td>$nome</td> 
-                                        <td>{$row['sexo']}</td>
-                                        <td>$email</td> 
-                                        <td>$codigoMedico</td>                                    
-                                    </tr>      
-                                HTML;
+                                    $stmt = $pdo->query($sql);
+                                } 
+                                catch (Exception $e) {
+                                    exit('Ocorreu uma falha durante a execução desse comando: ' . $e->getMessage());
                                 }
-                            }
-                        ?>
-                    </tbody>
-                </table>
+
+                                while ($row = $stmt->fetch()) {                                    
+                                    $nome = htmlspecialchars($row['nome']);
+                                    $email = htmlspecialchars($row['email']);
+                                    
+                                    $data = new DateTime($row['data_agenda']);//
+                                    $data_agenda = $data->format('d/m/Y');
+
+                                    $codigoMedico = htmlspecialchars($row['codigoMedico']);
+
+                                    if($codigoMedico== $codMed){
+                                        echo <<<HTML
+                                        <tr>
+                                            <td>$data_agenda</td>
+                                            <td>{$row['horario']}</td>                         
+                                            <td>$nome</td> 
+                                            <td>{$row['sexo']}</td>
+                                            <td>$email</td> 
+                                            <td>$codigoMedico</td>                                    
+                                        </tr>      
+                                    HTML;
+                                    }
+                                }
+                            ?>
+                        </tbody>
+                    </table>
                 </div>
             </main>
         </div>
@@ -310,5 +306,9 @@ exitWhenNotLogged($pdo);
                     window.location.href = "../PaginaLogin/index.html";
             }
         </script>
+
+        <footer>
+            <p>© Copyright 2021. Todos os direitos reservados. Vinícius Alves, Vinícius Adriano e Estevão Filipe.</p>
+        </footer>
     </body>
 </html>
