@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-    
     <head>
         <meta charset = "utf-8">
         <meta name="viewport" content="width=devide-width, initial-scale=1">
@@ -218,7 +217,7 @@
             footer p{
                 color: white;
                 text-align: center;
-                font-size: 18px;
+                font-size: 1.5rem;
             }
         </style>
 
@@ -301,57 +300,51 @@
 
         <script>
             function enviaForm() {
-                    
-                    let xhr = new XMLHttpRequest();
+                let xhr = new XMLHttpRequest();
 
-                    xhr.open("POST", "validaLogin.php");
-                    xhr.onload = function () {
-                        if (xhr.status != 200) {
-                        console.error("Falha inesperada: " + xhr.responseText);
+                xhr.open("POST", "validaLogin.php");
+                xhr.onload = function () {
+                    if (xhr.status != 200) {
+                        console.error('Ocorreu uma falha durante a execução desse comando: ' + xhr.responseText);
                         return;
-                        }
+                    }
 
-                        try {
+                    try {
                         var response = JSON.parse(xhr.responseText);
-                        }
-                        catch (e) {
-                        console.error("String JSON inválida: " + xhr.responseText);
+                    }
+                    catch (e) {
+                        console.error("Erro! JSON inválido: " + xhr.responseText);
                         return;
-                        }
+                    }
 
-                        if (response.success){
+                    if (response.success){
                         document.querySelector("#msgErro").style.display = "none";
-                        // let url = window.open(response.detail, '_blank');
-                         form.reset();
-                        // window.location = a;
-                        // 
+                            form.reset();
                         window.location = response.detail;
                     }
-                        else {
+                    else {
                         document.querySelector("#msgErro").style.display = 'block';
                         form.senha.value = "";
                         form.senha.focus();
-                        }
                     }
-
-                    xhr.onerror = function () {
-                        console.error("Erro de rede - requisição não finalizada");
-                    };
-
-                    const form = document.querySelector("form");
-                    xhr.send(new FormData(form));
-                    }
-
-                    window.onload = function () {
-                    const btnLogin = document.querySelector("#botao");
-                    btnLogin.onclick = enviaForm;
                 }
+
+                xhr.onerror = function () {
+                    console.error("Erro de conexão! A requisição não foi finalizada");
+                };
+
+                const form = document.querySelector("form");
+                xhr.send(new FormData(form));
+            }
+
+            window.onload = function () {
+                const btnLogin = document.querySelector("#botao");
+                btnLogin.onclick = enviaForm;
+            }
         </script>
 
-        <div>
-            <footer>
-                <p>© Copyright 2021. Todos os direitos reservados. Vinícius Alves, Vinícius Adriano e Estevão Filipe.</p>
-            </footer>
-        </div>
+        <footer>
+            <p>© Copyright 2021. Todos os direitos reservados. Vinícius Alves, Vinícius Adriano e Estevão Filipe.</p>
+        </footer>
     </body>
 </html>

@@ -16,9 +16,9 @@ exitWhenNotLogged($pdo);
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" 
-                rel="stylesheet" 
-                integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" 
-                crossorigin="anonymous">
+            rel="stylesheet" 
+            integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" 
+            crossorigin="anonymous">
 
         <title>Listagem Endereços - E2V Clínica Médica</title> 
         <link rel="icon" href="../imagem/E2V-title.png">
@@ -169,7 +169,7 @@ exitWhenNotLogged($pdo);
             footer p{
                 color: white;
                 text-align: center;
-                font-size: 18px;
+                font-size: 1.5rem;
             }
         </style>
     </head>
@@ -182,8 +182,7 @@ exitWhenNotLogged($pdo);
                     <img src="../imagem/LogoHeaderMini.png" alt="Logo da E2V Clínica Médica">                  
                 </div>
         
-                <div class="menu-section"> <!-- classe que é responsavel pela barra de navegação -->
-        
+                <div class="menu-section"> <!-- classe que é responsavel pela barra de navegação -->       
                     <div class="menu-burguer"> <!-- define a classe menu-burguer para o formato do menu expansivo -->
                         <div class="one"></div> <!-- div que representa a primeira barra do menu expansivo -->
                         <div class="two"></div> <!-- div que representa a segunda barra do menu expansivo -->
@@ -199,6 +198,7 @@ exitWhenNotLogged($pdo);
                 </div>
             </div>
         </header>
+
         <div class="container">
             <main>
                 <h2>Listagem dos Endereços</h2>
@@ -246,7 +246,6 @@ exitWhenNotLogged($pdo);
                                     </tr>      
                                 HTML;
                             }
-
                         ?>
                     </tbody>
                 </table>            
@@ -272,5 +271,9 @@ exitWhenNotLogged($pdo);
                     window.location.href = "../PaginaLogin/index.html";
             }
         </script>
+
+        <footer>
+            <p>© Copyright 2021. Todos os direitos reservados. Vinícius Alves, Vinícius Adriano e Estevão Filipe.</p>
+        </footer>
     </body>
 </html>

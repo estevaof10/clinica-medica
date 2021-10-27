@@ -26,7 +26,7 @@
         $stmt = $pdo->query($sql);
 
     } 	catch(Exception $e) {
-        exit('Ocorreu uma erro: ' . $e->getMessage());
+        exit('Ocorreu uma falha durante a execução desse comando: ' . $e->getMessage());
     }
     
     $nomes = Array();

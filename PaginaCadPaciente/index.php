@@ -191,17 +191,6 @@ exitWhenNotLogged($pdo);
                 font-size: 18px; /* defiune o tamanho da fonte */
                 font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* define a fonte do texto */
             }   
-            footer{
-                background-color: #004e53;  
-                padding: 0px;
-                margin-bottom: 0;
-            }
-            footer > p {
-                color: white;
-                font-family: Arial, Helvetica, sans-serif;
-                font-size: 12px;
-                text-align: center;
-            }
             .btn.btn-primary {
                 font-size: 18px;
                 font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -215,7 +204,7 @@ exitWhenNotLogged($pdo);
             footer p{
                 color: white;
                 text-align: center;
-                font-size: 18px;
+                font-size: 1.5rem;
             }
         </style>
     </head> 
@@ -223,7 +212,6 @@ exitWhenNotLogged($pdo);
         <header>           
             <div class="container"> <!-- div principal -->
                 <div class="logo"> <!-- div com a classe logo -->
-                    <!--<h1>E2V Clinica Medica</h1> -->
                     <img src="../imagem/LogoHeaderMini.png" alt="Logo da E2V Clínica Médica">                  
                 </div>
         
@@ -359,37 +347,6 @@ exitWhenNotLogged($pdo);
             })
           </script>
 
-        <!-- <script>
-            function enviaFormulario() {
-                let meuForm = document.querySelector("form");
-                let formData = new FormData(meuForm);
-                
-                const options = {
-                    method: "POST",
-                    body: formData
-                }
-                
-                fetch("cadPac.php", options)
-                    .then(response => response.json()) 
-                    .then(data =>{
-                        console.log(data.success);
-                        if(data.success == true){
-                        meuForm.reset();
-                        }else{
-                                throw new Error(response.status);
-                            }
-                            })
-                    .catch(error => {
-                        console.error(error);
-                    })
-                }
-
-                window.onload = function () {
-                const botao = document.querySelector("#botao");
-                botao.onclick = enviaFormulario;
-                }
-          </script> -->
-
         <script>
             var botaoSair = document.getElementById("sair-button");
             botaoSair.onclick = function () {
@@ -400,52 +357,47 @@ exitWhenNotLogged($pdo);
         </script>
 
         <script>
-                //Busca cep
+            function buscaEndereco(cep) {
+                if (cep.length != 9) return;
 
-                function buscaEndereco(cep) {
-                    if (cep.length != 9) return;
+                let xhr = new XMLHttpRequest();
+                xhr.open("GET", "getCep.php?cep=" + cep, true);
 
-                    let xhr = new XMLHttpRequest();
-                    xhr.open("GET", "getCep.php?cep=" + cep, true);
-
-                    xhr.onload = function () {
-                        if (xhr.status != 200) {
-                            console.error("Falha inesperada: " + xhr.responseText);
-                            return;
-                        }
-                        try {
-                            var endereco = JSON.parse(xhr.responseText);
-                        }
-                        catch (e) {
-                            console.error("String JSON inválida: " + xhr.responseText);
-                            return;
-                        }
-                        let form = document.querySelector("form");
-                        form.logradouro.value = endereco.logradouro;
-                        form.cidade.value = endereco.cidade;
-                        form.estado.value = endereco.estado;
+                xhr.onload = function () {
+                    if (xhr.status != 200) {
+                        console.error('Ocorreu uma falha durante a execução desse comando: ' + xhr.responseText);
+                        return;
                     }
-
-                    xhr.onerror = function () {
-                        console.error("Erro de rede - requisição não finalizada");
-                    };
-
-                    xhr.send();
+                    try {
+                        var endereco = JSON.parse(xhr.responseText);
+                    }
+                    catch (e) {
+                        console.error("Erro! JSON inválido: " + xhr.responseText);
+                        return;
+                    }
+                    let form = document.querySelector("form");
+                    form.logradouro.value = endereco.logradouro;
+                    form.cidade.value = endereco.cidade;
+                    form.estado.value = endereco.estado;
                 }
 
-                window.onload = function(){
-                const inputCep = document.querySelector("#inputCEP");
-                inputCep.onkeyup = () => buscaEndereco(inputCep.value);
-                }
+                xhr.onerror = function () {
+                    console.error("Erro de conexão! A requisição não foi finalizada");
+                };
 
-                const botao = document.querySelector("#botao");
+                xhr.send();
+            }
 
+            window.onload = function(){
+            const inputCep = document.querySelector("#inputCEP");
+            inputCep.onkeyup = () => buscaEndereco(inputCep.value);
+            }
+
+            const botao = document.querySelector("#botao");
         </script>
           
-          <div>
-            <footer>
-                <p>© Copyright 2021. Todos os direitos reservados. Vinícius Alves, Vinícius Adriano e Estevão Filipe.</p>
-            </footer>
-        </div>
+        <footer>
+            <p>© Copyright 2021. Todos os direitos reservados. Vinícius Alves, Vinícius Adriano e Estevão Filipe.</p>
+        </footer>
     </body>
 </html>

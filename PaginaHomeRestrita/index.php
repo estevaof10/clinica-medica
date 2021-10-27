@@ -33,7 +33,6 @@ while ($row = $stmt->fetch()) {
 
 <!DOCTYPE html>
 <html lang="pt-BR">
-    
     <head>
         <meta charset = "utf-8">
         <meta name="viewport" content="width=devide-width, initial-scale=1">
@@ -172,19 +171,18 @@ while ($row = $stmt->fetch()) {
                     font-size: 3rem; /* define o tamanho da fonte em rem para responsividade */
                     line-height: 10rem; /* define o tamanho da linha */
                     margin-left: 0; /* define a margem esquerda em 0 */
-                }
-                
+                }    
             }
             .banner{
                 width: 100%; /*Define o tamanho da area do banner */
                 height: 800px; /*Define o tamanho da altura do banner*/
                 position: fixed; /*Define como elemento pode ser posicionado no documento */
-                background-image: url(../imagem/bn3.jpg);
+                background: url(../imagem/bn3.jpg) no-repeat center/cover;
                 margin-top: 80px;
             }
             .info{
                 width: 100%;/*Define a largura do elemento*/
-                height: 500px; /*Define a altura em px*/
+                height: 550px; /*Define a altura em px*/
                 position: relative; /*Define como elemento pode ser posicionado no documento */
                 top: 350px; /*Define o*/
                 background: #ffffff; /*Define a cor de fundo*/
@@ -195,8 +193,7 @@ while ($row = $stmt->fetch()) {
                 top: 0;
                 width: 100%;
                 text-align: center;
-            }
-            
+            }            
             .info nav ul{ /* estilização da lista de itens do nav */
                 display: flex; /* alinhao a lista de itens na horizontal */
                 padding: 0;
@@ -240,7 +237,6 @@ while ($row = $stmt->fetch()) {
                 font-family: Arial, Helvetica, sans-serif ; /* define a fonte dos links */
                 background-color: #e0e0e086;
                 border-radius: 5px;
-
             }
             .tabs a:hover{
                 background-color: #003029e7; /* define a cor do efeito ao passar o mouse sobre os links  */
@@ -257,18 +253,9 @@ while ($row = $stmt->fetch()) {
             footer p{
                 color: white;
                 text-align: center;
-                font-size: 18px;
-            }
-            @media(max-width: 790px){
-                footer p{
-                    font-size: 10px;
-                }
-                .info{
-                    height: 650px 
-                }
+                font-size: 1.5rem;
             }
         </style>
-
     </head>
     
     <body>
@@ -348,36 +335,37 @@ while ($row = $stmt->fetch()) {
                         <div class="agendMed">
                             <?php
                                 $pdo = mysqlConnect();
-                                  try {
 
-                                    $sql = <<<SQL
-                                    SELECT p.email, p.codigo
-                                    FROM medico m, pessoa p
-                                    WHERE p.codigo = m.codigo
-                                    SQL;
-                                
-                                    $stmt = $pdo->query($sql);
-                                  } 
-                                  catch (Exception $e) {
-                                      exit('Ocorreu uma falha: ' . $e->getMessage());
-                                  }
-                                  $result_ok = '';
-                                  $emails = '';
-                                  $emailLog = '';
-                                  $emailLog = $_SESSION['emailUsuario'];
-                                  while ($row = $stmt->fetch()) {                                    
+                                try {
+
+                                $sql = <<<SQL
+                                SELECT p.email, p.codigo
+                                FROM medico m, pessoa p
+                                WHERE p.codigo = m.codigo
+                                SQL;
+                            
+                                $stmt = $pdo->query($sql);
+                                } 
+                                catch (Exception $e) {
+                                    exit('Ocorreu uma falha: ' . $e->getMessage());
+                                }
+                                $result_ok = '';
+                                $emails = '';
+                                $emailLog = '';
+                                $emailLog = $_SESSION['emailUsuario'];
+                                while ($row = $stmt->fetch()) {                                    
                                     $emails = htmlspecialchars($row['email']);              
                                     if($emails == $emailLog){ 
-                                      $result_ok = true;
+                                        $result_ok = true;
                                     }
-                                  }
-                                  
-                                  if($result_ok == true){
-                                    echo<<<HTML
-                                        <p><a href="../ListagemAgendMed/index.php">Listagem dos Meus Agendamentos</a></p>
-                                        <p>Neste link é possível visualizar a listagens dos meus agendamentos de consultas da E2V Clínica Médica.</p>
-                                    HTML;
-                                  }
+                                }
+                                
+                                if($result_ok == true){
+                                echo<<<HTML
+                                    <p><a href="../ListagemAgendMed/index.php">Listagem dos Meus Agendamentos</a></p>
+                                    <p>Neste link é possível visualizar a listagens dos meus agendamentos de consultas da E2V Clínica Médica.</p>
+                                HTML;
+                                }
                             ?>
                         </div>
                     </section>
@@ -436,10 +424,8 @@ while ($row = $stmt->fetch()) {
             }
         </script>
 
-        <div>
-            <footer>
-                <p>© Copyright 2021. Todos os direitos reservados. Vinícius Alves, Vinícius Adriano e Estevão Filipe.</p>
-            </footer>
-        </div>
+        <footer>
+            <p>© Copyright 2021. Todos os direitos reservados. Vinícius Alves, Vinícius Adriano e Estevão Filipe.</p>
+        </footer>
     </body>
 </html>

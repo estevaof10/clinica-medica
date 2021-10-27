@@ -193,15 +193,13 @@
                 color: #033d3d;
                 margin: 5px;
             }
-            
             .corpoMedico img{
                 width: 175px;
                 height: 200px;
                 position: relative;
                 border: 1px solid #033d3d;
                 border-radius: 2%;
-                box-shadow: 0px 0px 5px #01a3a3;
-                
+                box-shadow: 0px 0px 5px #01a3a3;         
             }
             .doutores{
                 display: flex;
@@ -231,7 +229,6 @@
                 font-size: 1.5rem;
             }
         </style>
-
     </head>
     
     <body>
@@ -243,7 +240,6 @@
                 </div>
         
                 <div class="menu-section"> <!-- classe que é responsavel pela barra de navegação -->
-        
                     <div class="menu-burguer"> <!-- define a classe menu-burguer para o formato do menu expansivo -->
                         <div class="one"></div> <!-- div que representa a primeira barra do menu expansivo -->
                         <div class="two"></div> <!-- div que representa a segunda barra do menu expansivo -->
@@ -281,18 +277,18 @@
                     <div class="corpoMedico">
                         <h2>Corpo Médico</h2><br>
                         <div class="row">
-                                <figure class="col-sm-4">
-                                    <img src="./imagem/medicoEstevao.jpg" alt="Dr Estevão">
-                                    <figcaption>Dr. Estevão</figcaption>
-                                </figure>
-                                <figure class="col-sm-4">
-                                    <img src="./imagem/medicoVinicius.jpg" alt="Dr Vinícius Alves">
-                                    <figcaption>Dr. Vinícius Alves</figcaption>
-                                </figure>
-                                <figure class="col-sm-4">
-                                    <img src="./imagem/doutorViniciusAdriano.jpeg" alt="Dr Vinícius Adriano">
-                                    <figcaption>Dr. Vinícius Adriano</figcaption>
-                                </figure>
+                            <figure class="col-sm-4">
+                                <img src="./imagem/medicoEstevao.jpg" alt="Dr Estevão">
+                                <figcaption>Dr. Estevão</figcaption>
+                            </figure>
+                            <figure class="col-sm-4">
+                                <img src="./imagem/medicoVinicius.jpg" alt="Dr Vinícius Alves">
+                                <figcaption>Dr. Vinícius Alves</figcaption>
+                            </figure>
+                            <figure class="col-sm-4">
+                                <img src="./imagem/doutorViniciusAdriano.jpeg" alt="Dr Vinícius Adriano">
+                                <figcaption>Dr. Vinícius Adriano</figcaption>
+                            </figure>
                         </div>
                     </div>
                     <div class="valores">
@@ -308,8 +304,7 @@
                 </div>
             </div> 
         </main>
-        <div class="container"></div>
-        <footer class="fixed-bottom">
+        <footer>
             <p>© Copyright 2021. Todos os direitos reservados. Vinícius Alves, Vinícius Adriano e Estevão Filipe.</p>
         </footer>
 
@@ -318,7 +313,7 @@
             const menuSection = document.querySelector(".menu-section") // busca na div menu-section e armazena na variavel menuSection
             const menuBurguer = menuSection.querySelector(".menu-burguer") // busca na menuSection e armazena na variavel menuBurguer
 
-             menuBurguer.addEventListener("click", () =>{ //crição do evento de click no menuBurguer e dispara a função
+            menuBurguer.addEventListener("click", () =>{ //crição do evento de click no menuBurguer e dispara a função
             menuSection.classList.toggle("on", show) //menuSection adciona uma lista de classe "on" atraves da função toggle(função de adicionar e retirar do js)
             show = !show //atualiza o show apos o click, fazendo o valor dele se alterar
             })

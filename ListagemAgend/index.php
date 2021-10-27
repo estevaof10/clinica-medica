@@ -169,7 +169,7 @@ exitWhenNotLogged($pdo);
             footer p{
                 color: white;
                 text-align: center;
-                font-size: 18px;
+                font-size: 1.5rem;
             }
         </style>
     </head>
@@ -273,5 +273,9 @@ exitWhenNotLogged($pdo);
                     window.location.href = "../PaginaLogin/index.html";
             }
         </script>
+
+        <footer>
+            <p>© Copyright 2021. Todos os direitos reservados. Vinícius Alves, Vinícius Adriano e Estevão Filipe.</p>
+        </footer>
     </body>
 </html>

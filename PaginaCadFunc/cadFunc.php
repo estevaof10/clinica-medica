@@ -45,7 +45,7 @@ try {
   $stmt = $pdo->query($sql);
 } 
 catch (Exception $e) {
-  exit('Ocorreu uma falha: ' . $e->getMessage());
+  exit('Ocorreu uma falha durante a execução desse comando: ' . $e->getMessage());
 }
 
 while ($row = $stmt->fetch()) {                                    
@@ -78,20 +78,20 @@ try {
   if (!$stmt1->execute([
     $codigo, $nome, $sexo, $email, $telefone,
     $cep, $logradouro, $cidade, $estado
-  ])) throw new Exception('Falha na primeira inserção');
+  ])) throw new Exception('Erro na primeira inserção');
 
   $idNovoFunc = $pdo->lastInsertId();
   $stmt2 = $pdo->prepare($sql2);
   if (!$stmt2->execute([
     $codigo, $dataContrato, $salario, $hashsenha
-  ])) throw new Exception('Falha na segunda inserção');
+  ])) throw new Exception('Erro na segunda inserção');
 
     if(!($especialidade=='' && $crm == '')) {
        $idNovoMed = $pdo->lastInsertId();
        $stmt3 = $pdo->prepare($sql3);
       if (!$stmt3->execute([
         $codigo, $especialidade, $crm
-      ])) throw new Exception('Falha na terceira inserção');
+      ])) throw new Exception('Erro na terceira inserção');
 
     } 
 
@@ -106,7 +106,7 @@ try {
 catch (Exception $e) {
   $pdo->rollBack();
   if ($e->errorInfo[1] === 1062)
-    exit('Dados duplicados: ' . $e->getMessage());
+    exit('Erro! Dados duplicados: ' . $e->getMessage());
   else
     exit('Falha ao cadastrar os dados: ' . $e->getMessage());
 
