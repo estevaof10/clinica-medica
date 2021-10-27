@@ -22,6 +22,7 @@
             }
             html{ /* stilização do html */
                 font-size: 62.5%; /* define o tamanho da fonte do codigo para que a cada 1rem seja considerado 10px */
+                overflow-x: hidden;
             }
             body{ /* estilização do body */
                 font-size: 1.6rem; /* define o tamanho da fonte do body em rem para responsividade */
@@ -139,27 +140,29 @@
                     line-height: 10rem; /* define o tamanho da linha */
                     margin-left: 0; /* define a margem esquerda em 0 */
                 }
+                .logo img{ /* estilização do tamanho da logo quando a tela tiver 990px*/
+                    width: 80%; 
+                }
+                .foto{
+                    width: 100%;
+                }
+                footer p{
+                    font-size: 6px;
+                }
             }
             .banner{
                 width: 100vw; /*Define o tamanho da area do banner */
                 height: 100vh; /*Define o tamanho da altura do banner*/
                 position: fixed; /*Define como elemento pode ser posicionado no documento */
-                background-image: url(imagem/bn3.jpg);
+                background-image: url(./imagem/bn3.jpg);
                 margin-top: 80px;
-            }
-            .banner h2{
-                padding-top:8%; /*Define o padding de cima com 8% de seu preenchimento*/
-                font-size: 70px;    /*Define o tamanho da fonte */
-                font-family: poppins;   /*Define a fonte */
-                text-transform: uppercase;  /*Define o formato da letra Uppercase, lowercase ...*/
-                color: #033d3d; /*Define a cor das letras*/
             }
             .info{
                 width: 100%;/*Define a largura do elemento*/
                 position: relative; /*Define como elemento pode ser posicionado no documento */
                 top: 450px; /*Define o*/
                 background: #ffffff; /*Define a cor de fundo*/
-                height: 1500px; /*Define a altura em px*/
+                
                 opacity: 0.9;
                 color: black;
             }
@@ -176,19 +179,21 @@
                 font-family: merienda;  /*Define a fonte */
                 line-height: 30px;  /*Define a altura de uma caixa de linha*/
             }
-            .description{
+            .descrição{
                 width: 70%;  /*Define o tamanho em px da minha logo*/
                 margin: 0 auto; /*Define a margem como 0*/
             }
             .valores{
                 width: 70%;
                 margin: 0 auto; /*Define a margem como 0*/
+                padding-bottom: 50px;
             }
             .valores ul li{
                 background-color: #d7fffa;
                 color: #033d3d;
                 margin: 5px;
             }
+            
             .corpoMedico img{
                 width: 175px;
                 height: 200px;
@@ -196,15 +201,23 @@
                 border: 1px solid #033d3d;
                 border-radius: 2%;
                 box-shadow: 0px 0px 5px #01a3a3;
+                
             }
             .doutores{
                 display: flex;
-                flex-direction: row;
+                width: 100%;
+                justify-content: center;
             }
-            .doutores figure{
+            .row{
+                --bs-gutter-x: 0;
+                margin-left: 15%;
+                margin-right: 15%;
+            }
+            figcaption{
                 font-family: 'Helvetica Neue', sans-serif;
                 font-size: 18px;
                 margin: 10px;
+                padding: 30px;
             }
             footer{
                 bottom: 0;
@@ -215,7 +228,7 @@
             footer p{
                 color: white;
                 text-align: center;
-                font-size: 18px;
+                font-size: 1.5rem;
             }
         </style>
 
@@ -226,7 +239,7 @@
             <div class="container"> <!-- div principal -->
 
                 <div class="logo"> <!-- div com a classe logo -->
-                    <img src="imagem/LogoHeaderMini.png" alt="Logo da E2V Clínica Médica">                  
+                    <img src="./imagem/LogoHeaderMini.png" alt="Logo da E2V Clínica Médica">                  
                 </div>
         
                 <div class="menu-section"> <!-- classe que é responsavel pela barra de navegação -->
@@ -249,12 +262,12 @@
             </div>
         </header>
         <main>
-            <div class="boxPrincipal">
+            <div>
                 <div class="banner"></div>
 
                 <div class="info">
-                    <div class="description">
-                        <img src="imagem/AesteticLogoHome2.png" alt="Logo e nome da clínica">
+                    <div class="descrição">
+                        <img src="./imagem/AesteticLogoHome2.png" alt="Logo e nome da clínica" class="foto">
                         <h2>Quem somos</h2>
                         <p>Criada em 01 de outubro de 2020, a E2V Clínica Médica surgiu com o intuito de trazer tecnologia e segurança para a área de saúde.
                             Com equipamentos de primeira linha para diagnóstico, tratamento, monitoramento e controle da saúde do paciente, conseguimos fazer com que o paciente 
@@ -263,23 +276,23 @@
                             tranquilidade e segurança, além de um tratamento diferenciado e humanizado.
                             <br>Atualmente, estamos localizados em 30 países, dentre eles o Estados Unidos, Holanda, Austrália, e o Brasil, onde, recentemente, foi inaugurada a segunda central de atendimento da E2V.
                         </p>
-                        <img src="imagem/multinacionaisbrasileiras.png" alt="Mapa das centrais de atendimento da E2V Clínica Médica">                         
+                        <img src="./imagem/multinacionaisbrasileiras.png" alt="Mapa das centrais de atendimento da E2V Clínica Médica" class="foto">                         
                     </div>
                     <div class="corpoMedico">
                         <h2>Corpo Médico</h2><br>
-                        <div class="doutores justify-content-center">
-                            <figure>
-                                <img src="imagem/medicoEstevao.jpg" alt="Dr Estevão">
-                                <figcaption>Dr. Estevão</figcaption>
-                            </figure>
-                            <figure>
-                                <img src="imagem/medicoVinicius.jpg" alt="Dr Vinícius Alves">
-                                <figcaption>Dr. Vinícius Alves</figcaption>
-                            </figure>
-                            <figure>
-                                <img src="imagem/doutorViniciusAdriano.jpeg" alt="Dr Vinícius Adriano">
-                                <figcaption>Dr. Vinícius Adriano</figcaption>
-                            </figure>
+                        <div class="row">
+                                <figure class="col-sm-4">
+                                    <img src="./imagem/medicoEstevao.jpg" alt="Dr Estevão">
+                                    <figcaption>Dr. Estevão</figcaption>
+                                </figure>
+                                <figure class="col-sm-4">
+                                    <img src="./imagem/medicoVinicius.jpg" alt="Dr Vinícius Alves">
+                                    <figcaption>Dr. Vinícius Alves</figcaption>
+                                </figure>
+                                <figure class="col-sm-4">
+                                    <img src="./imagem/doutorViniciusAdriano.jpeg" alt="Dr Vinícius Adriano">
+                                    <figcaption>Dr. Vinícius Adriano</figcaption>
+                                </figure>
                         </div>
                     </div>
                     <div class="valores">
@@ -295,9 +308,9 @@
                 </div>
             </div> 
         </main>
-
-        <footer>
-                <p>© Copyright 2021. Todos os direitos reservados. Vinícius Alves, Vinícius Adriano e Estevão Filipe.</p>
+        <div class="container"></div>
+        <footer class="fixed-bottom">
+            <p>© Copyright 2021. Todos os direitos reservados. Vinícius Alves, Vinícius Adriano e Estevão Filipe.</p>
         </footer>
 
         <script>  
