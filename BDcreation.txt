@@ -1,6 +1,6 @@
 CREATE TABLE pessoa
 (
-   codigo varchar(50) PRIMARY KEY,
+   codigo int PRIMARY KEY,
    nome varchar(50),
    sexo char(20) ,
    email varchar(50) UNIQUE,
@@ -13,7 +13,7 @@ CREATE TABLE pessoa
 
 CREATE TABLE funcionario
 (
-   codigo varchar(50),
+   codigo int ,
    salario float,
    senhaHash varchar(200),
    dataContrato date,
@@ -22,7 +22,7 @@ CREATE TABLE funcionario
 
 CREATE TABLE medico
 (
-   codigo varchar(50),
+   codigo int ,
    especialidade varchar(75),
    crm varchar(50),
    FOREIGN KEY (codigo) REFERENCES pessoa(codigo) ON DELETE CASCADE
@@ -33,7 +33,7 @@ CREATE TABLE paciente
    peso int,
    altura int,
    tipo_sanguineo char(2),
-   codigo varchar(50) not null,
+   codigo int not null,
    FOREIGN KEY (codigo) REFERENCES pessoa(codigo) ON DELETE CASCADE
 ) ENGINE=InnoDB;
 
@@ -56,7 +56,7 @@ CREATE TABLE agenda
    nome varchar(200),
    sexo varchar(50),
    email varchar(100),
-   codigoMedico varchar(50),
+   codigoMedico int,
    FOREIGN KEY (codigoMedico) REFERENCES medico(codigo) ON DELETE CASCADE
 ) ENGINE=InnoDB;
 
